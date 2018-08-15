@@ -1,0 +1,801 @@
+[ 2017-03-01T09:24:21+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/client_login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_client where id>0 and account='18800000000'  [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: nickname E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 109 行.
+SQL:  update sys_client set lastlogintime='2017-03-01 09:24:21' where id =1  [ RunTime:0.031250s ]
+SQL:  insert into sys_login_history set client_id=1,regdate='2017-03-01 09:24:21' [ RunTime:0.000000s ]
+
+[ 2017-03-01T09:25:07+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/goods_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_goods where saleflag=1 and id=1 [ RunTime:0.000000s ]
+SQL: select score from sys_client where id=1 [ RunTime:0.000000s ]
+SQL:  insert into sys_order set out_trade_no='20170301092507ID1',goods_id=1,goods_name='玩具娃娃',goods_img='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/02/201702071656011975_thumb.jpg',goods_big_img='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/02/201702071656011975.jpg',orderflag=2,goods_score='500',phone='18800000000',client_id=1,regdate='2017-03-01 09:25:07' [ RunTime:0.000000s ]
+SQL: update sys_client set score=score-500 where id=1 [ RunTime:0.000000s ]
+SQL: insert into sys_scoredetail set score=500,scoretype=5,regdate='2017-03-01 09:25:07',client_id=1,isget=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T09:26:27+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/goods_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_goods where saleflag=1 and id=1 [ RunTime:0.000000s ]
+SQL: select score from sys_client where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T09:26:46+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/goods_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: select * from sys_goods where saleflag=1 and id=1 [ RunTime:0.000000s ]
+SQL: select score from sys_client where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T09:26:55+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/goods_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_goods where saleflag=1 and id=1 [ RunTime:0.000000s ]
+SQL: select score from sys_client where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T09:38:29+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-01 09:38:29',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T09:48:18+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=shop_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: content E:\web\group16\hm_cjml\web\Webadmin\Action\ShopAction.class.php 第 167 行.
+SQL: update sys_shop set  name = '水壶', linker = '咘咘', telphone = '18900000000', address = '山东省济南市市中区魏家庄街道经二路8-4号',content='',remarks='' where id=4 [ RunTime:0.031250s ]
+
+[ 2017-03-01T09:49:13+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=shop_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: content E:\web\group16\hm_cjml\web\Webadmin\Action\ShopAction.class.php 第 167 行.
+SQL: update sys_shop set  name = '水壶', linker = '咘咘', telphone = '18900000000', address = '山东省济南市市中区大观园街道山东省工商银行南院山东省工商银行(南院)', lng = '116.994027', lat = '36.66229',content='',remarks='' where id=4 [ RunTime:0.015625s ]
+
+[ 2017-03-01T09:49:42+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=shop_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_shop set  name = '日本动漫公司', linker = '蜡笔小新', telphone = '18800000000', address = '山东省济南市历城区山大路街道花园路136号', lng = '117.06458', lat = '36.68308',content='<p style="margin-top: 0px; margin-bottom: 30px; padding: 0px; color: rgb(51, 51, 51); line-height: 30px; text-indent: 2em; font-family: 微软雅黑, Arial; white-space: normal;">明星结婚这么多，伴娘团我们也是见多了，伴娘团这个事一是考验伴娘礼服是否好看，二就是考验伴娘的颜值，总体看起来，话不多说我们先看图。</p><p style="text-align:center;margin-top: 0px; margin-bottom: 30px; padding: 0px; color: rgb(51, 51, 51); line-height: 30px; text-indent: 2em; font-family: 微软雅黑, Arial; white-space: normal;"><img id="15295492" md5="" src="/ueditor/php/upload/image/20170204/1486175882490992.jpg" alt="这么多明星结婚 谁的伴娘团最美？" style="margin: 0px; padding: 0px; border: none;"/></p><p class="pictext" style="text-align:center;margin-top: 0px; margin-bottom: 30px; padding: 0px; color: rgb(51, 51, 51); line-height: 30px; text-indent: 2em; font-family: 微软雅黑, Arial; white-space: normal;">　　三个伴娘风格都不同，也是一个很好的互补</p>',remarks='。。。。。。。。。' where id=3 [ RunTime:0.046875s ]
+
+[ 2017-03-01T09:50:10+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=shop_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_shop set  name = '哈哈', linker = '刘先生', telphone = '18800000001', address = '山东省济南市历城区东风街道二环东路1788号', lng = '117.074831', lat = '36.672969',content='<p>欢迎光临我们店！</p>',remarks='' where id=1 [ RunTime:0.031250s ]
+
+[ 2017-03-01T09:58:24+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_image_text order by rand() limit 1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: shop_id E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 487 行.
+NOTIC: [8] Undefined variable: shopname E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 488 行.
+
+[ 2017-03-01T10:06:38+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:07:50+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:13+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:14+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:14+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:14+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:14+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:15+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:15+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:30+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:31+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:31+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:31+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:08:38+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:09:30+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:40+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:54+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:55+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:55+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:56+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:56+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:56+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:10:56+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:11:01+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:11:24+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: order_num E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 423 行.
+SQL: select * from sys_score order by rand() limit 1 [ RunTime:0.000000s ]
+SQL: select name from sys_shop where id = 1 [ RunTime:0.000000s ]
+SQL: select * from sys_set_score where id = 1 [ RunTime:0.000000s ]
+SQL:  insert into sys_lucky_times set client_id=1,regdate='2017-03-01' [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 0 E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 500 行.
+NOTIC: [8] Undefined offset: 0 E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 501 行.
+
+[ 2017-03-01T10:11:26+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: order_num E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 423 行.
+SQL: select * from sys_score order by rand() limit 1 [ RunTime:0.000000s ]
+SQL: select name from sys_shop where id = 1 [ RunTime:0.000000s ]
+SQL: select * from sys_set_score where id = 1 [ RunTime:0.000000s ]
+SQL:  insert into sys_lucky_times set client_id=1,regdate='2017-03-01' [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 0 E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 500 行.
+NOTIC: [8] Undefined offset: 0 E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 501 行.
+
+[ 2017-03-01T10:11:28+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: order_num E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 423 行.
+SQL: select * from sys_score order by rand() limit 1 [ RunTime:0.000000s ]
+SQL: select name from sys_shop where id = 1 [ RunTime:0.000000s ]
+SQL: select * from sys_set_score where id = 1 [ RunTime:0.000000s ]
+SQL:  insert into sys_lucky_times set client_id=1,regdate='2017-03-01' [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 0 E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 500 行.
+NOTIC: [8] Undefined offset: 0 E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 501 行.
+
+[ 2017-03-01T10:11:28+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:11:30+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/prize_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_lucky_times where client_id='1' and regdate='2017-03-01' [ RunTime:0.000000s ]
+SQL: select lucky_times from sys_config where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T10:13:34+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=system&a=all_set
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_config set  aboutus = '<p>&nbsp;&nbsp;&nbsp;&nbsp;<span style=font-size:>在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</span></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“那让我看看，你有没有那个资格。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子看到那把匕首，脸色沉了沉。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　狼牙出，见血封喉。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕的瞳孔骤然睁大。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　身后一声巨响！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　火热的温度简直要炽伤她的背。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', protocal = '<p style=white-space:>&nbsp; &nbsp;&nbsp;在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“那让我看看，你有没有那个资格。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子看到那把匕首，脸色沉了沉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　狼牙出，见血封喉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的瞳孔骤然睁大。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后一声巨响！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　火热的温度简直要炽伤她的背。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', rule = '<p style=white-space:>&nbsp; &nbsp; 在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“那让我看看，你有没有那个资格。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子看到那把匕首，脸色沉了沉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　狼牙出，见血封喉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的瞳孔骤然睁大。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后一声巨响！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　火热的温度简直要炽伤她的背。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', disclaimer = '<p style=white-space:>&nbsp; &nbsp; 在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“那让我看看，你有没有那个资格。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子看到那把匕首，脸色沉了沉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　狼牙出，见血封喉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的瞳孔骤然睁大。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后一声巨响！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　火热的温度简直要炽伤她的背。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', function_intr = '<p style=white-space:>&nbsp; &nbsp; 在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“那让我看看，你有没有那个资格。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子看到那把匕首，脸色沉了沉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　狼牙出，见血封喉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的瞳孔骤然睁大。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后一声巨响！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　火热的温度简直要炽伤她的背。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', prize_name = '哈哈大奖', score_rate = '0.0010', max_cost = '10', invite_score = '1000', lucky_times = '10' where id=1 [ RunTime:0.046875s ]
+
+[ 2017-03-01T11:09:44+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/client_login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_client where id>0 and account='18800000000'  [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: nickname E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 109 行.
+SQL:  update sys_client set lastlogintime='2017-03-01 11:09:44' where id =1  [ RunTime:0.062500s ]
+SQL:  insert into sys_login_history set client_id=1,regdate='2017-03-01 11:09:44' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:10:23+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:10:23',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='994.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:13:36+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='200',cashflag=1,regdate='2017-03-01 11:13:36',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='794.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:13:43+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='200',cashflag=1,regdate='2017-03-01 11:13:43',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='794.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:14:20+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='300',cashflag=1,regdate='2017-03-01 11:14:20',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='694.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:14:59+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:14:59',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:15:07+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:15:07',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:15:08+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:15:08',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:15:08+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:15:08',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:15:08+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:15:08',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:15:08+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:15:08',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:15:08+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:15:08',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:15:09+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:15:09',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:15:09+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:15:09',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:16:37+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:16:37',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:16:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:16:41',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:16:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:16:41',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:16:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:16:41',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:16:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:16:41',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:16:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:16:41',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:16:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:16:41',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:16:42+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:16:42',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:16:42+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:16:42',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='894.06' where id='1' [ RunTime:0.000000s ]
+SQL: update sys_client set alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:17:14+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:20:43+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='200',cashflag=1,regdate='2017-03-01 11:20:43',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='694.06',alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:20:55+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/cash_withdrawal
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select feeaccount from sys_client where id='1' [ RunTime:0.000000s ]
+SQL: insert into sys_cash set client_id='1',score='100',cashflag=1,regdate='2017-03-01 11:20:55',type=0,isget=1 [ RunTime:0.000000s ]
+SQL: update sys_client set feeaccount='594.06',alipay_account='18800000000' where id='1' [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:25:35+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/scoreorcash_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select sc.score,s.* from sys_scoredetail sc left join sys_shop s on s.id = sc.shop_id where sc.id = 1 and sc.scoretype = 2 and sc.isget = 2 [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:25:40+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/scoreorcash_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select sc.score,s.* from sys_scoredetail sc left join sys_shop s on s.id = sc.shop_id where sc.id = 11 and sc.scoretype = 2 and sc.isget = 2 [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:30:15+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-01 11:30:15',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T11:50:31+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T14:32:01+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-01 14:32:01',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T14:34:44+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=system&a=all_set
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_config set  aboutus = '<p>&nbsp;&nbsp;&nbsp;&nbsp;<span style=font-size:>在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</span></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“那让我看看，你有没有那个资格。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子看到那把匕首，脸色沉了沉。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　狼牙出，见血封喉。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕的瞳孔骤然睁大。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　身后一声巨响！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　火热的温度简直要炽伤她的背。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', protocal = '<p style=white-space:>&nbsp; &nbsp;&nbsp;在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“那让我看看，你有没有那个资格。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子看到那把匕首，脸色沉了沉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　狼牙出，见血封喉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的瞳孔骤然睁大。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后一声巨响！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　火热的温度简直要炽伤她的背。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', rule = '<p style=white-space:>&nbsp; &nbsp; 在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“那让我看看，你有没有那个资格。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子看到那把匕首，脸色沉了沉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　狼牙出，见血封喉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的瞳孔骤然睁大。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后一声巨响！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　火热的温度简直要炽伤她的背。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', disclaimer = '<p style=white-space:>&nbsp; &nbsp; 在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“那让我看看，你有没有那个资格。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子看到那把匕首，脸色沉了沉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　狼牙出，见血封喉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的瞳孔骤然睁大。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后一声巨响！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　火热的温度简直要炽伤她的背。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', function_intr = '<p style=white-space:>&nbsp; &nbsp; 在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“那让我看看，你有没有那个资格。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子看到那把匕首，脸色沉了沉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　狼牙出，见血封喉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的瞳孔骤然睁大。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后一声巨响！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　火热的温度简直要炽伤她的背。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', prize_name = '哈哈大奖', score_rate = '0.0010', max_cost = '10', invite_score = '1000', sharing_points = '20' where id=1 [ RunTime:0.046875s ]
+
+[ 2017-03-01T14:41:09+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/client_login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_client where id>0 and account='18800000000'  [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: nickname E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 109 行.
+SQL:  update sys_client set lastlogintime='2017-03-01 14:41:09' where id =1  [ RunTime:0.031250s ]
+SQL:  insert into sys_login_history set client_id=1,regdate='2017-03-01 14:41:09' [ RunTime:0.000000s ]
+
+[ 2017-03-01T14:41:17+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/sharing_points_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T14:41:35+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/sharing_points_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select sharing_points from sys_config where id=1 [ RunTime:0.000000s ]
+SQL:  update sys_client set score=score+20 where id = 1  [ RunTime:0.093750s ]
+
+[ 2017-03-01T14:41:54+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/sharing_points_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select sharing_points from sys_config where id=1 [ RunTime:0.000000s ]
+SQL:  update sys_client set score=score+20 where id = 1  [ RunTime:0.015625s ]
+
+[ 2017-03-01T14:42:00+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/sharing_points_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select sharing_points from sys_config where id=1 [ RunTime:0.000000s ]
+SQL:  update sys_client set score=score+20 where id = 1  [ RunTime:0.015625s ]
+
+[ 2017-03-01T15:03:42+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T15:03:48+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-01 15:03:48',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T15:04:22+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=system&a=all_set
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: update sys_config set  aboutus = '<p>&nbsp;&nbsp;&nbsp;&nbsp;<span style=font-size:>在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</span></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“那让我看看，你有没有那个资格。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子看到那把匕首，脸色沉了沉。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　狼牙出，见血封喉。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕的瞳孔骤然睁大。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　身后一声巨响！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　火热的温度简直要炽伤她的背。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p style=margin: 25px=auto= padding:=line-height:= font-size:=width:=>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', protocal = '<p>注册协议</p>', rule = '<p style=white-space:>&nbsp; &nbsp; 在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“那让我看看，你有没有那个资格。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子看到那把匕首，脸色沉了沉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　狼牙出，见血封喉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的瞳孔骤然睁大。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后一声巨响！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　火热的温度简直要炽伤她的背。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', disclaimer = '<p style=white-space:>&nbsp; &nbsp; 在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“那让我看看，你有没有那个资格。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子看到那把匕首，脸色沉了沉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　狼牙出，见血封喉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的瞳孔骤然睁大。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后一声巨响！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　火热的温度简直要炽伤她的背。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', function_intr = '<p style=white-space:>&nbsp; &nbsp; 在这座繁华，奢侈众多的城市，最黑暗的，不过人心。</p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷眼看着眼前与自己相隔不过数米的“好友”，缓缓道，“将团文件交回来。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　那女子很是自信的笑了笑，“凭什么？你认为你现在还有那个能力号令我和整个狼牙佣兵团么？废物！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕冷笑一声，“即便我如今已经达不到以往巅峰状态的十分之一，我照样能手刃你不花十分钟！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哈哈哈！”女子放肆地笑出了声，“思慕啊思慕！你简直太不知好歹了！你若现在向我低头认错，从我胯下而过，我便留你一命，如何？”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一挑眉，那语气高傲的仿佛这是对她最大的恩赐！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕提起膝盖， “噌——”的一声，利落的从黑色长靴边上抽出一把匕首。一字一句道，<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“那让我看看，你有没有那个资格。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子看到那把匕首，脸色沉了沉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　狼牙出，见血封喉。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　这句话说的不仅仅是他们狼牙佣兵团，还有这佣兵团的团长——思慕的狼牙匕首。匕首出，必见血！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“哼！”女子一抬下颔，“来吧！思慕，这回我可要你看见属于你自己的封喉血！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　说着，女子便抽出腰间的匕首，冲向思慕。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的眼眸倒映出女子狠厉的眼神，手中的狼牙匕首耍了一个剑花。冰冷的颜色反出亮光。角度拿捏的正好。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子脚下一顿，立即用手肘挡住刺向自己的剑光。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就趁这个空隙，思慕动了，以一种难以想象的速度悄无声息的来到女子身边。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子一睁眼，便看见思慕的眼眸。身体不受控制的定住。心里大叫一声，“不好！”脚下成一个诡异的角度，堪堪避开思慕刺来的匕首。手下也不含糊地将匕首刺向思慕的腰部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕脸色一寒，随及提膝撞向女子的腹部。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子立刻被这猛力的一撞后退了好几步，手中的匕首险险划破思慕的衣服。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　女子才刚抬头，准备进行下一轮攻击，便发觉冰凉的刀刃抵在自己的脖上。她几乎都能感觉到自己的动脉跳动着抵上冰冷的刀锋。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“云娜，知道你为什么败么？”思慕幽幽地在她身后开口。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为你的自傲！你一心觉得你什么都比我更好，每每轻敌！这便是我们狼牙兵团永远比你们佣兵团棋高一招的原因。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　听到这话，云娜突然就冷静了下来，笑道，“是，我这一回不否认了。”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕眉头忽然一皱，一股不好的预感涌上心头。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　“因为……这一回，你终究要和我一起死！”云娜面目扭曲，面上恨意再也掩不住。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕的瞳孔骤然睁大。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后一声巨响！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　火热的温度简直要炽伤她的背。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕不再犹豫，手下一动，没有发出任何**，云娜便躺倒在地，再也不可能站起来了！只是那瞪大的眼眸还透着丝丝的不甘和诡异的得逞之色。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕紧握匕首，身后的爆炸声一声比一声近。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　她提步便朝最近的房间走去，猛的击爆一扇窗，不顾手上直淌的鲜血，一个翻身，便跃下这几百米高的城市大厦！<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　身后忽然响起人尖锐的叫声，“团长！”<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　思慕听得不太真切，只感觉耳边呜鸣，眼前的所有一切都变得扭曲起来。体内的什么东西被一股不知名的力量拉扯着，似乎连灵魂也要被扯走。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　就在这一夜，这不夜城的最高大厦前，只有一道酷似霓虹的亮光闪过，那飞速掉落的人影便凭空消失了。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　而在另一个大陆的某一处，黑夜里一只虚拟的火凤凰乍然出现，随及化作一道金光射进房中。<br/></p><p 25px=auto= padding:=line-height:= font-size:=width:= style=white-space:>　　一切发生在眨眼之间，夜深人静无人发觉。</p><p><br/></p>', prize_name = '哈哈大奖', score_rate = '0.0010', max_cost = '10', invite_score = '1000', sharing_points = '20' where id=1 [ RunTime:0.031250s ]
+
+[ 2017-03-01T15:29:35+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=shop_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_shop set  name = '哈哈', linker = '刘先生', telphone = '18800000001', address = '山东省济南市历城区东风街道二环东路1788号', lng = '117.074831', lat = '36.672969',content='<p>欢迎光临我们店！</p>',remarks='测试测试' where id=1 [ RunTime:0.046875s ]
+
+[ 2017-03-01T15:43:12+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=shop_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_shop set  name = '花点时间', linker = '刘先生', telphone = '18800000001', address = '山东省济南市历城区东风街道二环东路1788号', lng = '117.074831', lat = '36.672969',content='<p><img src="/ueditor/php/upload/image/20170301/1488354155652447.jpeg" title="1488354155652447.jpeg" alt="timg (8).jpeg"/></p><p><img src="/ueditor/php/upload/image/20170301/1488354191139147.jpeg" title="1488354191139147.jpeg" alt="timg (9).jpeg"/></p>',remarks='测试测试',img='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703011543121372_thumb.jpg',bigimg='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703011543121372.jpeg' where id=1 [ RunTime:0.031250s ]
+
+[ 2017-03-01T16:42:50+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-01 16:42:50',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T16:48:13+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=lottery&a=score_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where id = '3' [ RunTime:0.000000s ]
+SQL: select * from sys_score where shop_id = '3' [ RunTime:0.000000s ]
+SQL: insert into sys_score set  type = '2', shop_id = '3' [ RunTime:0.031250s ]
+
+[ 2017-03-01T16:48:29+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=lottery&a=redbag_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where id = '3' [ RunTime:0.000000s ]
+SQL: select * from sys_redbag where shop_id = '3' [ RunTime:0.000000s ]
+SQL: insert into sys_redbag set  type = '1', shop_id = '3' [ RunTime:0.031250s ]
+
+[ 2017-03-01T16:49:03+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=lottery&a=image_text_set
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_set_image_text set  gu_score = '500', gu_chance = '0.30', qu_minscore = '50', qu_maxscore = '350', qu_chance = '0.40' where id=1 [ RunTime:0.015625s ]
+
+[ 2017-03-01T16:58:08+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:00:34+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=score&a=goods_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: insert into sys_goods set  goodsname = '浅粉色多头康乃馨搭配花束', score = '20', saleflag = '1',remarks='测试',goodsimg='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703011700345972_thumb.jpg',goodsbigimg='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703011700345972.jpeg',regdate='2017-03-01 17:00:34' [ RunTime:0.078125s ]
+
+[ 2017-03-01T17:00:58+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:01:56+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: content E:\web\group16\hm_cjml\web\Webadmin\Action\AdAction.class.php 第 98 行.
+SQL: insert into sys_ad set  adname = '康乃馨搭配花束', goods_id = '3', isshow = '1', orderby = '3',content='',adimg='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703011701564755_thumb.jpg',adbigimg='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703011701564755.jpeg',regdate='2017-03-01 17:01:56' [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:03:18+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:03:23+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_ad set  adname = '广告2', goods_id = '1', isshow = '1', orderby = '2',content='<p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　<img src="/ueditor/php/upload/image/20170204/1486196707450026.png" style="border: 0px; margin: 0px; padding: 0px; font-size: 0px; color: transparent;"/></p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　张女士意外怀上二胎，正好迎合二胎时代就留下了，本来是一件好事，但是却被一些多嘴的人闹的心烦。刚怀孕的时候，她带着女儿出去，一旁的大妈打趣女儿，妈妈要生弟弟了，不要你了，因为怀孕后张女士一直告诉女儿，不管生不生宝宝，都是爱她的，因此女儿常用这句话来堵这些人的嘴，说我妈妈爱我她想生就生。可是随着肚子一天天的变大，小区人看到就说是男孩，其实张女士是无所谓的，可就是担心一些人拿这些话伤害女儿。但越是担心的事就越是容易发生，这天张女士带着女儿回家，小区的大妈看到就对女儿说，你妈妈要生弟弟了，女儿低下头不想回答，但越是这种情况，这些不知趣的人就越是开心，还在打趣女儿说妈妈要生弟弟了，妈妈喜欢弟弟，女儿眼看着就要哭了。</p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　<img src="/ueditor/php/upload/image/20170204/1486196707136496.png" style="border: 0px; margin: 0px; padding: 0px; font-size: 0px; color: transparent;"/></p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　张女士再也忍不住了，就对着大妈发火说：你是神仙吗？何以见得我们二胎非要是男宝呢？我就是喜欢女儿，因为我女儿从小就特别的懂事，又有礼貌。请你在不确定的情况下，不要瞎说好吗？说完拉着女儿就走了，估计大妈脸上也是一个大写的懵逼。不过好像在大众的意识中，第一胎是女儿，第二胎就必须要儿子，其实不然，现在多数的妈妈都希望自己可以生一个女儿，不想孩子成家以后太累，姐妹同心一点，以后还可以多一分力量。而且怀孕后妈妈本来对孩子的性别都不是特别的在意，她们在意更多的是胎儿的健康。因此如果你有朋友或者同事怀孕了，请不要随意在她面前猜男女，不管是男的女的都是别人的孩子，特别是你不确定人家想要男宝还是女宝的情况下，有时候不注意，伤害了孕妈妈和人家的孩子，那你就真成罪人了。</p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　<img src="/ueditor/php/upload/image/20170204/1486196707132907.png" style="border: 0px; margin: 0px; padding: 0px; font-size: 0px; color: transparent;"/></p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　孕妈自己被别人问及胎儿性别的时候，可以一笑了之，但如果孕妈带着孩子，而别人又恶意的在你面前挑逗你的孩子时，就不要再忍着了，不然孩子会认为你默认了，很可能会给孩子造成心理阴影的。遇到这种人，妈妈拉着孩子，然后直接对她说，请你不要说这样的话，孩子会害怕的，如果她不理会，就直接拉着孩子回家吧，别再理会她了。</p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　而这种事情并不是你每次都能知道，因此最好在别人逗孩子之前，你就应该通过一些方法让孩子慢慢适应这种家庭添新成员的事实，可以给孩子读相关的绘本故事，让孩子参与到照顾胎儿的生活中，让他体验当哥哥、姐姐的自豪感和责任感。</p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　-----------------------</p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　防辐射服真的能防辐射吗？感冒了必须死扛着一定不能用药吗？唐筛这么可怕还要不要做？医生，我看到吃的想吐怎么办？孕前做了这些事情，孩子还能要吗？孕期可以xxoo吗？胎儿长大了妈妈肚子里的器官都去哪里了？</p><p><br/></p>' where id=5 [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:03:29+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:03:31+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_ad set  adname = '广告2', goods_id = '1', isshow = '1', orderby = '2',content='<p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　<img src="/ueditor/php/upload/image/20170204/1486196707450026.png" style="border: 0px; margin: 0px; padding: 0px; font-size: 0px; color: transparent;"/></p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　张女士意外怀上二胎，正好迎合二胎时代就留下了，本来是一件好事，但是却被一些多嘴的人闹的心烦。刚怀孕的时候，她带着女儿出去，一旁的大妈打趣女儿，妈妈要生弟弟了，不要你了，因为怀孕后张女士一直告诉女儿，不管生不生宝宝，都是爱她的，因此女儿常用这句话来堵这些人的嘴，说我妈妈爱我她想生就生。可是随着肚子一天天的变大，小区人看到就说是男孩，其实张女士是无所谓的，可就是担心一些人拿这些话伤害女儿。但越是担心的事就越是容易发生，这天张女士带着女儿回家，小区的大妈看到就对女儿说，你妈妈要生弟弟了，女儿低下头不想回答，但越是这种情况，这些不知趣的人就越是开心，还在打趣女儿说妈妈要生弟弟了，妈妈喜欢弟弟，女儿眼看着就要哭了。</p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　<img src="/ueditor/php/upload/image/20170204/1486196707136496.png" style="border: 0px; margin: 0px; padding: 0px; font-size: 0px; color: transparent;"/></p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　张女士再也忍不住了，就对着大妈发火说：你是神仙吗？何以见得我们二胎非要是男宝呢？我就是喜欢女儿，因为我女儿从小就特别的懂事，又有礼貌。请你在不确定的情况下，不要瞎说好吗？说完拉着女儿就走了，估计大妈脸上也是一个大写的懵逼。不过好像在大众的意识中，第一胎是女儿，第二胎就必须要儿子，其实不然，现在多数的妈妈都希望自己可以生一个女儿，不想孩子成家以后太累，姐妹同心一点，以后还可以多一分力量。而且怀孕后妈妈本来对孩子的性别都不是特别的在意，她们在意更多的是胎儿的健康。因此如果你有朋友或者同事怀孕了，请不要随意在她面前猜男女，不管是男的女的都是别人的孩子，特别是你不确定人家想要男宝还是女宝的情况下，有时候不注意，伤害了孕妈妈和人家的孩子，那你就真成罪人了。</p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　<img src="/ueditor/php/upload/image/20170204/1486196707132907.png" style="border: 0px; margin: 0px; padding: 0px; font-size: 0px; color: transparent;"/></p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　孕妈自己被别人问及胎儿性别的时候，可以一笑了之，但如果孕妈带着孩子，而别人又恶意的在你面前挑逗你的孩子时，就不要再忍着了，不然孩子会认为你默认了，很可能会给孩子造成心理阴影的。遇到这种人，妈妈拉着孩子，然后直接对她说，请你不要说这样的话，孩子会害怕的，如果她不理会，就直接拉着孩子回家吧，别再理会她了。</p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　而这种事情并不是你每次都能知道，因此最好在别人逗孩子之前，你就应该通过一些方法让孩子慢慢适应这种家庭添新成员的事实，可以给孩子读相关的绘本故事，让孩子参与到照顾胎儿的生活中，让他体验当哥哥、姐姐的自豪感和责任感。</p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　-----------------------</p><p style="border: 0px; margin-top: 0px; margin-bottom: 0px; padding: 26px 0px 0px; font-size: 14px; color: rgb(51, 51, 51); word-wrap: break-word; font-family: 宋体; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);">　　防辐射服真的能防辐射吗？感冒了必须死扛着一定不能用药吗？唐筛这么可怕还要不要做？医生，我看到吃的想吐怎么办？孕前做了这些事情，孩子还能要吗？孕期可以xxoo吗？胎儿长大了妈妈肚子里的器官都去哪里了？</p><p><br/></p>' where id=5 [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:04:15+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:04:39+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:05:43+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:11:46+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=score&a=goods_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_goods set  goodsname = '茶叶', score = '1600', saleflag = '1',remarks='龙井哦！！' where id=2 [ RunTime:0.031250s ]
+
+[ 2017-03-01T17:12:35+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-01 17:12:35',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:13:01+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+
+[ 2017-03-01T17:13:05+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: content E:\web\group16\hm_cjml\web\Webadmin\Action\AdAction.class.php 第 98 行.
+SQL: update sys_ad set  adname = '康乃馨搭配花束', goods_id = '3', isshow = '1', orderby = '3',content='' where id=6 [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:14:15+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:15:53+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-01T17:15:57+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: content E:\web\group16\hm_cjml\web\Webadmin\Action\AdAction.class.php 第 98 行.
+SQL: update sys_ad set  adname = '康乃馨搭配花束', jumptype = '2', goods_id = '3', isshow = '1', orderby = '3',content='' where id=6 [ RunTime:0.000000s ]
+

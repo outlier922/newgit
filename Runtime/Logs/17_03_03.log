@@ -1,0 +1,25 @@
+[ 2017-03-03T09:34:00+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-03 09:34:00',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-03T10:26:14+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-03 10:26:14',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-03T10:26:21+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-03T15:19:36+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.015625s ]
+

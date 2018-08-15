@@ -1,0 +1,21 @@
+[ 2017-05-05T09:34:38+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-05-05 09:34:38',lastloginip='124.128.14.206' where id=1 [ RunTime:0.015625s ]
+
+[ 2017-05-05T09:36:07+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where username='15092230000'  [ RunTime:0.000000s ]
+SQL: update sys_shop set login=login+1,lastlogintime='2017-05-05 09:36:07',lastloginip='124.128.14.206' where id=20 [ RunTime:0.046875s ]
+
+[ 2017-05-05T09:37:50+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=finance&a=bank_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: role_id E:\web\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+SQL: select id,name from sys_bank [ RunTime:0.000000s ]
+

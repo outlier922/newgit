@@ -1,0 +1,97 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>领航科技</title>
+  <link rel="stylesheet" href="../assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="../assets/css/hm_lhkj.css">
+</head> 
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+  href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header data-am-widget="header" class="am-header sc-header">  
+    <div class="am-header-left am-header-nav">
+      <a href="javascript:history.back()" class="icon-back"></a>
+    </div>
+    <h1 class="am-header-title">支付</h1>
+</header>
+
+<div class="container">
+    <div class="base-wrap">
+        <div class="base-item am-text-center">
+            您需支付：<span class="am-text-default c-red">￥<b>208.00</b></span>
+        </div> 
+    </div>
+    
+    <div class="base-wrap pay-wrap">
+        <div class="base-item">
+            <div class="img-wrap">
+                <a href="#"><img src="../assets/i/zfb.jpg"></a>
+            </div>
+            <div class="content-fr">
+                <h4 class="am-text-truncate"> 支付宝支付</h4>
+                <p class="am-margin-0">推荐安装支付宝客户端的用户使用</p>
+            </div>
+            <input type="radio" class="mt" name="pay-way" checked />
+        </div> 
+        <div class="base-item">
+            <div class="img-wrap">
+                <a href="#"><img src="../assets/i/yl.jpg"></a>
+            </div>
+            <div class="content-fr">
+                <h4 class="am-text-truncate"> 银行卡支付</h4>
+                <p class="am-margin-0">推荐银联储蓄用户使用</p>
+            </div>
+            <input type="radio" class="mt" name="pay-way" />
+        </div> 
+        <div class="base-item">
+            <div class="img-wrap">
+                <a href="#"><img src="../assets/i/wx.jpg"></a>
+            </div>
+            <div class="content-fr">
+                <h4 class="am-text-truncate"> 微信支付</h4>
+                <p class="am-margin-0">推荐安装微信客户端的用户使用</p>
+            </div>
+            <input type="radio" class="mt" name="pay-way" />
+        </div> 
+    </div>
+
+    <!-- 底部 -->
+    <div class="am-navbar sc-navbar am-cf am-padding-top-xs am-text-center"
+        id="">
+        <a class="bac-btn j-pay" href="#">确定支付</a>
+    </div>
+
+</div>
+<!-- 以上页面内容 开发时删除 -->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="../assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="../assets/js/amazeui.min.js"></script>
+<script src="../assets/js/hm_lhkj.js"></script>
+<script>
+$(function(){
+    $('.j-pay').on('click',function(){
+        mask('恭喜您支付成功!<br>请前待发货订单列表查看订单');
+        mask('支付失败! <br>请前待付款订单列表完成付款!');
+    })
+})
+</script>
+</body>
+</html>

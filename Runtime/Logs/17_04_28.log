@@ -1,0 +1,75 @@
+[ 2017-04-28T10:32:06+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.073005s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-04-28 10:32:06',lastloginip='127.0.0.1' where id=1 [ RunTime:0.109006s ]
+
+[ 2017-04-28T11:29:58+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/client_login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_client where id>0 and account='18800000000'  [ RunTime:0.032002s ]
+NOTIC: [8] Undefined variable: nickname D:\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 115 行.
+SQL:  update sys_client set lastlogintime='2017-04-28 11:29:58' where id =1  [ RunTime:0.059003s ]
+SQL:  insert into sys_login_history set client_id=1,regdate='2017-04-28 11:29:58' [ RunTime:0.159010s ]
+
+[ 2017-04-28T11:30:48+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/love_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select s.id,s.name,s.img,s.bigimg,s.star,s.averfee, round(12756274*asin(Sqrt(pow(sin((38.23-s.lat)*0.008726646),2)+Cos(38.23*0.0174533)*Cos(s.lat*0.0174533)*pow(sin((127.01-s.lng)*0.008726646),2)))/1000,2)  as distance from sys_love l left join sys_shop s on l.about_id=s.id where l.client_id=1 and l.type=1 order by l.id desc [ RunTime:0.078004s ]
+
+[ 2017-04-28T11:31:44+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/love_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select g.id,g.name,g.img,g.bigimg,g.present_price,g.original_price,g.salenum from sys_love l left join sys_good g on l.about_id=g.id where l.client_id=1 and l.type=2 order by id desc [ RunTime:0.000000s ]
+
+[ 2017-04-28T11:31:46+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/love_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select s.id,s.name,s.img,s.bigimg,s.star,s.averfee, round(12756274*asin(Sqrt(pow(sin((38.23-s.lat)*0.008726646),2)+Cos(38.23*0.0174533)*Cos(s.lat*0.0174533)*pow(sin((127.01-s.lng)*0.008726646),2)))/1000,2)  as distance from sys_love l left join sys_shop s on l.about_id=s.id where l.client_id=1 and l.type=1 order by l.id desc [ RunTime:0.001000s ]
+
+[ 2017-04-28T11:32:13+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/love_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_good where id=5 [ RunTime:0.017001s ]
+SQL: insert into sys_love set client_id=1,about_id=5,type=2,regdate='2017-04-28 11:32:13' [ RunTime:0.075004s ]
+
+[ 2017-04-28T11:32:21+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/love_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select g.id,g.name,g.img,g.bigimg,g.present_price,g.original_price,g.salenum from sys_love l left join sys_good g on l.about_id=g.id where l.client_id=1 and l.type=2 order by id desc [ RunTime:0.001000s ]
+
+[ 2017-04-28T11:40:33+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/sysorder_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_sysorder where client_id='1' order by id desc [ RunTime:0.002000s ]
+
+[ 2017-04-28T11:44:20+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/config_set
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select prize_name,score_rate,max_cost from sys_config where id=1 [ RunTime:0.095005s ]
+
+[ 2017-04-28T11:53:52+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/sysorder_set
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: delete from sys_sysorder where client_id='1' [ RunTime:0.082005s ]
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DPTK.combobind</title>
+    <link href="combobind.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div>
+    <!--
+        参数说明：
+        data-init_url：加载数据的脚本
+        data-value：元素的初始值
+        data-default_value：元素的默认值，data-value优先
+        data-placeholder：当不填写data-value和data-default-value时，input框显示data-placeholder信息
+
+        额外扩展参数
+        combobind_class：作用在新渲染出控件的class
+        container_style：作用在新渲染出控件的style
+    -->
+    <select class="dptk-combobind" data-placeholder="选择XX" data-value="" data-default_value=""
+        data-init_url="get_data.php"
+    ></select>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://124.128.23.74:8008/group4/dptk/plugins/ui_plugins/util.js"></script>
+<script src="combobind.js"></script>
+<script>
+    $(".dptk-combobind").dptk_combobind();
+</script>
+
+</body>
+</html>

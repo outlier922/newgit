@@ -1,0 +1,656 @@
+[ 2017-04-26T09:35:18+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.113006s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-04-26 09:35:17',lastloginip='127.0.0.1' where id=1 [ RunTime:0.067003s ]
+
+[ 2017-04-26T10:28:23+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/love_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-04-26T10:28:29+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/client_login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_client where id>0 and account='18800000000'  [ RunTime:0.059003s ]
+NOTIC: [8] Undefined variable: nickname D:\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 108 行.
+SQL:  update sys_client set lastlogintime='2017-04-26 10:28:29' where id =1  [ RunTime:0.039002s ]
+SQL:  insert into sys_login_history set client_id=1,regdate='2017-04-26 10:28:29' [ RunTime:0.034002s ]
+
+[ 2017-04-26T10:28:38+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/love_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_shop where id=1 [ RunTime:0.022001s ]
+
+[ 2017-04-26T10:28:41+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/love_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_shop where id=2 [ RunTime:0.001000s ]
+
+[ 2017-04-26T10:28:45+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/love_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_shop where id=18 [ RunTime:0.017001s ]
+SQL: insert into sys_love set client_id=1,about_id=18,type=1,regdate='2017-04-26 10:28:45' [ RunTime:0.037002s ]
+
+[ 2017-04-26T10:53:21+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/sysorder_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select name from sys_shop where id=18 and validflag != 2 [ RunTime:0.001000s ]
+SQL: insert into sys_sysorder set shop_id=18,shop_name='小马哥水果店',totalfee=234.5,out_trade_no='SKY20174261010101110',client_id=1,payflag=2 [ RunTime:0.049002s ]
+
+[ 2017-04-26T11:31:48+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T11:32:36+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_shop where username='17800000000'  [ RunTime:0.001000s ]
+SQL: update sys_shop set login=login+1,lastlogintime='2017-04-26 11:32:36',lastloginip='127.0.0.1' where id=18 [ RunTime:0.048003s ]
+
+[ 2017-04-26T11:38:32+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/o2order_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Undefined variable: sql_helper D:\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 1798 行.
+
+[ 2017-04-26T11:38:55+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/o2order_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_good where id=2 and flag=1 and doflag=2 [ RunTime:0.001000s ]
+
+[ 2017-04-26T11:39:05+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/o2order_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_good where id=2 and flag=1 and doflag=2 [ RunTime:0.001000s ]
+SQL: insert into sys_o2order set client_id=1,out_trade_no='20170426113905ID1',good_id=2,num='10',good_name='橙子',good_img='http://127.0.0.1/hm_cjml/uploadfiles/2017/04/201704201825563140_thumb.jpg',orderflag=2,totalfee='300',is_verification=2,regdate='2017-04-26 11:39:05',payflag=1 [ RunTime:0.037003s ]
+
+[ 2017-04-26T11:40:15+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/o2order_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_good where id=5 and flag=1 and doflag=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T11:40:29+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.001000s ]
+
+[ 2017-04-26T11:40:41+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=audit_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_good set  doflag = '2',doregdate='2017-04-26 11:40:41' where id=5 [ RunTime:0.001000s ]
+
+[ 2017-04-26T11:40:42+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T11:40:46+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/o2order_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_good where id=5 and flag=1 and doflag=2 [ RunTime:0.001000s ]
+
+[ 2017-04-26T11:40:53+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/o2order_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_good where id=5 and flag=1 and doflag=2 [ RunTime:0.001000s ]
+SQL: insert into sys_o2order set client_id=1,out_trade_no='20170426114053ID1',good_id=5,num='3',good_name='茶具',good_img='http://127.0.0.1/hm_cjml/uploadfiles/2017/04/201704211612387817_thumb.jpg',orderflag=2,totalfee='900',is_verification=2,regdate='2017-04-26 11:40:53',payflag=1 [ RunTime:0.022001s ]
+
+[ 2017-04-26T11:55:24+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/o2order_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_o2order where id=1 and client_id=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T11:55:34+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/o2order_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_o2order where id=11 and client_id=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T11:55:40+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/o2order_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_o2order where id=13 and client_id=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T13:57:52+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/o2order_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_good where id=5 and flag=1 and doflag=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T13:57:55+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/o2order_add
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_good where id=5 and flag=1 and doflag=2 [ RunTime:0.001000s ]
+SQL: insert into sys_o2order set client_id=1,out_trade_no='20170426135755ID1',good_id=5,num='1',good_name='茶具',good_content='',good_img='http://127.0.0.1/hm_cjml/uploadfiles/2017/04/201704211612387817_thumb.jpg',orderflag=2,totalfee='300',is_verification=2,regdate='2017-04-26 13:57:55',payflag=1 [ RunTime:0.034002s ]
+
+[ 2017-04-26T14:14:49+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T14:15:28+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.001000s ]
+
+[ 2017-04-26T14:15:28+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=district_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_cascade_district where parentid=0 [ RunTime:0.032002s ]
+
+[ 2017-04-26T14:27:20+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T14:27:21+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T14:37:33+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=client&a=client_list
+ERR: 无法加载模块:Client
+
+[ 2017-04-26T14:37:47+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=client&a=client_list
+ERR: 无法加载模块:Client
+
+[ 2017-04-26T14:56:04+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (1) [ RunTime:0.017001s ]
+
+[ 2017-04-26T15:00:40+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+
+[ 2017-04-26T15:01:16+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+
+[ 2017-04-26T15:01:37+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+
+[ 2017-04-26T15:01:51+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+
+[ 2017-04-26T15:02:24+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+
+[ 2017-04-26T15:02:43+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+
+[ 2017-04-26T15:05:49+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select o2order_id from sys_out_no where id in (2,3,4,5,6,7,8,9,10,11) [ RunTime:0.001000s ]
+
+[ 2017-04-26T15:06:49+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (2,3,4,5,6,7,8,9,10,11) [ RunTime:0.000000s ]
+
+[ 2017-04-26T15:11:59+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (2,3,4,5,6,7,8,9,10,11) [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=1 and is_do=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T15:12:27+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (2,3,4,5,6,7,8,9,10,11) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=1 and is_do=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T15:13:42+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (2,3,4,5,6,7,8,9,10,11) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=1 and is_do=2 [ RunTime:0.001000s ]
+
+[ 2017-04-26T15:13:52+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (2,3,4,5,6,7,8,9,10,11) [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=1 and is_do=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T15:15:04+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (2,3,4,5,6,7,8,9,10,11) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=1 and is_do=2 [ RunTime:0.000000s ]
+NOTIC: [8] Array to string conversion D:\group16\hm_cjml\web\Webshop\Action\CodeAction.class.php 第 97 行.
+
+[ 2017-04-26T15:15:05+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (2,3,4,5,6,7,8,9,10,11) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=1 and is_do=2 [ RunTime:0.000000s ]
+NOTIC: [8] Array to string conversion D:\group16\hm_cjml\web\Webshop\Action\CodeAction.class.php 第 97 行.
+
+[ 2017-04-26T15:15:22+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (2,3,4,5,6,7,8,9,10,11) [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=1 and is_do=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T15:16:05+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T16:45:48+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (2,3,4) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=7 and is_do=2 [ RunTime:0.000000s ]
+SQL: update sys_out_no set is_do=1 where id in (2,3,4) [ RunTime:0.001000s ]
+
+[ 2017-04-26T16:46:08+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.001000s ]
+
+[ 2017-04-26T16:48:49+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T16:48:58+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T16:53:41+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (5,6) [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=7 and is_do=2 [ RunTime:0.000000s ]
+SQL: update sys_out_no set is_do=1 where id in (5,6) [ RunTime:0.000000s ]
+
+[ 2017-04-26T16:58:12+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (7,8,9) [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=8 and is_do=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T16:59:16+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (7,8,9) [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:00:21+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select distinct o2order_id from sys_out_no where id in (7,8,9) [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:03:55+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (7,8,9) [ RunTime:0.017001s ]
+SQL: select distinct o2order_id from sys_out_no where id in (7,8,9) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=8 and is_do=2 [ RunTime:0.001000s ]
+
+[ 2017-04-26T17:07:23+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (1,2) [ RunTime:0.019001s ]
+SQL: select distinct o2order_id from sys_out_no where id in (1,2) [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=7 and is_do=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:07:27+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (1,2) [ RunTime:0.012000s ]
+SQL: select distinct o2order_id from sys_out_no where id in (1,2) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=7 and is_do=2 [ RunTime:0.001000s ]
+
+[ 2017-04-26T17:08:44+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (3,4,5,6) [ RunTime:0.012001s ]
+SQL: select distinct o2order_id from sys_out_no where id in (3,4,5,6) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=7 and is_do=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:12:20+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (1,2,3,4,5,6) [ RunTime:0.017001s ]
+SQL: select distinct o2order_id from sys_out_no where id in (1,2,3,4,5,6) [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=7 and is_do=2 [ RunTime:0.000000s ]
+SQL: select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=o2order_id [ RunTime:0.020001s ]
+ERR: 1054:Champ 'o2order_id' inconnu dans where clause
+ [ SQL语句 ] : select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=o2order_id
+SQL: select islive from sys_client where id= [ RunTime:0.004000s ]
+ERR: 1064:Erreur de syntaxe près de '' à la ligne 1
+ [ SQL语句 ] : select islive from sys_client where id=
+NOTIC: [2] reset() expects parameter 1 to be array, null given D:\group16\hm_cjml\Lib\Action\PublicAction.class.php 第 41 行.
+
+[ 2017-04-26T17:18:55+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (1,2,3,4,5,6) [ RunTime:0.019002s ]
+SQL: select distinct o2order_id from sys_out_no where id in (1,2,3,4,5,6) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=7 and is_do=2 [ RunTime:0.001000s ]
+SQL: select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=o2order_id [ RunTime:0.000000s ]
+ERR: 1054:Champ 'o2order_id' inconnu dans where clause
+ [ SQL语句 ] : select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=o2order_id
+
+[ 2017-04-26T17:20:17+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (1,2,3,4,5,6) [ RunTime:0.018001s ]
+SQL: select distinct o2order_id from sys_out_no where id in (1,2,3,4,5,6) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=7 and is_do=2 [ RunTime:0.001000s ]
+SQL: select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=7 [ RunTime:0.000000s ]
+SQL: select islive from sys_client where id=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:20:46+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (1,2,3,4,5,6) [ RunTime:0.010000s ]
+SQL: select distinct o2order_id from sys_out_no where id in (1,2,3,4,5,6) [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=7 and is_do=2 [ RunTime:0.000000s ]
+SQL: select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=7 [ RunTime:0.001000s ]
+SQL: select islive from sys_client where id=1 [ RunTime:0.000000s ]
+SQL: update sys_o2order set is_verification=1 where id=7 [ RunTime:0.000000s ]
+SQL: update sys_shop set feeaccount=feeaccount+136 where id=18 [ RunTime:0.000000s ]
+SQL: update sys_client set wealth=100,feeaccount=returnfee,islive=1 where id=1 [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:22:30+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (7,8,9,10) [ RunTime:0.012001s ]
+SQL: select distinct o2order_id from sys_out_no where id in (7,8,9,10) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=8 and is_do=2 [ RunTime:0.000000s ]
+SQL: select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=8 [ RunTime:0.000000s ]
+SQL: select islive from sys_client where id=1 [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=11 and is_do=2 [ RunTime:0.000000s ]
+SQL: update sys_o2order set is_verification=1 where id=8 [ RunTime:0.000000s ]
+SQL: update sys_shop set feeaccount=feeaccount+64,wealth_redbag=wealth_redbag+16,redbag=redbag+16 where id=18 [ RunTime:0.001000s ]
+SQL: update sys_client set wealth=wealth+16 where id=1 [ RunTime:0.000000s ]
+SQL: insert into sys_wealth_redbag set type=1,fee=16,2017-04-26 17:22:29='2017-04-26 17:22:29',client_id=1,shop_id=18 [ RunTime:0.000000s ]
+ERR: 1064:Erreur de syntaxe près de '2017-04-26 17:22:29='2017-04-26 17:22:29',client_id=1,shop_id=18' à la ligne 1
+ [ SQL语句 ] : insert into sys_wealth_redbag set type=1,fee=16,2017-04-26 17:22:29='2017-04-26 17:22:29',client_id=1,shop_id=18
+
+[ 2017-04-26T17:23:35+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (7,8,9,10) [ RunTime:0.016001s ]
+SQL: select distinct o2order_id from sys_out_no where id in (7,8,9,10) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=8 and is_do=2 [ RunTime:0.000000s ]
+SQL: select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=8 [ RunTime:0.001000s ]
+SQL: select islive from sys_client where id=1 [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=11 and is_do=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:24:36+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (7,8,9,10) [ RunTime:0.022001s ]
+SQL: select distinct o2order_id from sys_out_no where id in (7,8,9,10) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=8 and is_do=2 [ RunTime:0.001000s ]
+SQL: select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=8 [ RunTime:0.000000s ]
+SQL: select islive from sys_client where id=1 [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=11 and is_do=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:24:38+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (7,8,9,10) [ RunTime:0.013001s ]
+SQL: select distinct o2order_id from sys_out_no where id in (7,8,9,10) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=8 and is_do=2 [ RunTime:0.000000s ]
+SQL: select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=8 [ RunTime:0.000000s ]
+SQL: select islive from sys_client where id=1 [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=11 and is_do=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:24:39+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (7,8,9,10) [ RunTime:0.053003s ]
+SQL: select distinct o2order_id from sys_out_no where id in (7,8,9,10) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=8 and is_do=2 [ RunTime:0.000000s ]
+SQL: select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=8 [ RunTime:0.001000s ]
+SQL: select islive from sys_client where id=1 [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=11 and is_do=2 [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:24:56+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_out_no set is_do=1 where id in (7,8,9,10) [ RunTime:0.020001s ]
+SQL: select distinct o2order_id from sys_out_no where id in (7,8,9,10) [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=8 and is_do=2 [ RunTime:0.000000s ]
+SQL: select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=8 [ RunTime:0.000000s ]
+SQL: select islive from sys_client where id=1 [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=11 and is_do=2 [ RunTime:0.000000s ]
+SQL: update sys_o2order set is_verification=1 where id=8 [ RunTime:0.000000s ]
+SQL: update sys_shop set feeaccount=feeaccount+64,wealth_redbag=wealth_redbag+16,redbag=redbag+16 where id=18 [ RunTime:0.000000s ]
+SQL: update sys_client set wealth=wealth+16 where id=1 [ RunTime:0.001000s ]
+SQL: insert into sys_wealth_redbag set type=1,fee=16,regdate='2017-04-26 17:24:55',client_id=1,shop_id=18 [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:45:17+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=redbag_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: update sys_shop set recharge_redbag=recharge_redbag+1000,redbag=redbag+1000 where id=23 [ RunTime:0.000000s ]
+SQL: insert into sys_recharge_redbag set type=1,fee='1000',shop_id=23,regdate='2017-04-26 17:45:17' [ RunTime:0.000000s ]
+
+[ 2017-04-26T17:45:18+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.001000s ]
+
+[ 2017-04-26T18:00:13+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select o2.client_id from sys_out_no o left join sys_o2order o2 on o.o2order_id=o2.id where o.id=11 [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: content D:\group16\hm_cjml\web\Webshop\Action\CodeAction.class.php 第 97 行.
+SQL: update sys_out_no set is_do=1 where id in (11) [ RunTime:0.000000s ]
+SQL: insert into sys_mess set client_id='1',content='',from_id=1,regdate='2017-04-26 18:00:13',looktype=0,keytype=2 [ RunTime:0.034002s ]
+SQL: select distinct o2order_id from sys_out_no where id in (11) [ RunTime:0.000000s ]
+SQL: select count(*) from sys_out_no where o2order_id=11 and is_do=2 [ RunTime:0.001001s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\group16\hm_cjml\Lib\Action\PublicAction.class.php 第 79 行.
+
+[ 2017-04-26T18:03:55+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select o2.client_id,o.out_no from sys_out_no o left join sys_o2order o2 on o.o2order_id=o2.id where o.id=12 [ RunTime:0.001001s ]
+NOTIC: [2] Illegal string offset 'client_id' D:\group16\hm_cjml\web\Webshop\Action\CodeAction.class.php 第 97 行.
+NOTIC: [2] Illegal string offset 'out_no' D:\group16\hm_cjml\web\Webshop\Action\CodeAction.class.php 第 98 行.
+SQL: update sys_out_no set is_do=1 where id in (12) [ RunTime:0.000000s ]
+SQL: insert into sys_mess set client_id='1',content='消费码1已核销',from_id=1,regdate='2017-04-26 18:03:55',looktype=0,keytype=2 [ RunTime:0.000000s ]
+SQL: select distinct o2order_id from sys_out_no where id in (12) [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=11 and is_do=2 [ RunTime:0.000000s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\group16\hm_cjml\Lib\Action\PublicAction.class.php 第 79 行.
+
+[ 2017-04-26T18:04:46+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webshop&m=code&a=code_remove
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: role_id D:\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select o2.client_id,o.out_no from sys_out_no o left join sys_o2order o2 on o.o2order_id=o2.id where o.id=13 [ RunTime:0.000000s ]
+SQL: select o2.client_id,o.out_no from sys_out_no o left join sys_o2order o2 on o.o2order_id=o2.id where o.id=14 [ RunTime:0.000000s ]
+SQL: update sys_out_no set is_do=1 where id in (13,14) [ RunTime:0.001000s ]
+SQL: insert into sys_mess set client_id='1',content='消费码201704241953432002已核销',from_id=1,regdate='2017-04-26 18:04:46',looktype=0,keytype=2 [ RunTime:0.000000s ]
+SQL: insert into sys_mess set client_id='1',content='消费码201704241953436980已核销',from_id=1,regdate='2017-04-26 18:04:46',looktype=0,keytype=2 [ RunTime:0.000000s ]
+SQL: select distinct o2order_id from sys_out_no where id in (13,14) [ RunTime:0.001000s ]
+SQL: select count(*) from sys_out_no where o2order_id=11 and is_do=2 [ RunTime:0.000000s ]
+SQL: select s.id as shop_id,s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,o.totalfee,o.client_id from sys_o2order o left join sys_good g on o.good_id = g.id left join sys_shop s on g.shop_id = s.id where o.id=11 [ RunTime:0.001000s ]
+SQL: select islive from sys_client where id=1 [ RunTime:0.000000s ]
+SQL: update sys_o2order set is_verification=1 where id=11 [ RunTime:0.000000s ]
+SQL: update sys_shop set feeaccount=feeaccount+112,wealth_redbag=wealth_redbag+28,redbag=redbag+28 where id=18 [ RunTime:0.001000s ]
+SQL: update sys_client set wealth=wealth+28 where id=1 [ RunTime:0.000000s ]
+SQL: insert into sys_wealth_redbag set type=1,fee=28,regdate='2017-04-26 18:04:46',client_id=1,shop_id=18 [ RunTime:0.001000s ]
+

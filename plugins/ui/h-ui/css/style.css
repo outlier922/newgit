@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* 你自己的样式 */
+.collect fieldset legend{
+    padding:0 5px;width:auto;text-decoration-line: none;border:0;margin:0;
+}
+.collect .fieldset{
+    border:0;
+}
+
+.table_card td,table{
+    border: none;
+}
+.table_card p{
+    margin: 0;
+    padding: 0;
+}
+.w10{width:10px;}.w20{width:20px;}
+.dropDown.open .dropDown_A_2{
+    background-color:#4f99c6;
+    color: white;
+}
+.w10{width:10px}.w20{width:20px}.w30{width:30px}.w40{width:40px}.w50{width:50px}.w60{width:60px}.w70{width:70px}
+.w80{width:80px}.w90{width:90px}.w100{width:100px}.w110{width:110px}.w120{width:120px}.w130{width:130px}
+.w140{width:140px}.w150{width:150px}.w160{width:160px}.w170{width:170px}.w180{width:180px}.w190{width:190px}
+.w200{width:200px}.w210{width:210px}.w220{width:220px}.w230{width:230px}.w240{width:240px}.w250{width:250px}
+.w260{width:260px}.w270{width:270px}.w280{width:280px}.w290{width:290px}.w300{width:300px}.w310{width:310px}
+.w320{width:320px}.w330{width:330px}.w340{width:340px}.w350{width:350px}
+.bk-red{background-color: red;}
+.bk-gold{background-color:gold;}
+.cursor-pointer{cursor: pointer}
+.h40{height:40px;}
+.h60{height:60px;}
+.lh60{line-height: 60px;}
+
+#overlay {
+    background: #000;
+    filter: alpha(opacity=50); /* IE的透明度 */
+    opacity: 0.5;  /* 透明度 */
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* 此处的图层要大于页面 */
+}
+
+.dptk-progress{
+    background-color:white;
+    width:60%;
+    height:20px;
+    position: absolute;
+    left:20%;
+    top:40%;
+    border-radius: 10px;
+}
+.dptk-progress-bar{
+    background-color: red;
+    width:0px;
+    height:20px;
+    border-radius: 10px;
+    text-align: center;
+    color:white;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+}
+

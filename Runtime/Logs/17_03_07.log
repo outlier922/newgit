@@ -1,0 +1,40 @@
+[ 2017-03-07T11:36:25+08:00 ] 123.132.54.125 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+
+[ 2017-03-07T11:36:53+08:00 ] 123.132.54.125 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-07 11:36:53',lastloginip='123.132.54.125' where id=1 [ RunTime:0.015625s ]
+
+[ 2017-03-07T12:02:31+08:00 ] 123.132.54.125 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-07 12:02:31',lastloginip='123.132.54.125' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-07T12:02:38+08:00 ] 123.132.54.125 /group16/hm_cjml/
+ERR: 无法加载模块:Index
+
+[ 2017-03-07T12:06:41+08:00 ] 123.132.54.125 /group16/hm_cjml/index.php?g=webadmin&m=manage&a=role_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select mt.id,mt.name from sys_role mt where 1=1  order by mt.id asc [ RunTime:0.000000s ]
+
+[ 2017-03-07T12:07:19+08:00 ] 123.132.54.125 /group16/hm_cjml/index.php?g=webadmin&m=ad&a=ad_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-07T12:09:16+08:00 ] 123.132.54.125 /group16/hm_cjml/
+ERR: 无法加载模块:Index
+
+[ 2017-03-07T12:09:40+08:00 ] 123.132.54.125 /group16/hm_cjml/
+ERR: 无法加载模块:Index
+

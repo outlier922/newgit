@@ -1,0 +1,322 @@
+[ 2017-05-12T10:13:27+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.015623s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:14:12+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:19:53+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:20:13+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:20:32+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.171854s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.062493s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:21:49+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:22:48+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:25:31+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:26:54+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:30:58+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:30:59+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:31:00+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:31:00+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:31:00+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:31:00+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:31:01+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:31:01+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:31:01+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=2 and flag=1 [ RunTime:0.000000s ]
+SQL: select id,parentid,name,img from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:31:04+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-05-12T10:31:15+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-12T11:32:00+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.046869s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-05-12 11:32:00',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T11:32:35+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where username='15092230000'  [ RunTime:0.000000s ]
+
+[ 2017-05-12T11:32:43+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where username='15092230000'  [ RunTime:0.000000s ]
+SQL: update sys_shop set login=login+1,lastlogintime='2017-05-12 11:32:43',lastloginip='124.128.14.206' where id=20 [ RunTime:0.031246s ]
+
+[ 2017-05-12T12:01:26+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T12:01:28+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T12:01:28+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=district_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_cascade_district where parentid=0 [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:40:04+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_role_priv where menu_id=(select id from sys_menu where c='Shop' and a= 'classify_list' limit 1 ) [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:40:13+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:40:17+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:40:33+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-05-12 13:40:33',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:40:36+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:40:38+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=plugins&m=amap&a=amap.php&id=23
+ERR: 无法加载模块:Amap
+
+[ 2017-05-12T13:42:19+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:42:20+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=plugins&m=amap&a=amap.php&id=23
+ERR: 无法加载模块:Amap
+
+[ 2017-05-12T13:45:25+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015624s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015624s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:45:26+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:45:33+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:45:34+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:47:46+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:47:48+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015623s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015623s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T13:47:52+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T14:05:07+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T14:07:57+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-12T14:13:57+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+

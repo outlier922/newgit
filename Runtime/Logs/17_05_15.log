@@ -1,0 +1,490 @@
+[ 2017-05-15T15:29:26+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/one_classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select mt.* from sys_classify mt where mt.parentid=0 and mt.flag=1 limit 0,7 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:38:16+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:38:57+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南市%' or city like '%济南市%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((36.67-lat)*0.008726646),2)+Cos(36.67*0.0174533)*Cos(lat*0.0174533)*pow(sin((116.98-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:39:31+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南市%' or city like '%济南市%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((36.67-lat)*0.008726646),2)+Cos(36.67*0.0174533)*Cos(lat*0.0174533)*pow(sin((116.98-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:45:11+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:47:55+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:48:00+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南市%' or city like '%济南市%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((36.67-lat)*0.008726646),2)+Cos(36.67*0.0174533)*Cos(lat*0.0174533)*pow(sin((116.98-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:48:56+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:52:57+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:53:27+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-05-15 15:53:27',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:53:32+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:53:45+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:54:29+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where username='15092230000'  [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:54:34+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:54:40+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:54:49+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where username='15092230000'  [ RunTime:0.000000s ]
+SQL: update sys_shop set login=login+1,lastlogintime='2017-05-15 15:54:49',lastloginip='124.128.14.206' where id=20 [ RunTime:0.031250s ]
+
+[ 2017-05-15T15:54:57+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=good&a=good_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: role_id E:\web\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+SQL: select orderby from sys_good where shop_id=20 and orderby=1 and id!=5 [ RunTime:0.000000s ]
+NOTIC: [2] reset() expects parameter 1 to be array, null given E:\web\group16\hm_cjml\Lib\Action\PublicAction.class.php 第 41 行.
+NOTIC: [8] Undefined index: content E:\web\group16\hm_cjml\web\Webshop\Action\GoodAction.class.php 第 238 行.
+SQL: select img from sys_good where id=5 [ RunTime:0.000000s ]
+SQL: update sys_good set  name = '茶具', present_price = '300', original_price = '359', isrecommend = '1', orderby = '1',content='',shop_id=20 where id=5 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:56:08+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where username='15092230470'  [ RunTime:0.000000s ]
+SQL: update sys_shop set login=login+1,lastlogintime='2017-05-15 15:56:08',lastloginip='124.128.14.206' where id=22 [ RunTime:0.031250s ]
+
+[ 2017-05-15T15:57:13+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=good&a=good_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: role_id E:\web\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+
+[ 2017-05-15T15:57:20+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=good&a=good_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: role_id E:\web\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+SQL: select orderby from sys_good where shop_id=22 and orderby=1 and id!= [ RunTime:0.000000s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ [ SQL语句 ] : select orderby from sys_good where shop_id=22 and orderby=1 and id!=
+NOTIC: [2] reset() expects parameter 1 to be array, null given E:\web\group16\hm_cjml\Lib\Action\PublicAction.class.php 第 41 行.
+NOTIC: [8] Undefined index: content E:\web\group16\hm_cjml\web\Webshop\Action\GoodAction.class.php 第 238 行.
+SQL: insert into sys_good set  name = '玫瑰花茶', present_price = '199', original_price = '279', isrecommend = '1', orderby = '1',content='',shop_id=22,img='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/05/201705151557202025_thumb.jpg',bigimg='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/05/201705151557202025.jpg',regdate='2017-05-15 15:57:20' [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:36+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:37+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:38+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:38+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:38+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:38+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:39+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:39+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:39+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:39+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:39+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:40+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:40+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:40+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:40+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:41+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:42+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:42+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:42+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:42+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:57:56+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:58:03+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:58:04+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=district_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_cascade_district where parentid=0 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:58:25+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:58:29+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=audit_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_good set  doflag = '2',doregdate='2017-05-15 15:58:29' where id=6 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:58:30+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:58:33+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/shoporgood_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%济南%' or city like '%济南%' [ RunTime:0.000000s ]
+SQL: select id,name,img,star,averfee, round(12756274*asin(Sqrt(pow(sin((37-lat)*0.008726646),2)+Cos(37*0.0174533)*Cos(lat*0.0174533)*pow(sin((117-lng)*0.008726646),2)))/1000,2)  as distance from sys_shop where validflag!=2 and isrecommend=1 and district_2_id=223 order by orderby asc [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=19 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=20 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=21 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+SQL: select id,name,img,present_price,original_price,salenum from sys_good where shop_id=22 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:59:26+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webshop&m=good&a=good_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: role_id E:\web\group16\hm_cjml\web\Webshop\Action\BaseAction.class.php 第 15 行.
+SQL: select orderby from sys_good where shop_id=22 and orderby=4 and id!= [ RunTime:0.000000s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ [ SQL语句 ] : select orderby from sys_good where shop_id=22 and orderby=4 and id!=
+NOTIC: [2] reset() expects parameter 1 to be array, null given E:\web\group16\hm_cjml\Lib\Action\PublicAction.class.php 第 41 行.
+NOTIC: [8] Undefined index: content E:\web\group16\hm_cjml\web\Webshop\Action\GoodAction.class.php 第 238 行.
+SQL: insert into sys_good set  name = '樱桃茶', present_price = '799', original_price = '800', isrecommend = '1', orderby = '4',content='',shop_id=22,img='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/05/201705151559257175_thumb.jpg',bigimg='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/05/201705151559257175.jpg',regdate='2017-05-15 15:59:26' [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:59:31+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:59:35+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=audit_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_good set  doflag = '2',doregdate='2017-05-15 15:59:35' where id=7 [ RunTime:0.000000s ]
+
+[ 2017-05-15T15:59:36+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+

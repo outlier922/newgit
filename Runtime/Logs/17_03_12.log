@@ -1,0 +1,99 @@
+[ 2017-03-12T14:49:09+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-03-12T14:49:18+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-12 14:49:18',lastloginip='39.72.65.130' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-12T14:50:39+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=lottery&a=image_text_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where id = '6' [ RunTime:0.000000s ]
+SQL: update sys_image_text set  answer = '爱樱维', type = '2', shop_id = '6',image='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121450395463_thumb.jpg',bigimage='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121450395463.jpg' where id=3 [ RunTime:0.078125s ]
+
+[ 2017-03-12T14:55:38+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=lottery&a=image_text_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where id = '6' [ RunTime:0.000000s ]
+SQL: update sys_image_text set  answer = '爱樱维', type = '2', shop_id = '6',image='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121455378303_thumb.jpg',bigimage='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121455378303.jpg' where id=3 [ RunTime:0.031250s ]
+
+[ 2017-03-12T14:56:54+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=lottery&a=image_text_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where id = '6' [ RunTime:0.000000s ]
+SQL: update sys_image_text set  answer = '爱樱维', type = '2', shop_id = '6',image='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121456547901_thumb.jpg',bigimage='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121456547901.jpg' where id=3 [ RunTime:0.046875s ]
+
+[ 2017-03-12T14:58:29+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=lottery&a=image_text_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where id = '6' [ RunTime:0.000000s ]
+SQL: update sys_image_text set  answer = '爱樱维', type = '2', shop_id = '6',image='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121458291984_thumb.jpg',bigimage='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121458291984.jpg' where id=3 [ RunTime:0.046875s ]
+
+[ 2017-03-12T15:04:49+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=lottery&a=image_text_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where id = '6' [ RunTime:0.000000s ]
+SQL: update sys_image_text set  answer = '爱樱维', type = '2', shop_id = '6',image='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121504481961_thumb.png',bigimage='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121504481961.png' where id=3 [ RunTime:0.031250s ]
+
+[ 2017-03-12T15:22:15+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=lottery&a=image_text_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where id = '6' [ RunTime:0.000000s ]
+SQL: update sys_image_text set  answer = '爱樱维', type = '2', shop_id = '6',image='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121522157879_thumb.jpg',bigimage='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121522157879.jpg' where id=3 [ RunTime:0.046875s ]
+
+[ 2017-03-12T15:23:25+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=lottery&a=image_text_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_shop where id = '6' [ RunTime:0.000000s ]
+SQL: update sys_image_text set  answer = '爱樱维', type = '2', shop_id = '6',image='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121523253141_thumb.jpg',bigimage='http://124.128.23.74:8008/group16/hm_cjml/uploadfiles/2017/03/201703121523253141.jpg' where id=3 [ RunTime:0.031250s ]
+
+[ 2017-03-12T17:50:03+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+
+[ 2017-03-12T17:50:11+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+
+[ 2017-03-12T17:50:25+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+
+[ 2017-03-12T17:50:50+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-12 17:50:50',lastloginip='39.72.65.130' where id=1 [ RunTime:0.000000s ]
+
+[ 2017-03-12T17:51:49+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=score&a=order_change
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_order set orderflag = 1 where id in (24) [ RunTime:0.031250s ]
+
+[ 2017-03-12T18:37:10+08:00 ] 39.72.65.130 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-03-12 18:37:10',lastloginip='39.72.65.130' where id=1 [ RunTime:0.000000s ]
+

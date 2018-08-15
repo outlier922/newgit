@@ -1,0 +1,112 @@
+[ 2017-04-11T11:53:37+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/client_login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_client where id>0 and account='18800000000'  [ RunTime:0.000000s ]
+
+[ 2017-04-11T11:54:17+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/client_login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_client where id>0 and account='18800000000'  [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: nickname E:\web\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 109 行.
+SQL:  update sys_client set lastlogintime='2017-04-11 11:54:17' where id =1  [ RunTime:0.046875s ]
+SQL:  insert into sys_login_history set client_id=1,regdate='2017-04-11 11:54:17' [ RunTime:0.000000s ]
+
+[ 2017-04-11T11:54:23+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php/Webservice/V100/redbag_get
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select count(*) from sys_o2order where client_id=1 and goods_fee>30 [ RunTime:0.000000s ]
+
+[ 2017-04-11T13:23:33+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-04-11T13:23:42+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-04-11 13:23:41',lastloginip='124.128.14.206' where id=1 [ RunTime:0.015625s ]
+
+[ 2017-04-11T14:07:02+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=client&a=client_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_client set  remarks = '', validflag = '1' where id=28 [ RunTime:0.031250s ]
+
+[ 2017-04-11T14:07:08+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=client&a=client_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: update sys_client set  remarks = '', validflag = '0' where id=28 [ RunTime:0.031250s ]
+
+[ 2017-04-11T14:15:54+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=client&a=client_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_client set  remarks = '', validflag = '2' where id=28 [ RunTime:0.046875s ]
+
+[ 2017-04-11T14:16:53+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=client&a=client_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: update sys_client set  remarks = '', validflag = '1' where id=28 [ RunTime:0.031250s ]
+
+[ 2017-04-11T14:26:51+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=client&a=wealth_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-04-11T14:27:14+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=client&a=wealth_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-04-11T14:45:00+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=client&a=wealth_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: sql_helper E:\web\group16\hm_cjml\web\Webadmin\Action\ClientAction.class.php 第 170 行.
+
+[ 2017-04-11T14:45:03+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=client&a=wealth_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: sql_helper E:\web\group16\hm_cjml\web\Webadmin\Action\ClientAction.class.php 第 170 行.
+
+[ 2017-04-11T14:45:08+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=client&a=wealth_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: sql_helper E:\web\group16\hm_cjml\web\Webadmin\Action\ClientAction.class.php 第 170 行.
+
+[ 2017-04-11T14:46:10+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=client&a=wealth_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: update sys_client set wealth=60 where id=27 [ RunTime:0.000000s ]
+SQL: update sys_client set wealth=60 where id=26 [ RunTime:0.000000s ]
+
+[ 2017-04-11T14:56:59+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=lottery&a=luckdraw_list
+ERR: 非法操作:luckdraw_list
+
+[ 2017-04-11T16:13:37+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-04-11 16:13:37',lastloginip='124.128.14.206' where id=1 [ RunTime:0.015625s ]
+
+[ 2017-04-11T16:13:43+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=shop&a=one_classify_list
+ERR: 非法操作:one_classify_list
+
+[ 2017-04-11T17:18:20+08:00 ] 124.128.14.206 /group16/hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.000000s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-04-11 17:18:20',lastloginip='124.128.14.206' where id=1 [ RunTime:0.000000s ]
+

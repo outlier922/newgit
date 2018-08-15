@@ -1,0 +1,183 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>领航科技</title>
+  <link rel="stylesheet" href="../assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="../assets/css/hm_lhkj.css">
+</head> 
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+  href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+<form action="" method="post" class="am-form">
+<header data-am-widget="header" class="am-header sc-header"> 
+    <div class="am-header-left am-header-nav">
+      <a href="javascript:history.back()" class="icon-back"></a>
+    </div> 
+    <h1 class="am-header-title">编辑收货地址</h1>
+    <div class="am-header-right am-header-nav">
+      <a href="#" class="header-btn">保存</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="form-item">
+          <div class="am-form-group">
+              <label for="name">联系人</label>
+              <input type="text" id="name" placeholder="请输入收货人姓名" />
+          </div>
+          <div class="am-form-group">
+              <label for="phone">联系方式</label>
+              <input type="text" id="phone" placeholder=" 请输入手机号" />
+          </div>
+          <div class="am-form-group" >
+              <label for="area">所在地区</label>
+              <input type="text" id="area" placeholder="请选择省市区" /> 
+              <i class="arrow-right"></i>
+          </div>
+      </div>
+      <div class="form-item">
+          <div class="am-form-group">
+              <label for="postcode">详细地址</label>
+              <textarea rows="3" placeholder="请输入详细地址"></textarea>
+          </div>
+      </div>
+    
+</div>
+</form>
+<!-- 以上页面内容 开发时删除 -->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="../assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="../assets/js/amazeui.min.js"></script>
+<script src="../assets/js/picker.min.js"></script>
+<script src="../assets/js/city.js"></script>
+<script src="../assets/js/hm_lhkj.js"></script>
+<script>
+   //城市选择
+var nameEl = document.getElementById('area');
+
+var first = []; /* 省，直辖市 */
+var second = []; /* 市 */
+var third = []; /* 镇 */
+
+var checked = [0, 0, 0]; /* 已选选项 */
+
+function creatList(obj, list){
+  obj.forEach(function(item, index, arr){
+  var temp = new Object();
+  temp.text = item.name;
+  temp.value = index;
+  list.push(temp);
+  })
+}
+
+creatList(city, first);
+
+if (city[0].hasOwnProperty('sub')) {
+  creatList(city[0].sub, second);
+} else {
+  second = [{text: '', value: 0}];
+}
+
+if (city[0].sub[0].hasOwnProperty('sub')) {
+  creatList(city[0].sub[0].sub, third);
+} else {
+  third = [{text: '', value: 0}];
+}
+
+var picker = new Picker({
+  data: [first, second, third],
+  selectedIndex: [0, 0, 0],
+  title: '选择地区'
+});
+
+picker.on('picker.select', function (selectedVal, selectedIndex) {
+  var text1 = first[selectedIndex[0]].text;
+  var text2 = second[selectedIndex[1]].text;
+  var text3 = third[selectedIndex[2]] ? third[selectedIndex[2]].text : '';
+
+  nameEl.value = text1 + ' ' + text2 + ' ' + text3;
+});
+
+picker.on('picker.change', function (index, selectedIndex) {
+  if (index === 0){
+    firstChange();
+  } else if (index === 1) {
+    secondChange();
+  }
+
+  function firstChange() {
+    second = [];
+    third = [];
+    checked[0] = selectedIndex;
+    var firstCity = city[selectedIndex];
+    if (firstCity.hasOwnProperty('sub')) {
+      creatList(firstCity.sub, second);
+      
+      var secondCity = city[selectedIndex].sub[0]
+      if (secondCity.hasOwnProperty('sub')) {
+        creatList(secondCity.sub, third);
+      } else {
+        third = [{text: '', value: 0}];
+        checked[2] = 0;
+      }
+    } else {
+      second = [{text: '', value: 0}];
+      third = [{text: '', value: 0}];
+      checked[1] = 0;
+      checked[2] = 0;
+    }
+    
+    picker.refillColumn(1, second);
+    picker.refillColumn(2, third);
+    picker.scrollColumn(1, 0)
+    picker.scrollColumn(2, 0)
+  }
+
+  function secondChange() {
+    third = [];
+    checked[1] = selectedIndex;
+    var first_index = checked[0];
+    if (city[first_index].sub[selectedIndex].hasOwnProperty('sub')) {
+      var secondCity = city[first_index].sub[selectedIndex];
+      creatList(secondCity.sub, third);
+      picker.refillColumn(2, third);
+      picker.scrollColumn(2, 0)
+    } else {
+      third = [{text: '', value: 0}];
+      checked[2] = 0;
+      picker.refillColumn(2, third);
+      picker.scrollColumn(2, 0)
+    }
+  }
+
+});
+
+picker.on('picker.valuechange', function (selectedVal, selectedIndex) {
+  console.log(selectedVal);
+  console.log(selectedIndex);
+});
+
+nameEl.addEventListener('click', function () {
+  picker.show();
+});
+ 
+</script>
+</body>
+</html>

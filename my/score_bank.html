@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>领航科技</title>
+  <link rel="stylesheet" href="../assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="../assets/css/hm_lhkj.css">
+</head> 
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+  href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header data-am-widget="header" class="am-header sc-header"> 
+    <div class="am-header-left am-header-nav">
+      <a href="javascript:history.back()" class="icon-back"></a>
+    </div> 
+    <h1 class="am-header-title">银行卡兑现</h1>
+</header>
+
+<div class="container">
+    <form action="" method="post" class="am-form">    
+        <div class="ex-explain">
+            <div>兑换说明<b class="c-red">*</b>：</div>
+            <p class="am-margin-0">首次兑换积分需大于176才可申请<br/>兑换数量需为100的整数倍</p>
+        </div>
+
+        <div class="base-wrap">
+            <div class="base-item">
+                <a class="am-block" href="score_bank_edit.html">
+                  添加银行卡
+                  <span class="am-fr arrow-right"></span>
+              </a>
+            </div>
+            <!-- 添加银行卡后 -->
+            <!-- <div class="base-item">
+                <p class="am-margin-0">中国农业</p>
+                <p class="am-margin-0">林夕 <span class="am-fr arrow-right"></span></p>
+                <p class="am-margin-0">6217 0023 7890 123-098</p>
+            </div>  -->
+
+            <div class="base-item am-padding-0">
+                <input type="text" placeholder="输入兑换分数" style="padding-left: 0" />
+                <span class="avail"><b class="am-padding-right-sm" style="color: #ddd"> | </b>可用<b class="c-red am-text-sm">880</b></span>
+            </div>
+        </div>
+
+        <div class="am-navbar sc-navbar am-cf am-padding-top-xs am-text-center"
+        id="">
+            <a href="#" class="bac-btn j-submit">提交申请</a>
+        </div>
+
+        <!-- 输入密码modal -->
+        <div class="am-modal sc-modal" tabindex="-1" id="m-psw">
+            <div class="am-modal-dialog">
+                <div class="am-modal-hd">输入兑换密码<b class="am-text-xs">（等同于登录密码）</b></div>
+                <div class="am-modal-bdn-border">
+                  提现分数<b class="c-red am-text-default">200</b>
+                  <input type="password" >
+                </div>
+                <div class="am-modal-footer">
+                  <span class="am-btn">确定</span>
+                </div>
+            </div>
+        </div>
+
+
+    </form> 
+</div>
+<!-- 以上页面内容 开发时删除 -->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="../assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="../assets/js/amazeui.min.js"></script>
+<script src="../assets/js/hm_lhkj.js"></script>
+<script>
+$(function(){
+    $('.j-submit').on('click',function(){
+        $('#m-psw').modal();
+    });
+
+    $('.am-btn').on('click',function(){
+        $('#m-psw').modal('close');
+    });
+})
+</script>
+</body>
+</html>

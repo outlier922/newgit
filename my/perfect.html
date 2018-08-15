@@ -1,0 +1,122 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>领航科技</title>
+  <link rel="stylesheet" href="../assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="../assets/css/hm_lhkj.css">
+</head> 
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+  href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+<form action="" method="post" class="am-form">
+<header data-am-widget="header" class="am-header sc-header">  
+    <div class="am-header-left am-header-nav">
+      <a href="javascript:history.back()" class="icon-back"></a>
+    </div>
+    <h1 class="am-header-title">个人资料</h1>
+    <div class="am-header-right am-header-nav">
+      <a href="#" class="header-btn">保存</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="form-item avatar-wrap" >
+        <div class="img-wrap">
+            <img src="../assets/i/logo.png">       
+        </div>
+        <div class="upload-btn">
+            <a href="#" class="c-grey">上传头像</a>
+            <input class="j-file" type="file">
+        </div>
+    </div>
+
+    <div class="form-item">
+        <div class="am-form-group">
+            <label for="name">姓名</label>
+            <input type="text" id="name" value="李大鹏">
+        </div>
+        <div class="am-form-group am-cf j-sex" style="padding: 12px">
+            <label>性别</label>
+            <span class="am-fr"><b class="am-padding-right-xs">男</b><i class="arrow-right"></i></span>
+        </div>
+    </div>
+    
+    
+    <!-- 选择性别modal -->
+    <div class="am-modal-actions sc-actions" id="m-sex">
+          <div class="am-modal-actions-group">
+            <ul class="am-list">
+               <li><a href="#">男</a></li>
+               <li><a href="#">女</a></li>
+            </ul>
+          </div>
+          <div class="am-modal-actions-group">
+            <button class="am-btn am-btn-block am-text-sm" data-am-modal-close>取消</button>
+          </div>
+    </div>
+
+</div>
+ </form>
+<!-- 以上页面内容 开发时删除 -->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="../assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="../assets/js/amazeui.min.js"></script>
+<script src="../assets/js/hm_lhkj.js"></script>
+<script>
+$(function(){
+    //上传头像
+    $('.j-file').on('change',function(e){
+        if (!window.FileReader) return;  
+      
+        var files = e.target.files;  
+        var content = '';
+
+        for (var i = 0, f; f = files[i]; i++) {  
+        
+            if (!f.type.match('image.*')) {  
+                alert('文件'+ f.name + '不是图片') 
+                continue;   
+            }   
+            var reader = new FileReader();  
+            
+            reader.onload = function(e){
+                content = ' <img src="'+ e.target.result +'">';
+
+                $('.j-file').parent().prev().find('img').replaceWith(content);       
+            } 
+            reader.readAsDataURL(f); 
+        }  
+    });
+
+    //选择性别
+    $('.j-sex').on('click',function(){
+        $('#m-sex').modal();
+    });
+
+    $('.am-list li').on('click',function(){
+        var sex = $(this).find('a').html();
+        $('.j-sex b').html(sex);
+        $('#m-sex').modal('close');
+    });
+
+})
+</script>
+</body>
+</html>

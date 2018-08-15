@@ -1,0 +1,174 @@
+[ 2017-04-25T13:19:15+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_admin where account='admin'  [ RunTime:0.090005s ]
+SQL: update sys_admin set login=login+1,lastlogintime='2017-04-25 13:19:14',lastloginip='127.0.0.1' where id=1 [ RunTime:0.123007s ]
+
+[ 2017-04-25T14:53:05+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.001000s ]
+
+[ 2017-04-25T15:00:43+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-25T15:00:43+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=district_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_cascade_district where parentid=0 [ RunTime:0.085005s ]
+
+[ 2017-04-25T15:07:03+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-25T15:07:04+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.001000s ]
+
+[ 2017-04-25T15:07:04+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=district_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_cascade_district where parentid=0 [ RunTime:0.001000s ]
+
+[ 2017-04-25T15:07:42+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-25T15:07:43+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=10 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-25T15:07:46+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-25T15:07:47+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=1 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-25T15:09:25+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=district_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_cascade_district where parentid=1 [ RunTime:0.000000s ]
+
+[ 2017-04-25T15:09:25+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=district_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_cascade_district where parentid=1 [ RunTime:0.000000s ]
+
+[ 2017-04-25T15:09:27+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=district_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_cascade_district where parentid=38 [ RunTime:0.000000s ]
+
+[ 2017-04-25T15:09:27+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=district_select_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_cascade_district where parentid=38 [ RunTime:0.000000s ]
+
+[ 2017-04-25T15:09:59+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=shop_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Undefined index: content D:\group16\hm_cjml\web\Webadmin\Action\ShopAction.class.php 第 238 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select name from sys_cascade_district where id=1 [ RunTime:0.000000s ]
+SQL: select orderby from sys_shop where district_1_id=1 and orderby=4 and id!= [ RunTime:0.047002s ]
+ERR: 1064:Erreur de syntaxe près de '' à la ligne 1
+ [ SQL语句 ] : select orderby from sys_shop where district_1_id=1 and orderby=4 and id!=
+NOTIC: [2] reset() expects parameter 1 to be array, null given D:\group16\hm_cjml\Lib\Action\PublicAction.class.php 第 41 行.
+SQL: select id from sys_shop where username='15092230472' [ RunTime:0.021002s ]
+
+[ 2017-04-25T15:10:12+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=shop_save
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: content D:\group16\hm_cjml\web\Webadmin\Action\ShopAction.class.php 第 238 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select name from sys_cascade_district where id=1 [ RunTime:0.000000s ]
+SQL: select orderby from sys_shop where district_1_id=1 and orderby=4 and id!= [ RunTime:0.001000s ]
+ERR: 1064:Erreur de syntaxe près de '' à la ligne 1
+ [ SQL语句 ] : select orderby from sys_shop where district_1_id=1 and orderby=4 and id!=
+NOTIC: [2] reset() expects parameter 1 to be array, null given D:\group16\hm_cjml\Lib\Action\PublicAction.class.php 第 41 行.
+SQL: select id from sys_shop where username='15011111111' [ RunTime:0.000000s ]
+NOTIC: [2] reset() expects parameter 1 to be array, null given D:\group16\hm_cjml\Lib\Action\PublicAction.class.php 第 41 行.
+SQL: select namepath from sys_cascade_district where id=577 [ RunTime:0.001000s ]
+SQL: insert into sys_shop set  name = '葫芦', username = '15011111111', linker = '葫芦', telphone = '15011111111', validflag = '1', lng = '116.377819', lat = '39.929873', isrecommend = '1', averfee = '68', orderby = '4',content='',remarks='',one_classify_id=1,two_classify_id=4,district_1_id=1,district_2_id=38,district_3_id=577,address='北京市西城区什刹海街道全国人大会议中心',opentime='24H',img='http://127.0.0.1/hm_cjml/uploadfiles/2017/04/201704251510119242_thumb.png',bigimg='http://127.0.0.1/hm_cjml/uploadfiles/2017/04/201704251510119242.png',regdate='2017-04-25 15:10:12',password='e10adc3949ba59abbe56e057f20f883e' [ RunTime:0.055003s ]
+SQL:  update sys_shop set qrcode='http://127.0.0.1/hm_cjml/uploadfiles/2017/04/201704251510122430.png',qrcode_big='http://127.0.0.1/hm_cjml/uploadfiles/2017/04/201704251510126674.png' where id =23  [ RunTime:0.115007s ]
+
+[ 2017-04-25T15:10:13+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+
+[ 2017-04-25T15:15:19+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/client_login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_client where id>0 and account='18800000000'  [ RunTime:0.085005s ]
+NOTIC: [8] Undefined variable: nickname D:\group16\hm_cjml\web\Webservice\Action\V100Action.class.php 第 108 行.
+SQL:  update sys_client set lastlogintime='2017-04-25 15:15:19' where id =1  [ RunTime:0.028001s ]
+SQL:  insert into sys_login_history set client_id=1,regdate='2017-04-25 15:15:19' [ RunTime:0.064004s ]
+
+[ 2017-04-25T15:15:29+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/mess_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select * from sys_mess where client_id='1' order by id desc [ RunTime:0.081005s ]
+
+[ 2017-04-25T15:15:34+08:00 ] 127.0.0.1 /hm_cjml/index.php/Webservice/V100/mess_new
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select count(*) from sys_mess where client_id='1' and looktype=0 [ RunTime:0.001000s ]
+
+[ 2017-04-25T15:27:30+08:00 ] 127.0.0.1 /hm_cjml/index.php?g=webadmin&m=shop&a=classify_list
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\group16\hm_cjml\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: select id,name from sys_classify where parentid=0 and flag=1 [ RunTime:0.000000s ]
+

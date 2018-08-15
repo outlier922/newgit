@@ -1,0 +1,108 @@
+.combobind-select{
+    position: relative;
+    max-width: 400px;
+    margin-bottom: 15px;
+    border: 1px #ccc solid;
+    border-radius: 3px;
+}
+.combobind-select select{
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 0;
+    height: 0;
+    margin: 0;
+    z-index: 1;
+}
+
+.combobind-arrow{
+    position: absolute;
+    right:0;
+    top:0;
+    height:100%;
+    cursor: pointer;
+    text-align: center;
+    width: 40px;
+    color: #999999;
+}
+.combobind-arrow:before{
+    content: " ";
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    display: block;
+    width: 0;
+    height: 0;
+    top: 0;
+    right: 15px;
+    bottom: 0;
+    position: absolute;
+    margin: auto 0;
+}
+.combobind-arrow-down:before{
+    border-top: 5px solid #cccccc;
+}
+.combobind-arrow-up:before{
+    border-bottom: 5px solid #cccccc;
+}
+
+.combobind-dropdown{
+    position: absolute;
+    display: none;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    min-width: 100%;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #999999;
+    border-radius: 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    box-sizing: border-box;
+}
+.combobind-dropdown-opened{
+    display: block;
+}
+
+.combobind-dropdown li{
+    list-style: none;
+    padding: 8px 1em;
+    margin: 0;
+}
+
+.option-item{
+    cursor: pointer;
+    border-bottom: 1px #e3e3e3 solid;
+}
+.option-selected{
+    background-color: #0a6999;
+    color: white;
+}
+.option-item:hover{
+    background-color: #00a2d4;
+    color: white;
+}
+
+
+.combobind-input{
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    padding-right: 60px;
+    border-radius: 3px;
+}
+
+.combobind-focus {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-color: #51A7E8;
+}
+.combobind-focus input {
+    border-color: #51A7E8;
+}

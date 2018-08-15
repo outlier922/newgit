@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>领航科技</title>
+  <link rel="stylesheet" href="../assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="../assets/css/hm_lhkj.css">
+</head> 
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+  href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+<form action="" method="post" class="am-form">
+<header data-am-widget="header" class="am-header sc-header"> 
+    <div class="am-header-left am-header-nav">
+      <a href="javascript:history.back()" class="icon-back"></a>
+    </div> 
+    <h1 class="am-header-title">编辑银行卡</h1>
+    <div class="am-header-right am-header-nav">
+      <a href="#" class="header-btn">保存</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="form-item">
+        <div class="am-form-group">
+            <label for="bank">银行卡</label>
+            <input type="text" id="bank" placeholder="选择银行卡" />
+            <i class="arrow-right"></i>
+        </div>
+        <div class="am-form-group">
+            <label for="name">户主姓名</label>
+            <input type="text" id="name" placeholder=" 输入户主姓名" />
+        </div>
+        <div class="am-form-group">
+            <label for="bank-code">银行卡号</label>
+            <input type="text" id="bank-code" placeholder=" 输入银行卡号" />
+        </div>
+        <div class="am-form-group">
+            <label for="bank-name">开户行名称</label>
+            <input type="text" id="bank-name" placeholder=" 开户行名称" />
+        </div>
+    </div>
+
+</div>
+</form>
+<!-- 以上页面内容 开发时删除 -->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="../assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="../assets/js/amazeui.min.js"></script>
+<script src="../assets/js/picker.min.js"></script>
+<script src="../assets/js/hm_lhkj.js"></script>
+<script type="text/javascript">
+  
+    var valEl = document.getElementById('bank');
+
+    var data1 = [
+        {
+            text: '北京银行',
+            value: 1
+        },{
+            text: '齐鲁银行',
+            value: 2
+        }, {
+            text: '招商银行',
+            value: 3
+        }, {
+            text: '平安银行',
+            value: 4
+        }, {
+            text: '民生银行',
+            value: 5
+        }, {
+            text: '中国银行',
+            value: 6
+        }
+    ];
+    pickerShow([data1], valEl); 
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+2015-03-02 17:32:21, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:32:21, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:32:21, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:34:34, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:34:34, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:34:34, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:34:57, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:34:57, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:34:57, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:35:26, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:35:26, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:35:26, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:37:51, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:37:51, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:37:52, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:37:52, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:37:53, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:37:53, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:39:42, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:39:42, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:39:42, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:39:43, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:39:43, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:39:43, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:39:44, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:39:44, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:39:44, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:39:44, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:39:44, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:39:44, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:39:44, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:39:44, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:39:44, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:40:21, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:40:21, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:40:21, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:40:21, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:40:21, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:40:21, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:40:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:40:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:40:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:40:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:40:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:40:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:40:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>2.1267647932559E+37 
+2015-03-02 17:40:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:40:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[2.1267647932559E+37]的证书 
+2015-03-02 17:40:53, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>69333039252 
+2015-03-02 17:40:53, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:40:53, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[69333039252]的证书 
+2015-03-02 17:40:54, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>69333039252 
+2015-03-02 17:40:54, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:40:54, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[69333039252]的证书 
+2015-03-02 17:40:54, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>69333039252 
+2015-03-02 17:40:54, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:40:54, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[69333039252]的证书 
+2015-03-02 17:40:54, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>69333039252 
+2015-03-02 17:40:54, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:40:54, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[69333039252]的证书 
+2015-03-02 17:40:56, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>69333039252 
+2015-03-02 17:40:56, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:40:56, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[69333039252]的证书 
+2015-03-02 17:41:33, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>69333039252 
+2015-03-02 17:41:33, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs/ 
+2015-03-02 17:43:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>69333039252 
+2015-03-02 17:43:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs 
+2015-03-02 17:43:22, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[69333039252]的证书 
+2015-03-02 17:43:23, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>69333039252 
+2015-03-02 17:43:23, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs 
+2015-03-02 17:43:23, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[69333039252]的证书 
+2015-03-02 17:43:23, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>69333039252 
+2015-03-02 17:43:23, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs 
+2015-03-02 17:43:23, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[69333039252]的证书 
+2015-03-02 17:43:24, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>69333039252 
+2015-03-02 17:43:24, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs 
+2015-03-02 17:43:24, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[69333039252]的证书 
+2015-03-02 17:43:29, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[74]------ 报文返回的证书ID>69333039252 
+2015-03-02 17:43:29, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[77]------ 验证签名证书目录 :>./certs 
+2015-03-02 17:43:29, INFO, 127.0.0.1, File[ D:\xampp\htdocs\group1\hm_php\plugins\OnlinePay\Unionpay\func\secureUtil.php ], Line[93]------ 没有找到证书ID为[69333039252]的证书 

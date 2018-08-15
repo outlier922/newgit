@@ -1,0 +1,45 @@
+<include file="Common:header" />
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 系统管理 <span class="c-gray en">&gt;</span> sql查询</nav>
+<div class="pd-20">
+	<!--<div class="cl pd-5 bg-1 bk-gray mt-20">-->
+	<!--<span class="r">共有数据：<strong>{$_total}</strong> 条</span> -->
+	<!--</div>-->
+	<div class="mt-20">
+		<div class="dataTables_wrapper">
+			<form id="form" method="post" action="{:U('System/sql_query')}">
+				<textarea name="sqlstr" style="width:100%;height: 200px" value="{$sqlstr}" >{$sqlstr}</textarea>
+				<button style="float: right;width: 150px;height: 50px">查询</button>
+			</form>
+			<table class="table table-border table-bordered table-bg table-hover">
+				<thead>
+				<tr class="text-c">
+					<th width="25"><input type="checkbox" name="" value=""></th>
+					<volist name="column_name" id="vo">
+						<th>{$vo}</th>
+					</volist>
+				</tr>
+				</thead>
+				<tbody>
+				<notempty name="_list">
+					<volist name="_list" id="vo">
+						<tr class="text-c">
+							<td><input type="checkbox" value="{$vo.id}" name="id[]"></td>
+							<php> foreach ($column_name as $cn) {</php>
+							<td><php>echo $vo[$cn]</php></td>
+							<php>}</php>
+						</tr>
+					</volist>
+					<else/>
+					<td colspan="9" class="text-c"> 暂时还没有内容! </td>
+				</notempty>
+				</tbody>
+			</table>
+			<div class="dataTables_paginate">
+				{$_page}
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Common:footer" />
+</body>
+</html>

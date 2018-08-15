@@ -1,0 +1,2 @@
+<?php include dirname(__DIR__).'/base.php';?>
+<input class="input-text w120 <?=$class?>" style="<?=$style?>" placeholder="查询月份" onfocus="WdatePicker({dateFmt:'yyyy-MM'})" name="<?=$name?>" value="<?=I($name);?>">

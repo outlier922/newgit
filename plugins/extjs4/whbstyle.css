@@ -1,0 +1,176 @@
+body,table,div{font-size:12px!important;}
+
+/*hr兼容有问题，用DIV代替。用法：<div class=hrDIV></div>*/
+.hrDIV{height:1px;background-color:#cccccc;overflow:hidden;margin:15px 0px 5px 0px}
+
+/*Font样式*/
+.titlestyle{font-size:16px;font-weight:bold;}
+.subtitlestyle{font-size:14px;font-weight:bold;}
+.boldstyle{font-size:13px;font-weight:bold;}
+.redstyle{color:#ff0000;}
+.greenstyle{color:#060;}
+.bluestyle{color:#0000ff;}
+.inforstyle{font-size:13px;color:#060;font-weight:bold;}
+
+/*图像样式*/
+img{
+	border-width:0px;
+}
+img.huikuang{
+	border-width:1px;
+	border-color:#CCCCCC;
+	width:80px;
+	height:100px;
+}
+
+/*表格样式*/
+.dbTable {
+	text-align:center;
+	border-color:#000;
+	width:100%;
+}
+.dbTable tr{
+	text-align:center;     
+}
+.dbTable td{
+	height:20px;   
+}
+.td_header {
+	background-image:url(images/ext1.gif);
+	background-repeat:repeat-x;
+	font-weight:bold
+}
+
+/*Api文档_Button样式*/
+.api{background-image: url(images/api.gif) !important;}
+.sysmenu{background-image: url(images/config.gif) !important;}
+.menuroot{background-image: url(images/home2.gif) !important;}
+.new{background-image: url(images/new.gif) !important;}
+
+/*Admin后台_Button样式*/
+.add{background-image: url(images/add.gif) !important;}
+.buy{background-image: url(images/down.gif) !important;}
+.check{background-image: url(images/detail.gif) !important;}
+.config{background-image: url(images/config.gif) !important;}
+.cancel{background-image: url(images/cancel.gif) !important;}
+.close{background-image: url(images/exit.gif) !important;}
+.client{background-image: url(images/online.gif) !important;}
+.chart{background-image: url(images/chart.gif) !important;}
+.device{background-image: url(images/pc.gif) !important;}
+.district{background-image: url(images/district.gif) !important;}
+.down{background-image: url(images/down.gif) !important;}
+.download{background-image: url(images/download.gif) !important;}
+.detail{background-image: url(images/detail.gif) !important;}
+.edit{background-image: url(images/edit.gif) !important;}
+.exit{background-image: url(images/exit.gif)  !important;}
+.excel{background-image: url(images/excel.gif)  !important;}
+.flag{background-image: url(images/flag.gif)  !important;}
+.finance{background-image: url(images/excel3.gif)  !important;}
+.grid{background-image: url(images/grid.gif) !important;}
+.grant{background-image: url(images/login.gif) !important;}
+.group{background-image: url(images/user22.gif) !important;}
+.home{background-image: url(images/home4.gif) !important;}
+.user{background-image: url(images/user12.gif) !important;}
+.help{background-image: url(images/help1.gif) !important;}
+.infor{background-image: url(images/inforBlue.gif) !important;}
+.login{background-image: url(images/login.gif) !important;}
+.loginBtn{background-image: url(images/login2.gif) !important;}
+.lock{background-image: url(images/lock.gif) !important;}
+.mobile{background-image: url(images/mobile.gif) !important;}
+.money{background-image: url(images/money.gif) !important;}
+.mulu{background-image: url(images/mulu.gif) !important;}
+.email{background-image: url(images/email3.gif) !important;}
+.no{background-image: url(images/close.gif) !important;}
+.notice{background-image: url(images/notice.gif) !important;}
+.next{background-image: url(images/next.gif) !important;}
+.online{background-image: url(images/online.gif) !important;}
+.outline{background-image: url(images/outline.gif) !important;}
+.pc{background-image: url(images/pc.gif) !important;}
+.print{background-image: url(images/print.gif) !important;}
+.qq{background-image: url(images/qq.gif) !important;}
+.remove{background-image: url(images/remove.gif) !important;}
+.rss{background-image: url(images/rss.gif) !important;}
+.reset{background-image: url(images/cancel.gif) !important;}
+.run{background-image: url(images/run.gif) !important;}
+.refresh{background-image: url(images/refresh.gif) !important;}
+.sale{background-image: url(images/up.gif) !important;}
+.stop{background-image: url(images/stop.gif) !important;}
+.search{background-image: url(images/search.gif) !important;}
+.search2{background-image: url(images/search2.gif) !important;}
+.save{background-image: url(images/save.gif) !important;}
+.sysmenu{background-image: url(images/inforBlue.gif) !important;}
+.up{background-image: url(images/up.gif) !important;}
+.upload{background-image: url(images/upload.gif) !important;}
+.yes{background-image: url(images/yes1.gif) !important;}
+.warn{background-image: url(images/warn.gif) !important;}
+.word{background-image: url(images/word.gif) !important;}
+.pdf{background-image: url(images/pdf.gif) !important;}
+.zuanshi{background-image: url(images/zuanshi.gif) !important;}
+.accept{background-image: url(images/accept.gif) !important;}
+.refuse{background-image: url(images/refuse.gif) !important;}
+
+/*以下2行定义验证码，非常重要，请勿删除,对应ID*/
+#CheckCode{float:left;}
+.x-form-code{width:60px;height:20px;vertical-align:middle;cursor:pointer; float:left; margin-left:5px;}
+
+#loading-mask {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;	
+}
+#loading {	
+	position: absolute;
+	left: 45%;
+	top: 40%;
+	padding: 8px;
+	z-index: 101;	
+	text-align:center;
+	border: 1px solid #99bbe8;
+	/*background-color:#FFF; */
+}
+
+/**定义欢迎层及2个内层**/
+#welcomeDIV {	
+	position: absolute;	
+	width:100%;	
+	padding:10px;
+	text-align:right;
+	color:Green;	
+	background-image:url(images/back.gif) !important;
+}
+
+#noticeDIV {	
+	width:80%;
+	float:left;/**float保证内层不会换行**/	
+	color:Red;
+}
+#loginuserDIV {	
+	width:20%;
+	float:left;/**float保证内层不会换行**/
+	text-align:left;
+	color:Green;
+}
+.contentDIV {	
+	position: absolute;	
+	width:95%;	
+	text-align:left;	
+	margin-top:2%;
+	margin-left:2%;
+	line-height:2;
+}
+/*后台数据能选中复制*/
+.x-grid-row
+{
+    line-height:13px;vertical-align:top;padding:0 1px; -moz-user-select:text!important;-khtml-user-select:text!important;-webkit-user-select:text!important;
+}
+.x-grid-cell
+{
+    overflow:hidden;font:normal 13px tahoma, arial, verdana, sans-serif;-moz-user-select:text!important;-khtml-user-select:text!important;-webkit-user-select:text!important;
+}
+.x-unselectable
+{
+    -moz-user-select:text!important;-khtml-user-select:text!important;-webkit-user-select:text!important;
+}
