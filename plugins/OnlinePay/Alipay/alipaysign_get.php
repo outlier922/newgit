@@ -15,7 +15,6 @@ require_once "lib/alipay_rsa.function.php";
 
 //whbmemo:引入第三方支付核心业务处理文件
 require_once "../sys_pay.core.php";
-ext_pay_success($out_trade_no,'ceshi',$total_fee,1);//1表示是支付宝手机端
 //组装待签名数据
 //whbmemo：（1）不允许将增加自定义参数（2）不允许转换双引号为单引号
 $signData = "partner="."\"".$alipay_config['partner']."\"";

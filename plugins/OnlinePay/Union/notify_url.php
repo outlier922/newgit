@@ -37,6 +37,7 @@ if ($parse) {
 		ext_pay_success($out_trade_no,$trade_no,$total_fee,2);
 		whb_log($out_trade_no.'验签通过');
 	}else{
+		ext_pay_fail($out_trade_no);
 		if($respCode=='0001'){
 			
 			whb_log($out_trade_no.'验签失败：0001');

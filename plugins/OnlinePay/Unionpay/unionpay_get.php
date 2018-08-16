@@ -1,7 +1,7 @@
 <?php
 //嵌入系统核心文件
 require_once 'unionpay_config.php';
-
+sys_out_fail("银联支付暂时不能用");
 //whb:引入第三方支付核心业务处理文件
 require_once "../sys_pay.core.php";	
 

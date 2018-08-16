@@ -43,10 +43,12 @@
 	{
 		if ($notify->data["return_code"] == "FAIL") {
 			//此处应该更新一下订单状态，商户自行增删操作
+			ext_pay_fail($out_trade_no);
 			$log_->log_result($log_name,"【通信出错】:\n".$xml."\n");
 		}
 		elseif($notify->data["result_code"] == "FAIL"){
 			//此处应该更新一下订单状态，商户自行增删操作
+			ext_pay_fail($out_trade_no);
 			$log_->log_result($log_name,"【业务出错】:\n".$xml."\n");
 		}
 		else{

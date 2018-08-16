@@ -24,6 +24,7 @@ if($ordertype == 1){
 	if($payflag != 1){
 		sys_out_fail('该订单已支付，请勿重复支付');
 	}
+	$total_fee = $order_list[0]['totalfee'];
 }else if($ordertype == 2){
 	$order_list = $sql_helper->get_list_bysql("select out_trade_no,totalfee,payflag from sys_sysorder where id=$orderid and client_id=$client_id");
 	if(!$order_list){
@@ -33,13 +34,26 @@ if($ordertype == 1){
 	if($payflag == 1){
 		sys_out_fail('该订单已支付，请勿重复支付');
 	}
+	$total_fee = $order_list[0]['totalfee'];
+}else if($ordertype == 3){
+	$order_list = $sql_helper->get_list_bysql("select out_trade_no,total_price,total_score,payflag from sys_cardorder where id=$orderid and client_id=$client_id");
+	if(!$order_list){
+		sys_out_fail('该订单不存在');
+	}
+	$payflag = $order_list[0]['payflag'];
+	if($payflag == 1){
+		sys_out_fail('该订单已支付，请勿重复支付');
+	}
+	$total_fee = $order_list[0]['total_price'];
 }else{
 	sys_out_fail('参数传递错误');
 }
 
-
+if(SYS_DEBUG_MODE){
+	$total_fee = "0.01";
+}
 $out_trade_no = $order_list[0]['out_trade_no'];
-$total_fee = $order_list[0]['totalfee'];
+
 
 sys_close_db($sql_helper);		
 //特别提示：插入支付表sys_pay的逻辑,所有第三方支付插件必须完全相同_________end

@@ -13,9 +13,9 @@
 定义支付宝配置信息
 | --------------------------------------------------------
 */
-define("ALIPAY_PARTNER","2088521497102951");//定义商户PID(必须是2088开头)// 2088521497102951
-define("ALIPAY_SELLER_ID","linghangcn@163.com");//定义收款邮箱
-define("ALIPAY_KEY","dhozzjtv5zrylhhpn1pp1u1xxu9ry406");//定义安全检验码(网页版产品专用)//dhozzjtv5zrylhhpn1pp1u1xxu9ry406
+define("ALIPAY_PARTNER","2088721402546513");//定义商户PID(必须是2088开头)// 2088521497102951
+define("ALIPAY_SELLER_ID","15066330577@163.com");//定义收款邮箱
+define("ALIPAY_KEY","h8vy9oc6p9cqdo84s1i7u53minmtzwk4");//定义安全检验码(网页版产品专用)//h8vy9oc6p9cqdo84s1i7u53minmtzwk4
 
  
 //嵌入系统核心配置文件config.inc.php

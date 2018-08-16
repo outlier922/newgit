@@ -28,11 +28,12 @@ if($verify_result) {//验证成功
 	if($trade_status == 'TRADE_FINISHED'|| $trade_status == 'TRADE_SUCCESS'){		
 		//调用支付成功业务处理函数（在include\extend.inc.php中定义）
 		ext_pay_success($out_trade_no,$trade_no,$total_fee,1);//1表示是支付宝手机端
-    }      
+    }else{
+		ext_pay_fail($out_trade_no);
+	}      
 	echo "success";
 }
 else {
-	sys_log("verify_result=".$verify_result);
     //验证失败    
 	if(SYS_DEBUG_MODE)
 	{
