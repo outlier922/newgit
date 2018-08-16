@@ -28,7 +28,6 @@ class ClientAction extends BaseAction
         $sql_suffix = "from sys_client mt ";
         $sql_suffix .= "where mt.id>0 ";
         $orderby_str = "mt.id desc";
-
         //筛选数据
         if($account) $sql_suffix .= "and (mt.nickname like '%$account%' or mt.account like '%$account%') ";
         if($validflag) $sql_suffix .= "and mt.validflag='$validflag' ";
@@ -46,6 +45,23 @@ class ClientAction extends BaseAction
         foreach($list_items as $k=>&$v){
 	        if($v['islive'] == 2){
 		        $v['wealth'] = '';
+	        }
+	        $client_id = $v['id'];
+	        $v['total_redbagfee'] = $this->get_one_bysql("select sum(score) from sys_cash where client_id=$client_id and cashflag=3");
+	        if(!$v['total_redbagfee']){
+		        $v['total_redbagfee'] = 0;
+	        }
+	        $v['total_redbagscore'] = $this->get_one_bysql("select sum(score) from sys_scoredetail where client_id=$client_id and scoretype=1 or scoretype=2");
+	        if(!$v['total_redbagscore']){
+		        $v['total_redbagscore'] = 0;
+	        }
+	        $v['total_shopscore'] = $this->get_one_bysql("select sum(score) from sys_scoredetail where client_id=$client_id and scoretype=5");
+	        if(!$v['total_shopscore']){
+		        $v['total_shopscore'] = 0;
+	        }
+	        $v['total_cashscore']  = $this->get_one_bysql("select sum(score) from sys_cash where client_id=$client_id and cashflag=2");
+	        if(!$v['total_cashscore']){
+		        $v['total_cashscore'] = 0;
 	        }
         }
         unset($v);
@@ -83,11 +99,15 @@ class ClientAction extends BaseAction
                 'target'=>'inner_frame',
                 'url'=>'Client/score_get','url_param'=>array('id'=>'3_id')
             )),
-            array('name'=>'','title'=>'账户余额','cls'=>'w100','_after_parser'=>array(
+            array('name'=>'','title'=>'账户余额','cls'=>'w80','_after_parser'=>array(
                 '_parser'=>'button_item/td_a_get','text'=>'3_feeaccount','title'=>'1_余额明细','full'=>0,
                 'target'=>'inner_frame',
                 'url'=>'Client/balance_get','url_param'=>array('id'=>'3_id')
             )),
+            array('name'=>'total_redbagfee','cls'=>'w100','title'=>'红包现金'),
+            array('name'=>'total_redbagscore','cls'=>'w100','title'=>'红包积分'),
+            array('name'=>'total_shopscore','cls'=>'w100','title'=>'商城兑换积分'),
+            array('name'=>'total_cashscore','cls'=>'w100','title'=>'兑换现金'),
             array('name'=>'islive_text','cls'=>'w100','title'=>'是否激活'),
             array('name'=>'','title'=>'当前财气值','cls'=>'w100','_after_parser'=>array(
                 '_parser'=>'button_item/td_a_get','text'=>'3_wealth','title'=>'1_当前财气值','full'=>0,
@@ -170,11 +190,14 @@ class ClientAction extends BaseAction
     public function wealth_save($_action_access=0){
 	    if(IS_POST){
         	$wealth = _POST('wealth');
+        	if($wealth < 100){
+	        	sys_out_fail("财气值不能小于100");
+        	}
         	$client_id = _POST('client_id');
         	$id_arr = explode(',',$client_id);
         	$sql_array = null;
         	foreach($id_arr as $v){
-	        	$sql_array[] = "update sys_client set wealth=$wealth where id=$v";
+	        	$sql_array[] = "update sys_client set wealth=$wealth where id=$v and islive=1";
         	}
         	$result = $this->do_transaction($sql_array);
             sys_out_result($result);

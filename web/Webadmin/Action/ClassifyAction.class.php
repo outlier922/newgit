@@ -21,12 +21,17 @@ class ClassifyAction extends BaseAction{
         if($name) $sql_suffix .= "and mt.name like '%$name%' ";
         //查询数据
         $list_items = $this -> admin_get_page($field_list,$sql_suffix,$orderby_str);     
+        foreach($list_items as $k=>&$v){
+	        $id = $v['id'];
+	        $v['goodsnum'] = $this->get_one_bysql("select count(*) from sys_good g left join sys_shop s on g.shop_id=s.id where s.one_classify_id=$id");
+        }
+        unset($v);
         int_to_string($list_items,array(
         
         ));
         
         //UI部分
-        $breadcrumb_data = '首页,用户管理,用户管理';
+        $breadcrumb_data = '首页,商城管理,一级分类菜单管理';
         $search_items = array(
         	array('name'=>'name','placeholder'=>'请输入一级分类名称','cls'=>'w250','_parser'=>'form_item/search/input'),            
         );
@@ -163,13 +168,18 @@ class ClassifyAction extends BaseAction{
         //筛选数据
         if($name) $sql_suffix .= "and mt.name like '%$name%' ";
         //查询数据
-        $list_items = $this -> admin_get_page($field_list,$sql_suffix,$orderby_str);     
+        $list_items = $this -> admin_get_page($field_list,$sql_suffix,$orderby_str);    
+        foreach($list_items as $k=>&$v){
+	        $id = $v['id'];
+	        $v['goodsnum'] = $this->get_one_bysql("select count(*) from sys_good g left join sys_shop s on g.shop_id=s.id where s.two_classify_id=$id");
+        }
+        unset($v); 
         int_to_string($list_items,array(
         
         ));
         
         //UI部分
-        $breadcrumb_data = '首页,用户管理,用户管理';
+        $breadcrumb_data = '首页,商城管理,二级分类菜单管理';
         $search_items = array(
         	array('name'=>'name','placeholder'=>'请输入二级分类名称','cls'=>'w250','_parser'=>'form_item/search/input'),            
         );

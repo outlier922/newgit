@@ -27,11 +27,11 @@ class BaseAction extends AdminAction
 			return true;
 		}
 
-		$menu_id_sqlstr = "select id from sys_menu where c='" . MODULE_NAME . "' and a= '" . ACTION_NAME. "' limit 1 ";
-		$menu_count = $this -> get_one_bysql("select count(*) from sys_role_priv where menu_id=($menu_id_sqlstr)");
-		if(!$menu_count){
-			$this->error('您没有权限操作');
-		}
+		//$menu_id_sqlstr = "select id from sys_menu where c='" . MODULE_NAME . "' and a= '" . ACTION_NAME. "' limit 1 ";
+		//$menu_count = $this -> get_one_bysql("select count(*) from sys_role_priv where menu_id=($menu_id_sqlstr)");
+		//if(!$menu_count){
+		//	$this->error('您没有权限操作');
+		//}
 		return true;
 	}
 

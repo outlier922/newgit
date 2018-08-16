@@ -110,23 +110,28 @@ class AdAction extends BaseAction
             $GLOBALS['cur_operate'] = $id ? 2 : 1;//目前的操作类型，2^0:新增;2^1:编辑
             $content = $_POST['content'];
             $goods_id = $_POST['goods_id'];
-            $adlevel = $_POST['adlevel'];
-            $one_classify_id = $_POST['one_classify_id'];
-            if(!$one_classify_id){
-	    		sys_out_fail("请选择分类");
-    		}
-            if($adlevel == 1){
-	            $good_list = $this->get_list_bysql("select * from sys_good g left join sys_shop s on g.shop_id=s.id where s.one_classify_id=$one_classify_id and g.id=$goods_id");          
-            }else{
-	            $two_classify_id = $_POST['two_classify_id'];
-	            if(!$two_classify_id){
-		    		sys_out_fail("请选择二级分类");
-	    		}
-	            $good_list = $this->get_list_bysql("select * from sys_good g left join sys_shop s on g.shop_id=s.id where s.one_classify_id=$one_classify_id and s.two_classify_id=$two_classify_id and g.id=$goods_id");
+            $jumptype = $_POST['jumptype'];
+            if($jumptype == 1){
+	            if(!$goods_id){
+		            sys_out_fail("请填写的商品id");
+	            }
             }
-            if(!$good_list){
-	            sys_out_fail("填写的商品id不属于该类别");
-            }
+      //      $one_classify_id = $_POST['one_classify_id'];
+      //      if(!$one_classify_id){
+	    	//	sys_out_fail("请选择分类");
+    		//}
+      //      if($adlevel == 1){
+	     //       $good_list = $this->get_list_bysql("select * from sys_good g left join sys_shop s on g.shop_id=s.id where s.one_classify_id=$one_classify_id and g.id=$goods_id");          
+      //      }else{
+	     //       $two_classify_id = $_POST['two_classify_id'];
+	     //       if(!$two_classify_id){
+		    //		sys_out_fail("请选择二级分类");
+	    	//	}
+	     //       $good_list = $this->get_list_bysql("select * from sys_good g left join sys_shop s on g.shop_id=s.id where s.one_classify_id=$one_classify_id and s.two_classify_id=$two_classify_id and g.id=$goods_id");
+      //      }
+      //      if(!$good_list){
+	     //       sys_out_fail("填写的商品id不属于该类别");
+      //      }
             $content=str_replace("'","\\'",$content);
             //获取字段
             $save_fields = array('adname','jumptype','goods_id','isshow','adlevel','orderby');
@@ -163,11 +168,18 @@ class AdAction extends BaseAction
                         array('name'=>'adname','label'=>'名称','required'=>1,
                             '_parser'=>'form_item/form/input','type'=>'text',
                         ),
-                        array('name'=>'jumptype','label'=>'所属分类',
-                            '_parser'=>'form_item/form/select_bind','type'=>'text','placeholder'=>'必填字段',
-                            'init_url'=>U('Ad/ad_select_list'),
-                        ),
-                        array('name'=>'goods_id','label'=>'对应ID','required'=>1,
+                        //array('name'=>'jumptype','label'=>'所属分类',
+                        //    '_parser'=>'form_item/form/select_bind','type'=>'text','placeholder'=>'必填字段',
+                        //    'init_url'=>U('Ad/ad_select_list'),
+                        //),
+                        ['name'=>'cascade_1','label'=>'所属分类',
+                            '_parser'=>'form_item/form/cascade_select_bind','type'=>'text','placeholder'=>'必填字段','required'=>1,
+                            'related'=>[
+                                ['name'=>'jumptype','label'=>'选择分类'],
+                            ],
+                            'init_url'=>U(MODULE_NAME.'/ad_select_list'),
+                        ],
+                        array('name'=>'goods_id','label'=>'商品ID','required'=>0,
                             '_parser'=>'form_item/form/input','type'=>'text',
                             '_validation'=>array(
                                 'isNumber'=>array(true,"必须是数字")
@@ -178,14 +190,14 @@ class AdAction extends BaseAction
                         ),
                         array('name'=>'isshow','label'=>'显示：','_parser'=>'form_item/collect/radio','data'=>array('1'=>'是','2'=>'否'),),
                         array('name'=>'adlevel','label'=>'轮播图级别：','_parser'=>'form_item/collect/radio','data'=>array('1'=>'一级轮播图','2'=>'二级轮播图'),),
-                        ['name'=>'cascade_1','label'=>'选择分类',
-                            '_parser'=>'form_item/form/cascade_select_bind','type'=>'text','placeholder'=>'','required'=>1,
-                            'related'=>[
-                                ['name'=>'one_classify_id','label'=>'一级分类'],
-                                ['name'=>'two_classify_id','label'=>'二级分类'],
-                            ],
-                            'init_url'=>U(MODULE_NAME.'/classify_list'),
-                        ],
+                        //['name'=>'cascade_1','label'=>'选择分类',
+                        //    '_parser'=>'form_item/form/cascade_select_bind','type'=>'text','placeholder'=>'','required'=>0,
+                        //    'related'=>[
+                        //        ['name'=>'one_classify_id','label'=>'一级分类'],
+                        //        ['name'=>'two_classify_id','label'=>'二级分类'],
+                        //    ],
+                        //    'init_url'=>U(MODULE_NAME.'/classify_list'),
+                        //],
                         array('name'=>'orderby','label'=>'轮播图排序','required'=>1,
                             '_parser'=>'form_item/form/input','type'=>'text',
                             '_validation'=>array(

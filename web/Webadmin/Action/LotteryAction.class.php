@@ -137,7 +137,8 @@ class LotteryAction extends BaseAction{
 
             $redbag_rate = _POST('redbag_rate');
             $score_rate = _POST('score_rate');
-            $bad_rate = 1-$redbag_rate-$score_rate;
+            $total_rate = $redbag_rate+$score_rate;
+            $bad_rate = 1-$total_rate;
             if($bad_rate < 0){
 	            sys_out_fail("红包出现概率与积分出现概率相加不能大于1");	            
             }
@@ -155,7 +156,7 @@ class LotteryAction extends BaseAction{
 	            $qu_minscore = _POST('qu_minscore');
 	            $qu_maxscore = _POST('qu_maxscore');
 	            $qu_scorechance = _POST('qu_scorechance');
-	            if(!$qu_minscore || !$qu_maxscore || !$qu_scorechance){
+	            if(!(!$qu_minscore || $qu_minscore==0) || !$qu_maxscore || !$qu_scorechance){
 		            sys_out_fail("请将信息填写完毕");
 	            }
 	            $fields_str .= ",qu_minscore=$qu_minscore,qu_maxscore=$qu_maxscore,qu_scorechance=$qu_scorechance";
@@ -173,7 +174,7 @@ class LotteryAction extends BaseAction{
 	            $qu_minredbag = _POST('qu_minredbag');
 	            $qu_maxredbag = _POST('qu_maxredbag');
 	            $qu_redbagchance = _POST('qu_redbagchance');
-	            if(!$qu_minredbag || !$qu_maxredbag || !$qu_redbagchance){
+	            if(!(!$qu_minredbag || $qu_minredbag==0) || !$qu_maxredbag || !$qu_redbagchance){
 		            sys_out_fail("请将信息填写完毕");
 	            }
 	            $fields_str .= ",qu_minredbag=$qu_minredbag,qu_maxredbag=$qu_maxredbag,qu_redbagchance=$qu_redbagchance";
@@ -219,14 +220,14 @@ class LotteryAction extends BaseAction{
                         ),
                         array('name'=>'score_type','label'=>'积分类型','required'=>1,
 		                    '_parser'=>'form_item/collect/radio',
-		                    'data'=>array('1'=>'固定积分','2'=>'区间积分')
+		                    'data'=>array('1'=>'固定积分','2'=>'区间积分'),'default'=>'1'
 		                ),
                         array('name'=>'gu_score','label'=>'固定积分','required'=>0,
                             '_parser'=>'form_item/form/input','type'=>'text',
                             'placeholder'=>'输入固定值',
                             '_validation'=>array(
                                 'isNumber'=>array(true,"必须是数字"),
-                                'min'=>[1, '最小值1'],
+                                //'min'=>[1, '最小值1'],
                             ),
                         ),
                         array('name'=>'gu_scorechance','label'=>'固定中奖概率','required'=>0,
@@ -243,7 +244,7 @@ class LotteryAction extends BaseAction{
                             'placeholder'=>'输入最小积分值',
                             '_validation'=>array(
                                 'isNumber'=>array(true,"必须是数字"),
-                                'min'=>[1, '最小值1'],
+                                //'min'=>[1, '最小值1'],
                             ),
                         ),
                         array('name'=>'qu_maxscore','label'=>'最大积分值','required'=>0,
@@ -251,7 +252,7 @@ class LotteryAction extends BaseAction{
                             'placeholder'=>'输入最大积分值',
                             '_validation'=>array(
                                 'isNumber'=>array(true,"必须是数字"),
-                                'min'=>[1, '最小值1'],
+                                //'min'=>[1, '最小值1'],
                             ),
                         ),
                         array('name'=>'qu_scorechance','label'=>'区间中奖概率','required'=>0,
@@ -265,14 +266,14 @@ class LotteryAction extends BaseAction{
                         ),
                         array('name'=>'redbag_type','label'=>'红包类型','required'=>1,
 		                    '_parser'=>'form_item/collect/radio',
-		                    'data'=>array('1'=>'固定红包','2'=>'区间红包')
+		                    'data'=>array('1'=>'固定红包','2'=>'区间红包'),'default'=>'1'
 		                ),
                         array('name'=>'gu_redbag','label'=>'固定红包','required'=>0,
                             '_parser'=>'form_item/form/input','type'=>'text',
                             'placeholder'=>'输入固定值',
                             '_validation'=>array(
                                 'isNumber'=>array(true,"必须是数字"),
-                                'min'=>[1, '最小值1'],
+                                //'min'=>[1, '最小值1'],
                             ),
                         ),
                         array('name'=>'gu_redbagchance','label'=>'固定中奖概率','required'=>0,
@@ -289,7 +290,7 @@ class LotteryAction extends BaseAction{
                             'placeholder'=>'输入最小红包值',
                             '_validation'=>array(
                                 'isNumber'=>array(true,"必须是数字"),
-                                'min'=>[1, '最小值1'],
+                                //'min'=>[1, '最小值1'],
                             ),
                         ),
                         array('name'=>'qu_maxredbag','label'=>'最大红包值','required'=>0,
@@ -297,7 +298,7 @@ class LotteryAction extends BaseAction{
                             'placeholder'=>'输入最大红包值',
                             '_validation'=>array(
                                 'isNumber'=>array(true,"必须是数字"),
-                                'min'=>[1, '最小值1'],
+                                //'min'=>[1, '最小值1'],
                             ),
                         ),
                         array('name'=>'qu_redbagchance','label'=>'区间中奖概率','required'=>0,
@@ -335,15 +336,25 @@ class LotteryAction extends BaseAction{
         if(IS_POST){
             $GLOBALS['cur_operate'] = 2;//目前的操作类型，2^0:新增;2^1:编辑
             //获取字段
-            $save_fields = array('luckdraw_rate');
+            $save_fields = array('luckdraw_rate','redbag_rate','score_rate');
             $post_keys = array_keys($_POST);
             $post_fields = array_intersect($save_fields,$post_keys);//取公共
             $fields_str = fields2SqlStrByPost($post_fields);
+            $redbag_rate = _POST('redbag_rate');
+            $score_rate = _POST('score_rate');
+            $total_rate = $redbag_rate+$score_rate;
+            $bad_rate = 1-$total_rate;
+            if($bad_rate < 0){
+	            sys_out_fail("红包出现概率与积分出现概率相加不能大于1");	            
+            }
+	        $fields_str .= ",bad_rate=$bad_rate";
             $luckdraw_rate = $_POST['luckdraw_rate'];
             $guess_rate = 1-$luckdraw_rate;
             $fields_str .= ",guess_rate='$guess_rate'";
-            $sqlstr = "update sys_set set $fields_str where id=1";
-            $result = $this -> do_execute($sqlstr);           
+            $sql_array = NULL;
+            $sql_array[] = "update sys_set set $fields_str where id=1";
+			$sql_array[] = "update sys_shop set redbag_rate='$redbag_rate',score_rate='$score_rate',bad_rate='$bad_rate'";
+			$result = $this->do_transaction($sql_array);
             sys_out_result($result);
         }
         else{
@@ -351,6 +362,9 @@ class LotteryAction extends BaseAction{
             $form_items = array(
                 array('_parser'=>'tab/default','_children'=>array(
                     array('label'=>'基本信息','_parser'=>'container/default','_children'=>array(
+                        array('name'=>'guess_rate','label'=>'全局猜一猜出现概率(自动生成)','required'=>1,
+                            '_parser'=>'form_item/form/input','type'=>'text','readonly'=>2
+                        ),
                         array('name'=>'luckdraw_rate','label'=>'全局抽奖出现概率','required'=>1,
                             '_parser'=>'form_item/form/input','type'=>'text',
                             '_validation'=>array(
@@ -359,8 +373,29 @@ class LotteryAction extends BaseAction{
                                 'max'=>[1, '最大值1'],
                             ),
                         ),
-                        array('name'=>'guess_rate','label'=>'全局猜一猜出现概率','required'=>1,
-                            '_parser'=>'form_item/form/input','type'=>'text','readonly'=>2
+                        array('name'=>'redbag_rate','label'=>'红包出现概率','required'=>1,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                'min'=>[0, '最小值0'],
+                                'max'=>[1, '最大值1'],
+                            ),
+                        ),
+                        array('name'=>'score_rate','label'=>'积分出现概率','required'=>1,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                'min'=>[0, '最小值0'],
+                                'max'=>[1, '最大值1'],
+                            ),
+                        ),
+                        array('name'=>'bad_rate','label'=>'手气不佳概率','readonly'=>'2','required'=>0,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                'min'=>[0, '最小值0'],
+                                'max'=>[1, '最大值1'],
+                            ),
                         ),
                     ))
                 )),
@@ -557,7 +592,11 @@ class LotteryAction extends BaseAction{
             $save_fields = array('answer','type','shop_id');
             $post_keys = array_keys($_POST);
             $post_fields = array_intersect($save_fields,$post_keys);//取公共
-            $fields_str = fields2SqlStrByPost($post_fields);           
+            $fields_str = fields2SqlStrByPost($post_fields);        
+            $answer = _POST('answer');   
+            if($answer == 'null' || $answer == 'NULL'){
+	            sys_out_fail("答案不能填空字符");
+            }
 
             if($id){//修改
             	if (!empty($_FILES['temp_file']['name'])) {
@@ -600,10 +639,10 @@ class LotteryAction extends BaseAction{
 	            }else{
 		            sys_out_fail('请先上传题图', 106);
 	            }
-            	$score_list = $this->get_list_bysql("select * from sys_image_text where shop_id = '$shop_id'");
-	            if($score_list){
-		            sys_out_fail('该商家已设置积分类型', 106);
-	            }
+            	//$score_list = $this->get_list_bysql("select * from sys_image_text where shop_id = '$shop_id'");
+	            //if($score_list){
+		           // sys_out_fail('该商家已设置积分类型', 106);
+	            //}
                 $sqlstr = "insert into sys_image_text set $fields_str";
                 $result = $this -> do_execute($sqlstr);
             }
@@ -612,16 +651,16 @@ class LotteryAction extends BaseAction{
         else{
             $id = _REQUEST('id');
             $GLOBALS['cur_operate'] = $id ? 2 : 1;//目前的操作类型，2^0:新增;2^1:编辑
-            if($id){
+            //if($id){
 	            $form_items = array(
 	            	array('name'=>'id','_parser'=>'form_item/form/hidden'),
 	                array('_parser'=>'tab/default','_children'=>array(
 	                    array('label'=>'基本信息','_parser'=>'container/default','_children'=>array(
 	                    	array('name'=>'shop_id','label'=>'商家ID','required'=>1,
 	                            '_parser'=>'form_item/form/input','type'=>'text',
-	                            'readonly'=>2,
+	                            //'readonly'=>2,
 	                        ),
-	                        array('name'=>'type','label'=>'红包类型：','_parser'=>'form_item/collect/radio','data'=>array('1'=>'固定额度','2'=>'区间额度'),),
+	                        array('name'=>'type','label'=>'红包类型：','_parser'=>'form_item/collect/radio','data'=>array('1'=>'固定额度','2'=>'区间额度'),'default'=>'1'),
 	                        array('name'=>'image','label'=>'题图',
 			                    '_parser'=>'form_item/form/image','required'=>1,
 			                ),
@@ -638,24 +677,24 @@ class LotteryAction extends BaseAction{
                 $sql_suffix .= "where mt.id=$id ";
                 $temp_array = $this->get_list_bysql("select $field_list $sql_suffix");
                 form_item_add_value($form_items,$temp_array[0]);//赋值
-            }else{
-	            $form_items = array(
-	            	array('name'=>'shop_id','label'=>'商家ID','required'=>1,
-                        '_parser'=>'form_item/form/input','type'=>'text',
-                        '_validation'=>array(
-                            'isNumber'=>array(true,"必须是数字")
-                        ),
-                    ),
-                    array('name'=>'type','label'=>'红包类型：','_parser'=>'form_item/collect/radio','data'=>array('1'=>'固定额度','2'=>'区间额度'),),
-	                array('name'=>'image','label'=>'题图',
-	                    '_parser'=>'form_item/form/image','required'=>1,
-	                ),
-					array('name'=>'answer','label'=>'正确答案',
-						'_parser'=>'form_item/form/input','type'=>'text','required'=>1,
-					),
-	            );
-	            form_validation_create($form_items,$rules,$messages);//获取验证规则
-            }
+     //       }else{
+	    //        $form_items = array(
+	    //        	array('name'=>'shop_id','label'=>'商家ID','required'=>1,
+     //                   '_parser'=>'form_item/form/input','type'=>'text',
+     //                   '_validation'=>array(
+     //                       'isNumber'=>array(true,"必须是数字")
+     //                   ),
+     //               ),
+     //               array('name'=>'type','label'=>'红包类型：','_parser'=>'form_item/collect/radio','data'=>array('1'=>'固定额度','2'=>'区间额度'),'default'=>'1'),
+	    //            array('name'=>'image','label'=>'题图',
+	    //                '_parser'=>'form_item/form/image','required'=>1,
+	    //            ),
+					//array('name'=>'answer','label'=>'正确答案',
+					//	'_parser'=>'form_item/form/input','type'=>'text','required'=>1,
+					//),
+	    //        );
+	    //        form_validation_create($form_items,$rules,$messages);//获取验证规则
+     //       }
             
             $component_data = array('_parser'=>'form/default',
                 'action' => U(MODULE_NAME.'/'.ACTION_NAME),'_children'=>$form_items,

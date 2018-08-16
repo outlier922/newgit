@@ -179,6 +179,7 @@ class SystemAction extends BaseAction{
 					$city = $this->get_one_bysql("select name from sys_cascade_district where id=$district_2_id");
 				}
 			}else{
+				$district_2_id = $district_1_id;
 				$city = $province;
 			}
 			$regdate = sys_get_time();

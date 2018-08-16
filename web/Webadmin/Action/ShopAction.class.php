@@ -9,8 +9,8 @@ class ShopAction extends BaseAction
         $GLOBALS['page_count'] = 10;$GLOBALS['totalcount'] = 0;
         $name = _REQUEST('name');
         $validflag = _REQUEST('validflag');
-        $one_classify_id = _REQUEST('type_1_id');
-        $two_classify_id = _REQUEST('type_2_id');
+        $one_classify_id = _REQUEST('one_classify_id');
+        $two_classify_id = _REQUEST('two_classify_id');
         $salenum = _REQUEST('salenum');
         $star = _REQUEST('star');
         $starflag = _REQUEST('starflag');
@@ -71,12 +71,26 @@ class ShopAction extends BaseAction
 	        $orderby_str .= "mt.recharge_redbag asc,";
         }
         if(!$orderby_str){
-	        $orderby_str = "mt.id desc";
+	        $orderby_str = "mt.id asc";
         }else{
 		    $orderby_str = substr($orderby_str,0,-1);
 	    }
         //查询数据
         $list_items = $this -> admin_get_page($field_list,$sql_suffix,$orderby_str);
+        foreach($list_items as $k=>&$v){
+	        $shop_id = $v['id'];
+	        $salenum = 0;
+	        $good_ids = '';
+	        $salenum_list = $this->get_list_bysql("select id,salenum from sys_good where shop_id=$shop_id");
+	        foreach($salenum_list as $val){
+		        $salenum += $val['salenum'];
+		        $good_ids .= $val['id'];
+	        }
+	        $v['salenum'] = $salenum;
+	        $good_ids = substr($good_ids,0,-1);
+	        $v['turnover'] = $this->get_one_bysql("select sum(totalfee) from sys_o2order where good_id in ($good_ids)");
+        }
+        unset($v);
         int_to_string($list_items,array(
             'validflag'=>array('1'=>'正常','2'=>'冻结'),
             'star'=>array('1'=>'1颗星','2'=>'2颗星','3'=>'3颗星','4'=>'4颗星','5'=>'5颗星'),
@@ -93,11 +107,12 @@ class ShopAction extends BaseAction
             ['name'=>'cascade_1','label'=>'选择分类',
                 '_parser'=>'form_item/search/cascade_select_bind','type'=>'text','placeholder'=>'','required'=>1,
                 'related'=>[
-                    ['name'=>'type_1_id','label'=>'一级分类'],
-                    ['name'=>'type_2_id','label'=>'二级分类'],
+                    ['name'=>'one_classify_id','label'=>'一级分类'],
+                    ['name'=>'two_classify_id','label'=>'二级分类'],
                 ],
                 'init_url'=>U(MODULE_NAME.'/classify_list'),
             ],
+
             array('name'=>'salenum','_parser'=>'form_item/search/select','data'=>array(''=>'成交总量','1'=>'从高到低','2'=>'从低到高'),'style'=>'width:120px;'),
             array('name'=>'starflag','_parser'=>'form_item/search/select','data'=>array(''=>'商家评价','1'=>'从高到低','2'=>'从低到高'),'style'=>'width:120px;'),
             array('name'=>'turnover','_parser'=>'form_item/search/select','data'=>array(''=>'商家营业额','1'=>'从高到低','2'=>'从低到高'),'style'=>'width:120px;'),
@@ -110,7 +125,7 @@ class ShopAction extends BaseAction
                 'target'=>'inner_frame','url'=>U('Shop/shop_save'),
             ),           
             array('text'=>'编辑','title'=>'编辑','full'=>0,'checked'=>1,'position'=>2,
-                'target'=>'inner_frame','url'=>U('Shop/shop_save'),'url_param'=>array('id'=>'2_id')
+                'target'=>'inner_frame','url'=>U('Shop/shop_save'),'url_param'=>array('id'=>'2_id','lng'=>'2_lng','lat'=>'2_lat')
             ),
             array('text'=>'指定相关比率','title'=>'指定相关比率','full'=>0,'checked'=>1,'position'=>1,
                 'target'=>'inner_frame','url'=>U('Shop/rate_save'),'url_param'=>array('id'=>'2_id')
@@ -258,19 +273,58 @@ class ShopAction extends BaseAction
 		            $orderonly = $this->get_one_bysql("select orderby from sys_shop where district_1_id=$district_1_id and orderby=$orderby and id!=$id");
 	            }
 	            if($orderonly){
-					sys_out_fail("改市区已设置该排序次数");
+					sys_out_fail("该市区已设置该排序次数");
 		        }	            
             }
             $username = $_POST['username'];
-            $shop_id = $this->get_one_bysql("select id from sys_shop where username='$username'");
-            if($shop_id){
-	            sys_out_fail("该账号已存在");
-            }
+            
             //获取字段
-            $save_fields = array('name','username','linker','telphone','validflag','lng','lat','isrecommend','averfee','orderby');
+            $save_fields = array('name','username','linker','telphone','validflag','lng','lat','isrecommend','averfee','orderby','addresses','arrival_rate','wealth_rate','service_type','score_type','redbag_type');
             $post_keys = array_keys($_POST);
             $post_fields = array_intersect($save_fields,$post_keys);//取公共
             $fields_str = fields2SqlStrByPost($post_fields);
+            
+            $score_type = _POST('score_type');
+            if($score_type == 1){
+	            $gu_score = _POST('gu_score');
+	            $gu_scorechance = _POST('gu_scorechance');
+	            if(!$gu_score || !$gu_scorechance){
+		            sys_out_fail("请将信息填写完毕");
+	            }
+	            $fields_str .= ",gu_score=$gu_score,gu_scorechance=$gu_scorechance";
+            }else{
+	            $qu_minscore = _POST('qu_minscore');
+	            $qu_maxscore = _POST('qu_maxscore');
+	            $qu_scorechance = _POST('qu_scorechance');
+	            if(!($qu_minscore || $qu_minscore==0) || !$qu_maxscore || !$qu_scorechance){
+		            sys_out_fail("请将信息填写完毕");
+	            }
+	            $fields_str .= ",qu_minscore=$qu_minscore,qu_maxscore=$qu_maxscore,qu_scorechance=$qu_scorechance";
+            }
+
+            $redbag_type = _POST('redbag_type');
+            if($redbag_type == 1){
+	            $gu_redbag = _POST('gu_redbag');
+	            $gu_redbagchance = _POST('gu_redbagchance');
+	            if(!$gu_redbag || !$gu_redbagchance){
+		            sys_out_fail("请将信息填写完毕");
+	            }
+	            $fields_str .= ",gu_redbag=$gu_redbag,gu_redbagchance=$gu_redbagchance";
+            }else{
+	            $qu_minredbag = _POST('qu_minredbag');
+	            $qu_maxredbag = _POST('qu_maxredbag');
+	            $qu_redbagchance = _POST('qu_redbagchance');
+	            if(!($qu_minredbag || $qu_minredbag==0) || !$qu_maxredbag || !$qu_redbagchance){
+		            sys_out_fail("请将信息填写完毕");
+	            }
+	            $fields_str .= ",qu_minredbag=$qu_minredbag,qu_maxredbag=$qu_maxredbag,qu_redbagchance=$qu_redbagchance";
+            }
+            $set_list = $this->get_list_bysql("select * from sys_set where id=1");
+            $redbag_rate = $set_list[0]['redbag_rate'];
+            $score_rate = $set_list[0]['score_rate'];
+            $bad_rate = $set_list[0]['bad_rate'];
+            $fields_str .= ",redbag_rate=$redbag_rate,score_rate=$score_rate,bad_rate=$bad_rate";
+            
             $opentime_start = I('opentime_start');
     		$opentime_end = I('opentime_end');
     		$one_classify_id = I('one_classify_id');
@@ -279,6 +333,15 @@ class ShopAction extends BaseAction
 	    		sys_out_fail("类别请选择到二级分类");
     		}
         	$tag = $_POST['tag'];
+        	$map_address = $_POST['address'];
+        	$old_map_address = $this->get_one_bysql("select map_address from sys_shop where id =$id");
+        	if($old_map_address != $map_address){
+	        	$geocode=file_get_contents('http://api.map.baidu.com/geocoder/v2/?output=json&ak=gATczNzpQ9BfrGbms5F8iTyAHWyDHKOd&address='.$map_address); 
+				$output= json_decode($geocode); 
+				$baidu_lng = $output->result->location->lng;
+				$baidu_lat = $output->result->location->lat;
+				$fields_str .= ",map_address='$map_address',baidu_lng='$baidu_lng',baidu_lat='$baidu_lat'";
+        	}
         	$address = $_POST['addresses'];
         	if($tag){
 	        	$opentime = '24H';
@@ -295,9 +358,26 @@ class ShopAction extends BaseAction
 	        	$add .= $v;
         	}
         	$add .= $address;
+			$service_type = _POST('service_type');
+            $service_fee = _POST('service_fee');
+            $arrival_rate = _POST('arrival_rate'); 
+			if($service_type == 1){
+            	$service_rate = 1-$arrival_rate;
+	            $fields_str .= ",service_rate=$service_rate";
+            }else{
+	            if(!$service_fee){
+		            sys_out_fail("请填写每笔定额");
+	            }
+	            $fields_str .= ",service_fee=$service_fee";
+            }
+        	
             $fields_str .= ",content='$content',remarks='$remarks',one_classify_id=$one_classify_id,two_classify_id=$two_classify_id,district_1_id=$district_1_id,district_2_id=$district_2_id,district_3_id=$district_3_id,address='$add',opentime='$opentime'";		
 			
             if($id){//修改
+            	$shop_id = $this->get_one_bysql("select id from sys_shop where username='$username' and id != $id");
+	            if($shop_id){
+		            sys_out_fail("该账号已存在");
+	            }
             	//商家封面
 				$img = $this->get_one_bysql("select img from sys_shop where id=$id");
 	            if(!$img){
@@ -311,8 +391,20 @@ class ShopAction extends BaseAction
 	            }
                 $sqlstr = "update sys_shop set $fields_str where id=$id";
                 $result = $this -> do_execute($sqlstr);
+                if($result){
+	                $url = 'http://124.128.23.74:8008/group16/hm_cjml/index.php?id='.$id;
+					$qrcode_url = sys_get_qrcode($url);
+					$qrcode_big_url = sys_get_big_qrcode($url);
+					$sqlstr = " update sys_shop set qrcode='$qrcode_url',qrcode_big='$qrcode_big_url' where id =$id ";
+					$this->do_execute($sqlstr);
+                }
+                sys_out_result($result);
             }
             else{//新增
+            	$shop_id = $this->get_one_bysql("select id from sys_shop where username='$username'");
+	            if($shop_id){
+		            sys_out_fail("该账号已存在");
+	            }
             	if (!empty($_FILES['temp_file']['name'])) {
 	                $upload_array = sys_upload_file(1,600,240);
 	                $fields_str .= ",img='$upload_array[1]',bigimg='$upload_array[0]'";
@@ -326,20 +418,26 @@ class ShopAction extends BaseAction
                 $result = $this -> do_execute($sqlstr);
                 $shop_id = $this->get_insert_id();
                 if ($shop_id) {
-					$url = SYS_ROOT.'index.php?id='.$shop_id;
+					$url = 'http://124.128.23.74:8008/group16/hm_cjml/index.php?id='.$shop_id;
 					$qrcode_url = sys_get_qrcode($url);
 					$qrcode_big_url = sys_get_big_qrcode($url);
 					$sqlstr = " update sys_shop set qrcode='$qrcode_url',qrcode_big='$qrcode_big_url' where id =$shop_id ";
 					$this->do_execute($sqlstr);
-				} 
+					sys_out_success("需先通知商家充值，只有商家红包池余额不为空才可参与抽奖");
+				}else{
+					sys_out_result($result);
+				}
             }
-            sys_out_result($result);
+            
         }
         else{
             $id = _REQUEST('id');
+            $lng = _REQUEST('lng');
+            $lat = _REQUEST('lat');
             $GLOBALS['cur_operate'] = $id ? 2 : 1;//目前的操作类型，2^0:新增;2^1:编辑
             $form_items = array(
                 array('name'=>'id','_parser'=>'form_item/form/hidden'),
+                array('name'=>'haha','_parser'=>'form_item/form/hidden'),
                 array('_parser'=>'tab/default','_children'=>array(
                     array('label'=>'基本信息','_parser'=>'container/default','_children'=>array(
                         array('name'=>'name','label'=>'商家名称','required'=>1,
@@ -361,17 +459,17 @@ class ShopAction extends BaseAction
                         ],
                         array('name'=>'validflag','label'=>'商家状态',
 		                    '_parser'=>'form_item/collect/radio',
-		                    'data'=>array('1'=>'正常','2'=>'冻结')
+		                    'data'=>array('1'=>'正常','2'=>'冻结'),'default'=>'1'
 		                ),
 		                array('name'=>'isrecommend','label'=>'是否推荐',
 		                    '_parser'=>'form_item/collect/radio',
-		                    'data'=>array('1'=>'推荐','2'=>'不推荐')
+		                    'data'=>array('1'=>'推荐','2'=>'不推荐'),'default'=>'2'
 		                ),
 		                array('name'=>'orderby','label'=>'推荐排序','required'=>0,
                             '_parser'=>'form_item/form/input','type'=>'text',
                             '_validation'=>array(
                                 'isNumber'=>array(true,"必须是数字"),
-                                'min'=>[1, '最小值1'],
+                                'min'=>[0, '最小值0'],
                             ),
                         ),
 		                array('name'=>'averfee','label'=>'人均价','required'=>1,
@@ -389,9 +487,13 @@ class ShopAction extends BaseAction
                         ),
                         array('name'=>'opentime','label'=>'营业时间','required'=>1,
                             '_parser'=>'form_item/form/time','type'=>'text',
+                            'related'=>[
+		                        ['name'=>'opentime_start'],
+		                        ['name'=>'opentime_end'],
+		                    ],
                         ),   
-                        ['name'=>'tag','label'=>'','_parser'=>'form_item/form/checkbox_one','required'=>0,
-                            'data'=>array('1'=>'24H营业'),
+                        ['name'=>'tag[]','label'=>'','_parser'=>'form_item/form/checkbox_one','required'=>0,
+                            'data'=>array('1'=>'24H营业'),'default'=>'1'
                         ],                                        
                         ['name'=>'cascade_1','label'=>'所属地区',
 		                    '_parser'=>'form_item/form/cascade_select_bind','type'=>'text','placeholder'=>'','required'=>1,
@@ -420,6 +522,126 @@ class ShopAction extends BaseAction
                                 'maxlength'=>array(140,"最长140个字符")
                             ),
                         ),
+                        ['name'=>'arrival_rate','label'=>'商家到账率','placeholder'=>'','required'=>1,
+		                    '_parser'=>'form_item/form/input','type'=>'text',
+		                    '_validation'=>[
+		                        'number'=>[true,'必须是数字'],
+		                        'min'=>[0,'必须大于等于0'],
+		                        'max'=>[1,'必须小于等于1'],
+		                    ],
+		                ],
+						['name'=>'wealth_rate','label'=>'财气转换率','placeholder'=>'','required'=>1,
+		                    '_parser'=>'form_item/form/input','type'=>'text',
+		                    '_validation'=>[
+		                        'number'=>[true,'必须是数字'],
+		                        'min'=>[0,'必须大于等于0'],
+		                        'max'=>[1,'必须小于等于1'],
+		                    ],
+		                ],
+		                array('name'=>'service_type','label'=>'服务费类型',
+		                    '_parser'=>'form_item/collect/radio',
+		                    'data'=>array('1'=>'每笔比率','2'=>'每笔固定')
+		                ),
+		                ['name'=>'service_fee','label'=>'每笔定额','placeholder'=>'','required'=>0,
+		                    '_parser'=>'form_item/form/input','type'=>'text',
+		                    '_validation'=>[
+		                        'number'=>[true,'必须是数字'],
+		                    ],
+		                ],
+                    )),
+                    array('label'=>'指定红包/积分规则','_parser'=>'container/default','_children'=>array(
+                        array('name'=>'score_type','label'=>'积分类型','required'=>1,
+		                    '_parser'=>'form_item/collect/radio',
+		                    'data'=>array('1'=>'固定积分','2'=>'区间积分'),'default'=>'1'
+		                ),
+                        array('name'=>'gu_score','label'=>'固定积分','required'=>0,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            'placeholder'=>'输入固定值',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                //'min'=>[1, '最小值1'],
+                            ),
+                        ),
+                        array('name'=>'gu_scorechance','label'=>'固定中奖概率','required'=>0,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            'placeholder'=>'填写中奖概率【小数形式】',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                'min'=>[0, '最小值0'],
+                                'max'=>[1, '最大值1'],
+                            ),
+                        ),
+                        array('name'=>'qu_minscore','label'=>'最小积分值','required'=>0,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            'placeholder'=>'输入最小积分值',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                //'min'=>[1, '最小值1'],
+                            ),
+                        ),
+                        array('name'=>'qu_maxscore','label'=>'最大积分值','required'=>0,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            'placeholder'=>'输入最大积分值',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                //'min'=>[1, '最小值1'],
+                            ),
+                        ),
+                        array('name'=>'qu_scorechance','label'=>'区间中奖概率','required'=>0,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            'placeholder'=>'填写中奖概率【小数形式】',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                'min'=>[0, '最小值0'],
+                                'max'=>[1, '最大值1'],
+                            ),
+                        ),
+                        array('name'=>'redbag_type','label'=>'红包类型','required'=>1,
+		                    '_parser'=>'form_item/collect/radio',
+		                    'data'=>array('1'=>'固定红包','2'=>'区间红包'),'default'=>'1'
+		                ),
+                        array('name'=>'gu_redbag','label'=>'固定红包','required'=>0,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            'placeholder'=>'输入固定值',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                //'min'=>[1, '最小值1'],
+                            ),
+                        ),
+                        array('name'=>'gu_redbagchance','label'=>'固定中奖概率','required'=>0,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            'placeholder'=>'填写中奖概率【小数形式】',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                'min'=>[0, '最小值0'],
+                                'max'=>[1, '最大值1'],
+                            ),
+                        ),
+                        array('name'=>'qu_minredbag','label'=>'最小红包值','required'=>0,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            'placeholder'=>'输入最小红包值',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                //'min'=>[1, '最小值1'],
+                            ),
+                        ),
+                        array('name'=>'qu_maxredbag','label'=>'最大红包值','required'=>0,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            'placeholder'=>'输入最大红包值',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                //'min'=>[1, '最小值1'],
+                            ),
+                        ),
+                        array('name'=>'qu_redbagchance','label'=>'区间中奖概率','required'=>0,
+                            '_parser'=>'form_item/form/input','type'=>'text',
+                            'placeholder'=>'填写中奖概率【小数形式】',
+                            '_validation'=>array(
+                                'isNumber'=>array(true,"必须是数字"),
+                                'min'=>[0, '最小值0'],
+                                'max'=>[1, '最大值1'],
+                            ),
+                        ),
                     )),
                     array('label'=>'商家详情','_parser'=>'container/default','_children'=>array(
                         array('name'=>'content','label'=>'商家详情',
@@ -435,6 +657,13 @@ class ShopAction extends BaseAction
                 $sql_suffix = "from sys_shop mt ";
                 $sql_suffix .= "where mt.id=$id ";
                 $temp_array = $this->get_list_bysql("select $field_list $sql_suffix");
+                if($temp_array[0]['opentime'] == '24H'){
+	                $temp_array[0]['tag[]'] = array('1');
+                }else{
+	                $opentime_arr = explode('—',$temp_array[0]['opentime']);
+	                $temp_array[0]['opentime_start'] = $opentime_arr[0];
+	                $temp_array[0]['opentime_end'] = $opentime_arr[1];
+                }
                 form_item_add_value($form_items,$temp_array[0]);//赋值
             }
             $component_data = array('_parser'=>'form/default',
@@ -458,17 +687,10 @@ class ShopAction extends BaseAction
             $service_fee = _POST('service_fee');
             $arrival_rate = _POST('arrival_rate');
         	$wealth_rate = _POST('wealth_rate');            
-            if($service_type == 1){  
-            	$service_rate = 1-$arrival_rate-$wealth_rate;
-            	if($service_rate <= 0){
-	            	sys_out_fail("商家到账率与财气转换率相加不能大于等于1");
-            	}
+            if($service_type == 1){
+            	$service_rate = 1-$arrival_rate;
 	            $fields_str .= ",service_rate=$service_rate";
             }else{
-	            $rate = $arrival_rate+$wealth_rate;
-	            if($rate > 1){
-		            sys_out_fail("商家到账率与财气转换率相加不能大于1");
-	            }
 	            if(!$service_fee){
 		            sys_out_fail("请填写每笔定额");
 	            }
@@ -540,9 +762,15 @@ class ShopAction extends BaseAction
             $regdate = sys_get_time();
             if($id){//修改
             	$sql_array = NULL;
-            	$add_before = $this->get_one_bysql("select recharge_redbag from sys_shop where id=$id");
+            	$shop_list = $this->get_list_bysql("select recharge_redbag,validflag from sys_shop where id=$id");
+            	$add_before = $shop_list[0]['recharge_redbag'];
+            	$validflag = $shop_list[0]['validflag'];
             	$add_after = $add_before + $fee;
-                $sql_array[] = "update sys_shop set recharge_redbag=recharge_redbag+$fee,redbag=redbag+$fee where id=$id";
+            	if($validflag == 3){
+	            	$sql_array[] = "update sys_shop set recharge_redbag=recharge_redbag+$fee,redbag=redbag+$fee,validflag=1 where id=$id and validflag=3";
+            	}else{
+	            	$sql_array[] = "update sys_shop set recharge_redbag=recharge_redbag+$fee,redbag=redbag+$fee where id=$id";
+            	}              
                 $sql_array[] = "insert into sys_recharge_redbag set type=1,fee='$fee',shop_id=$id,regdate='$regdate',add_before=$add_before,add_after=$add_after";
                 $result = $this->do_transaction($sql_array);
             }
@@ -587,9 +815,15 @@ class ShopAction extends BaseAction
             $regdate = sys_get_time();
             if($id){//修改
                 $sql_array = NULL;
-                $add_before = $this->get_one_bysql("select recharge_redbag from sys_shop where id=$id");
+                $shop_list = $this->get_list_bysql("select recharge_redbag,validflag from sys_shop where id=$id");
+            	$add_before = $shop_list[0]['recharge_redbag'];
+            	$validflag = $shop_list[0]['validflag'];
             	$add_after = $add_before + $fee;
-                $sql_array[] = "update sys_shop set recharge_redbag=recharge_redbag+$fee,redbag=redbag+$fee where id=$id";
+            	if($validflag == 3){
+	            	$sql_array[] = "update sys_shop set recharge_redbag=recharge_redbag+$fee,redbag=redbag+$fee,validflag=1 where id=$id and validflag=3";
+            	}else{
+	            	$sql_array[] = "update sys_shop set recharge_redbag=recharge_redbag+$fee,redbag=redbag+$fee where id=$id";
+            	}
                 $sql_array[] = "insert into sys_recharge_redbag set type=1,fee='$fee',shop_id=$id,regdate='$regdate',add_before=$add_before,add_after=$add_after";
                 $result = $this->do_transaction($sql_array);
             }
@@ -808,6 +1042,12 @@ class ShopAction extends BaseAction
             array('name'=>'shop_name','cls'=>'w60','title'=>'商家名称'),
             array('name'=>'flag_text','cls'=>'w60','title'=>'商品状态'),
             array('name'=>'classfiyname','cls'=>'w60','title'=>'商品类别'),
+            //array('name'=>'remarks','cls'=>'w100','title'=>'商品信息'),
+            array('name'=>'','title'=>'商品信息','cls'=>'w50','_after_parser'=>array(
+                '_parser'=>'button_item/td_a_get','text'=>'查看','title'=>'1_查看','full'=>0,
+                'target'=>'inner_frame',
+                'url'=>'Shop/goodremarks_get','url_param'=>array('id'=>'3_id')
+            )),
             array('name'=>'','title'=>'商品描述','cls'=>'w50','_after_parser'=>array(
                 '_parser'=>'button_item/td_a_get','text'=>'查看','title'=>'1_查看','full'=>0,
                 'target'=>'inner_frame',
@@ -865,6 +1105,26 @@ class ShopAction extends BaseAction
 
         $fields = array(
             array('title'=>'商家详情','value'=>$temp_array['content']),
+        );
+        $component_data = array('_parser'=>'table/detail','title'=>'',
+            'fields'=>$fields
+        );
+        _display($component_data);
+    }
+    
+    public function goodremarks_get(){
+        $id = _REQUEST('id');
+        if(!$id) sys_out_fail("参数传递不正确");
+
+        $sqlstr = "select * from sys_good where id =$id";
+        $result_r = $this -> get_list_bysql($sqlstr);
+        int_to_string($result_r,array(
+
+        ));
+        $temp_array = $result_r[0];
+
+        $fields = array(
+            array('title'=>'商品信息','value'=>$temp_array['remarks']),
         );
         $component_data = array('_parser'=>'table/detail','title'=>'',
             'fields'=>$fields
@@ -976,6 +1236,13 @@ class ShopAction extends BaseAction
         }else{
 	        $orderby_str = "mt.id desc";
         }
+        $regdate_start=_REQUEST('regdate_start');
+        if ($regdate_start) $sql_suffix.=" and mt.doregdate>='$regdate_start'";
+        $regdate_end=_REQUEST('regdate_end');
+        if ($regdate_end){
+			$regdate_end = date("Y-m-d", strtotime("+1 day" , strtotime($regdate_end)));
+			$sql_suffix.=" and mt.doregdate<='$regdate_end'";
+	    }
 
         //查询数据
         $list_items = $this -> admin_get_page($field_list,$sql_suffix,$orderby_str);
@@ -988,6 +1255,7 @@ class ShopAction extends BaseAction
         $search_items = array(
         	array('name'=>'name','placeholder'=>'请输入商品ID、商品名称、商家ID、商家名称','cls'=>'w300','_parser'=>'form_item/search/input'),
             array('name'=>'doflag','_parser'=>'form_item/search/select','data'=>array(''=>'审核状态','1'=>'待审核','2'=>'已通过','3'=>'已拒绝'),'style'=>'width:100px;'),
+            array('name'=>'regdate','label'=>'审核时间','_parser'=>'form_item/search/date'),  
             ['name'=>'cascade_1','label'=>'商品类别',
                 '_parser'=>'form_item/search/cascade_select_bind','type'=>'text','placeholder'=>'','required'=>1,
                 'related'=>[
