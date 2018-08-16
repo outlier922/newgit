@@ -180,20 +180,6 @@ class PublicAction extends Action {
 	*/
 	protected function pub_add_systemnotice($leveltype,$keytype,$keyid,$content,$client_id,$from_id=1,$push_method=1)
 	{
-		//首先插入系统通知表
-		$sqlstr_array = NULL;
-		$sqlstr_array[]="insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='" . sys_get_time() . "',looktype=0,keytype=2";
-		$sqlstr_array[]="update sys_o2order set payflag=5 where id=$keyid and payflag=2 and client_id=$client_id";
-		$sqlstr_array[]="update sys_out_no set is_do=3 where o2order_id=$keyid and is_do=2";
-		$order_list = $this->get_list_bysql("select num,good_id,totalfee from sys_o2order where id=$keyid");
-		$num = $order_list[0]['num'];
-		$good_id = $order_list[0]['good_id'];
-		$totalfee = $order_list[0]['totalfee'];
-		$sqlstr_array[]="update sys_good set salenum=salenum-$num where id=$good_id";
-		$sqlstr_array[]="update sys_client set feeaccount=feeaccount+$totalfee,returnfee=returnfee+$totalfee where id=$client_id";
-		$sqlstr_array[]="insert into sys_cash set client_id=$client_id,regdate='" . sys_get_time() . "',score=$totalfee,cashflag=4,isget=1";;
-		$result = $this->do_transaction($sqlstr_array);
-		unset($sqlstr_array);
 		$this->pub_async_push($leveltype,$keytype,1,$content,$client_id,$from_id,$push_method);//异步推送
 		return $result;
 	}
@@ -367,6 +353,18 @@ class PublicAction extends Action {
 		//sys_log($sqlstr);
 		return $result;
 	}
+
+	//验证核销码是否存在 return:true |false
+    protected function get_code($shop_id){
+	    $code = mt_rand(10000000,99999999);
+        $sqlstr = "select count(*) from sys_card_no where out_no='$code' and shop_id=$shop_id";
+        $client_count = $this -> get_one_bysql($sqlstr);
+        if($client_count > 0){
+	        get_code();
+        }else{
+	        return $code;
+        }
+    }
 	
 
 }
