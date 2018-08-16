@@ -16,9 +16,9 @@
 （2）支付宝或银联在调试模式下会记录日志到 插件根目录\log.txt
 | --------------------------------------------------------
 */
-define("SYS_DEBUG_MODE",true);
+define("SYS_DEBUG_MODE",false);
 define("SYS_SAFE_MODE",true);
-define("SYS_SERVER_TYPE",2);//1:本机localhost 2:公司测试机146  3：公司正式服务器 4:客户正式服务器
+define("SYS_SERVER_TYPE",4);//1:本机localhost 2:公司测试机146  3：公司正式服务器 4:客户正式服务器
 define("SYS_GROUP_NAME","group16");//    group1是开发小组名，需要换成你自己的
 define("SYS_UPLOAD_MAX",5);//上传文件最大限制，单位：M（需要php.ini环境支持）
 /*
@@ -30,7 +30,7 @@ define("HEMA_PID","254");//定义公司分配的项目编号（非常重要,比�
 define("HEMA_PWD","kSHtFVxMvmEOiP5");//定义公司分配的项目登录密码，非常重要
 define("DATAKEY","I5Zm4rNXKLdBi3AM");//定义公司分配的项目唯一串  bd769d30ca30703650344e9d1fce8da3
 define("SYS_EN_NAME","hm_cjml");	//定义项目英文名称
-define("SYS_ZH_NAME","超级玛丽");	//定义项目中文名称（不允许超过6个汉字）
+define("SYS_ZH_NAME","蚂蚁乐享");	//定义项目中文名称（不允许超过6个汉字）
 define("SYS_COMPANY","日照市东港区林竹商贸有限公司");  //定义客户公司名称
 define("SYS_SERVICE_PHONE","0531-67804172");	//定义客户公司电话
 define("SYS_DEFAULT_IMAGE","");	//定义客户公司电话
@@ -70,12 +70,12 @@ switch(SYS_SERVER_TYPE)
 		define('DB_PWD', 'group1_1234'); 	//数据库密码
 		break;
 	case 4://客户正式服务器
-		define("SYS_SERVER_IP","139.224.234.246");			//域名或公网IP均可
+		define("SYS_SERVER_IP","47.92.129.85");			//域名或公网IP均可
 		define("SYS_ROOT","http://".SYS_SERVER_IP."/");	//定义项目根地址(网络绝对路径)
 		define("SYS_ROOT_URL","/");		//定义项目根地址（本地相对路径）
 		define('DB_HOST', '127.0.0.1');		//数据库服务器主机地址(此处可以使用内网IP提升速度)
 		define('DB_USER', 'root'); 		//数据库帐号
-		define('DB_PWD', 'Linghangcn1213'); 		//数据库密码
+		define('DB_PWD', 'sdhm20170913'); 		//数据库密码
 		break;
 	default:
 		die("服务器类型配置错误");
@@ -129,7 +129,7 @@ define("MAIL_PWD","123456aA");
 定义业务耦合信息（此区域请根据业务情况适当配置和扩展）
 | --------------------------------------------------------
 */
-define("SYS_ANDROID_URL",SYS_ROOT."download/hm_lhkj".ANDROID_LAST_VERSION.".apk");//定义Android升级路径
+define("SYS_ANDROID_URL",SYS_ROOT."download/hm_cjml".ANDROID_LAST_VERSION.".apk");//定义Android升级路径
 define("SYS_IPHONE_URL","");//定义iPhone store升级路径，填空表示暂未上架苹果store
 define("SYS_IPHONE_SHOW_URL","");//定义iPhone分发路径，填空表示暂未上架苹果store
 define("SYS_IPHONE_SHOW_MAXDOWN","50");//定义iPhone分发最大下载次数，防止查封苹果证书

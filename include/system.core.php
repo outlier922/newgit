@@ -586,8 +586,7 @@ function sys_out_success($parmMsg=NULL,$infor_array=NULL)
 	unset($result_array);
 	$result_array['success'] = true;//注意：为了和extjs兼容，此处必须不带引号	
 	
-	if(empty($parmMsg)) $parmMsg="操作成功！";	
-	
+	if(empty($parmMsg)) $parmMsg="操作成功！";
 	$result_array['msg'] = $parmMsg;	
 	$result_array['infor'] = $infor_array;//固定输出infor字段，以适配各种复杂情况
 	sys_out_json($result_array);

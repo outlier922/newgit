@@ -20,11 +20,11 @@ function ext_add_notice($keytype,$keyid,$content,$client_id,$from_id=1,$push_met
 
 	//首先插入系统通知表
 	$regdate = sys_get_time();
-	$sqlstr = "insert into sys_mess(content,client_id,from_id,looktype,regdate) values ";
+	$sqlstr = "insert into sys_mess(content,client_id,from_id,looktype,regdate,keytype,keyid) values ";
 	$client_id_a = explode(',',$client_id);
 	$sql_values = "";
 	foreach ($client_id_a as $client_id_a_i){
-		$sql_values .= "('$content',$client_id_a_i,$from_id,0,'$regdate'),";
+		$sql_values .= "('$content',$client_id_a_i,$from_id,0,'$regdate',$keytype,$keyid),";
 	}
 	if($client_id_a){
 		$sqlstr .= substr($sql_values,0,-1);
@@ -76,6 +76,9 @@ function ext_pay_success($out_trade_no,$trade_no,$total_fee,$keytype)
 	if($type_prefix == 'SKY'){
 		$ordertype = 2;
 		$client_id=substr($out_trade_no,19,strlen($out_trade_no)-19);
+	}else if($type_prefix == 'YHQ'){
+		$ordertype = 3;
+		$client_id=substr($out_trade_no,19,strlen($out_trade_no)-19);
 	}else{
 		$ordertype = 1;
 		$client_id=substr($out_trade_no,16,strlen($out_trade_no)-16);
@@ -87,34 +90,34 @@ function ext_pay_success($out_trade_no,$trade_no,$total_fee,$keytype)
 	if($ordertype == 1){
 		//防止重复异步
 		$sqlstr = " select * from sys_o2order where out_trade_no = '$out_trade_no'";
-		$temp_array = $sql_helper->get_list_bysql($sqlstr);		
+		$temp_array = $sql_helper->get_list_bysql($sqlstr);	
+		$id = $temp_array[0]['id'];	
 		$sqlstr_con_array[] = "update sys_o2order set trade_no='$trade_no',paytime='$paytime',paytype=$keytype,payflag=2 where out_trade_no='$out_trade_no'";
 		//发送支付成功通知
 		$content = '订单'.$out_trade_no.'已支付成功！请及时到店消费';
-		send_mess(2,$content,$client_id);
+		send_mess(2,$content,$client_id,1);
 		//写入通知列表
-		$sqlstr_con_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='$paytime',looktype=0,keytype=2";
+		$sqlstr_con_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='$paytime',looktype=0,keytype=2,type=1,keyid=$id";
 		//更新商品表数据信息	
 		$num = $temp_array[0]['num'];
 		$good_id = $temp_array[0]['good_id'];
+		$shop_id = $sql_helper->get_one_bysql("select shop_id from sys_good where id=$good_id");
 		$sqlstr_con_array[] = "update sys_good set salenum=salenum+$num where id='$good_id'";
+		$sqlstr_con_array[] = "update sys_shop set salenum=salenum+$num where id='$shop_id'";
 		//生成核销码，并记录表中
-		$id = $temp_array[0]['id'];
 		for ($x=0; $x<$num; $x++) {
 		  	$out_no = date("YmdHis").rand(1,9999);
 		  	$sqlstr_con_array[] = "insert into sys_out_no set o2order_id=$id,out_no='$out_no'";
-		}
-		$shop_id = $sql_helper->get_one_bysql("select shop_id from sys_good where id=$good_id");
+		}		
 		$sqlstr_con_array[] = "insert into sys_o2order_record set order_id=$id,shop_id=$shop_id,num=$num,is_verification=2,is_return=2,regdate='$paytime'";
-	}else{
+	}else if($ordertype == 2){
 		$sqlstr = " select s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,sy.totalfee,sy.shop_id,s.name as shop_name,s.address from sys_sysorder sy left join sys_shop s on sy.shop_id = s.id where sy.out_trade_no = '$out_trade_no'";
 		$temp_array = $sql_helper->get_list_bysql($sqlstr);
-		$sqlstr_con_array[] = "update sys_sysorder set trade_no='$trade_no',paytime='$paytime',paytype=$keytype,payflag=1 where out_trade_no='$out_trade_no'";
 		//发送支付成功通知
 		$content = '扫码支付订单'.$out_trade_no.'已支付成功！';
-		send_mess(2,$content,$client_id);
+		send_mess(2,$content,$client_id,2);
 		//写入通知列表
-		$sqlstr_con_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='$paytime',looktype=0,keytype=2";
+		$sqlstr_con_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='$paytime',looktype=0,keytype=2,type=2";
 		$arrival_rate = $temp_array[0]['arrival_rate'];
 		$wealth_rate = $temp_array[0]['wealth_rate'];
 		$service_type = $temp_array[0]['service_type'];
@@ -124,38 +127,72 @@ function ext_pay_success($out_trade_no,$trade_no,$total_fee,$keytype)
 		$address = $temp_array[0]['address'];
 		if($service_type == 1){
 			$arrival_fee = 	round($totalfee*$arrival_rate,2);				
-			$wealth_fee = 	round($totalfee*$wealth_rate,2);	
-			$service_fee = 	$totalfee - $arrival_fee - $wealth_fee;									
+			$wealth_fee = 	round($totalfee*$wealth_rate,2);
+			$service_fee = 	$totalfee - $arrival_fee;									
 		}else{
 			$service_fee = $shop_list[0]['service_fee'];
-			$totalfees = $totalfee - $service_fee;
-			$arrival_fee = 	round($totalfees*$arrival_rate,2);				
-			$wealth_fee = 	round($totalfees*$wealth_rate,2);					
+			$arrival_fee = $totalfee - $service_fee;				
+			$wealth_fee = 	round($totalfee*$wealth_rate,2);					
 		}
 		$islive = $sql_helper->get_one_bysql("select islive from sys_client where id=$client_id");
 		if($islive == 1){					
 			$sqlstr_con_array[] = "update sys_shop set feeaccount=feeaccount+$arrival_fee,wealth_redbag=wealth_redbag+$wealth_fee,redbag=redbag+$wealth_fee where id=$shop_id";				
 			$sqlstr_con_array[] = "update sys_client set wealth=wealth+$wealth_fee where id=$client_id";
 			$sqlstr_con_array[] = "insert into sys_wealth_redbag set type=1,fee=$wealth_fee,regdate='$paytime',client_id=$client_id,shop_id=$shop_id";
-			$sqlstr_con_array[] = "insert into sys_income set totalfee=$totalfee,type=1,client_id=$client_id,shop_id=$shop_id,shop_name='$shop_name',arrival_fee=$arrival_fee,wealth_fee=$wealth_fee,service_fee=$service_fee,address='$address',regdate='$paytime'";
+			$sqlstr_con_array[] = "insert into sys_income set totalfee=$totalfee,type=4,client_id=$client_id,shop_id=$shop_id,shop_name='$shop_name',arrival_fee=$arrival_fee,wealth_fee=$wealth_fee,service_fee=$service_fee,address='$address',regdate='$paytime'";
 		}else{
 			$wealth_fee = 0;
-			$service_fee = $totalfee - $arrival_fee;
 			$sqlstr_con_array[] = "update sys_shop set feeaccount=feeaccount+$arrival_fee where id=$shop_id";
-			$sqlstr_con_array[] = "insert into sys_income set totalfee=$totalfee,type=1,client_id=$client_id,shop_id=$shop_id,shop_name='$shop_name',arrival_fee=$arrival_fee,wealth_fee=$wealth_fee,service_fee=$service_fee,address='$address',regdate='$paytime'";
+			$sqlstr_con_array[] = "insert into sys_income set totalfee=$totalfee,type=4,client_id=$client_id,shop_id=$shop_id,shop_name='$shop_name',arrival_fee=$arrival_fee,wealth_fee=$wealth_fee,service_fee=$service_fee,address='$address',regdate='$paytime'";
 		}
+		$sqlstr_con_array[] = "update sys_sysorder set trade_no='$trade_no',paytime='$paytime',paytype=$keytype,payflag=1,wealth='$wealth_fee' where out_trade_no='$out_trade_no'";
+	}else if($ordertype == 3){
+		$sqlstr_con_array[] = "update sys_cardorder set trade_no='$trade_no',paytime='$paytime',paytype=$keytype,payflag=1 where out_trade_no='$out_trade_no'";
+		$order_list = $sql_helper->get_list_bysql("select id,num,total_score,total_price,card_id,shop_id from sys_cardorder where out_trade_no='$out_trade_no'");
+		$id = $order_list[0]['id'];
+		$num = $order_list[0]['num'];
+		$total_score = $order_list[0]['total_score'];
+		$card_id = $order_list[0]['card_id'];
+		$total_price = $order_list[0]['total_price'];
+		$shop_id = $order_list[0]['shop_id'];
+		//发送支付成功通知
+		$content = '优惠券支付订单'.$out_trade_no.'已支付成功！';
+		send_mess(2,$content,$client_id,3);
+		//写入通知列表
+		$sqlstr_con_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='$paytime',looktype=0,keytype=2,type=3,keyid=$id";			
+		$sqlstr_con_array[] = "update sys_card set stock=stock-$num,convertnum=convertnum+$num where id=$card_id";				
+		$sqlstr_con_array[] = "insert into sys_scoredetail set score=$total_score,scoretype=5,regdate='$paytime',client_id=$client_id,isget=1";
+		$sqlstr_con_array[] = "update sys_shop set feeaccount=feeaccount+$total_price,cardfee=cardfee+$total_price where id=$shop_id";
 	}
 	$sql_helper->do_transaction($sqlstr_con_array);
 	sys_close_db($sql_helper);							
 }
 
 
-function send_mess($keytype,$content,$client_id,$from_id=1){
+function ext_pay_fail($out_trade_no){
+	$sql_helper=new Mysql();
+	$sqlstr_con_array=NULL;
+	$type_prefix = substr($out_trade_no,0,3);
+	if($type_prefix == 'YHQ'){
+		$client_id=substr($out_trade_no,19,strlen($out_trade_no)-19);
+		$order_list = $sql_helper->get_list_bysql("select id,total_score from sys_cardorder where out_trade_no='$out_trade_no'");
+		$total_score = $order_list[0]['total_score'];
+		$orderid = $order_list[0]['id'];
+		$sqlstr_con_array[] = "update sys_client set score=score+$total_score where id = $client_id";
+		$sqlstr_con_array[] = "delete from sys_cardorder where id=$orderid and payflag=2";
+		$sqlstr_con_array[] = "delete from sys_card_no where cardorder_id=$orderid and is_do=2";
+		$sql_helper->do_transaction($sqlstr_con_array);
+	}
+	sys_close_db($sql_helper);
+}
+
+
+function send_mess($keytype,$content,$client_id,$keyid=0,$from_id=1){
 	$url =SYS_WEB_SERVICE."V100/push_add";//调用BaseAction中的具体推送方法
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, "keytype=$keytype&keyid=1&from_id=$from_id&content={$content}&client_idlist={$client_id}&push_method=1");
+	curl_setopt($ch, CURLOPT_POSTFIELDS, "keytype=$keytype&keyid=$keyid&from_id=$from_id&content={$content}&client_idlist={$client_id}&push_method=1");
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);//正式部署必须为1，防止向客户端输出
 	//特别注意：调试时，将CURLOPT_RETURNTRANSFER置为0,可以查看具体输出
 	curl_setopt($ch, CURLOPT_TIMEOUT, 1);//设置成1秒后超时,不用等待返回结果
@@ -177,7 +214,8 @@ function ext_send_sms($mobile,$content)
 	if(empty($mobile) || empty($content)) return 0;	
 	//if(mb_strlen($content,'utf-8')>65) return 0;	// 短信内容最长65个字
 	//$content=$content."(".SYS_ZH_NAME.")";
-	$url ="http://oa.dpthinking.com/index.php/Webadmin/?m=Manage&a=sms_send3";
+	$url ="http://oa.hemaapp.cn/index.php/Webadmin/?m=Manage&a=sms_send3";
+	//$url ="http://oa.dpthinking.com/index.php/Webadmin/?m=Manage&a=sms_send3";
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_POST, true);
@@ -392,27 +430,21 @@ function _parse(&$component){
 }
 //展示页面
 function _display(&$component){
+	$str = $_SERVER["QUERY_STRING"];
+	$act = substr($str , 5 , 5);
 	ob_start();
-	include SYS_UI_COMPONENT."common/header.php";
+	if($act == 'admin'){
+		include SYS_UI_COMPONENT."common/header.php";
+	}else{
+		include SYS_UI_COMPONENT."common/header1.php";
+	}
+	
 	_parse($component);
 	include SYS_UI_COMPONENT."common/footer.php";
 	ob_end_flush();
 	die;
 }
 //递归向表单中添加值
-//function form_item_add_value(&$form,&$data){
-//	for($i=0;$i<count($form);$i++){
-//		$parser = $form[$i]['_parser'];
-//		if(substr($parser,0,9) != 'form_item'){
-//			form_item_add_value($form[$i]['_children'],$data);
-//		}
-//		else{
-//			if(!isset($form[$i]['value']) || $form[$i]['value'] === ''){
-//				$form[$i]['value'] = $data[$form[$i]['name']];
-//			}
-//		}
-//	}
-//}
 function form_item_add_value(&$form,&$data){
     for($i=0;$i<count($form);$i++){
         $parser = $form[$i]['_parser'];
