@@ -98,6 +98,11 @@ class GoodAction extends BaseAction
             array('name'=>'doflag_text','cls'=>'w100','title'=>'审核状态'),
             array('name'=>'flag_text','cls'=>'w100','title'=>'商品状态'),
             array('name'=>'classfiyname','cls'=>'w100','title'=>'商品类别'),
+            array('name'=>'','title'=>'商品信息','cls'=>'w100','_after_parser'=>array(
+                '_parser'=>'button_item/td_a_get','text'=>'查看','title'=>'1_查看','full'=>0,
+                'target'=>'inner_frame',
+                'url'=>'Good/goodremarks_get','url_param'=>array('id'=>'3_id')
+            )),
             array('name'=>'','title'=>'商品描述','cls'=>'w100','_after_parser'=>array(
                 '_parser'=>'button_item/td_a_get','text'=>'查看','title'=>'1_查看','full'=>0,
                 'target'=>'inner_frame',
@@ -156,6 +161,26 @@ class GoodAction extends BaseAction
 
         $fields = array(
             array('title'=>'商家详情','value'=>$temp_array['content']),
+        );
+        $component_data = array('_parser'=>'table/detail','title'=>'',
+            'fields'=>$fields
+        );
+        _display($component_data);
+    }
+
+    public function goodremarks_get(){
+        $id = _REQUEST('id');
+        if(!$id) sys_out_fail("参数传递不正确");
+
+        $sqlstr = "select * from sys_good where id =$id";
+        $result_r = $this -> get_list_bysql($sqlstr);
+        int_to_string($result_r,array(
+
+        ));
+        $temp_array = $result_r[0];
+
+        $fields = array(
+            array('title'=>'商品信息','value'=>$temp_array['remarks']),
         );
         $component_data = array('_parser'=>'table/detail','title'=>'',
             'fields'=>$fields
@@ -222,23 +247,27 @@ class GoodAction extends BaseAction
             //获取字段
             $isrecommend = $_POST['isrecommend'];
             $orderby = $_POST['orderby'];
-            if($isrecommend == 1){
-	            if(!$orderby){
-		            sys_out_fail("请填写排序");
-	            }
-	            $orderonly = $this->get_one_bysql("select orderby from sys_good where shop_id=$shop_id and orderby=$orderby and id!=$id");
-	            if($orderonly){
-		            sys_out_fail("改商家下的商品已设置该排序次数");
-	            }
-            }
-            $save_fields = array('name','present_price','original_price','isrecommend','orderby');
+            $save_fields = array('name','present_price','original_price','isrecommend','orderby','remarks');
             $post_keys = array_keys($_POST);
             $post_fields = array_intersect($save_fields,$post_keys);//取公共
             $fields_str = fields2SqlStrByPost($post_fields);           
             $content = $_POST['content'];
-            $fields_str .= ",content='$content',shop_id=$shop_id";
+            $fields_str .= ",content='$content',shop_id=$shop_id,doflag=1";
 
             if($id){//修改
+            	if($isrecommend == 1){
+		            $num = $this->get_one_bysql("select count(*) from sys_good where shop_id=$shop_id and isrecommend=1 and id!=$id");
+		            if($num >= 2){
+			            sys_out_fail("最多可推荐2个商品");
+		            }
+		            if(!$orderby){
+			            sys_out_fail("请填写排序");
+		            }
+		            $orderonly = $this->get_one_bysql("select orderby from sys_good where shop_id=$shop_id and orderby=$orderby and id!=$id");
+		            if($orderonly){
+			            sys_out_fail("改商家下的商品已设置该排序次数");
+		            }
+	            }
             	//商家封面
 				$img = $this->get_one_bysql("select img from sys_good where id=$id");
 	            if(!$img){
@@ -254,6 +283,19 @@ class GoodAction extends BaseAction
                 $result = $this -> do_execute($sqlstr);
             }
             else{//新增
+            	if($isrecommend == 1){
+		            $num = $this->get_one_bysql("select count(*) from sys_good where shop_id=$shop_id and isrecommend=1");
+		            if($num >= 2){
+			            sys_out_fail("最多可推荐2个商品");
+		            }
+		            if(!$orderby){
+			            sys_out_fail("请填写排序");
+		            }
+		            $orderonly = $this->get_one_bysql("select orderby from sys_good where shop_id=$shop_id and orderby=$orderby");
+		            if($orderonly){
+			            sys_out_fail("改商家下的商品已设置该排序次数");
+		            }
+	            }
             	if (!empty($_FILES['temp_file']['name'])) {
 	                $upload_array = sys_upload_file(1,600,240);
 	                $fields_str .= ",img='$upload_array[1]',bigimg='$upload_array[0]'";
@@ -292,9 +334,15 @@ class GoodAction extends BaseAction
                                 'isNumber'=>array(true,"必须是数字")
                             ),
                         ),
+                        array('name'=>'remarks','label'=>'商品信息',
+                            '_parser'=>'form_item/form/textarea','required'=>1,
+                            '_validation'=>array(
+                                'maxlength'=>array(140,"最长140个字符")
+                            ),
+                        ),
                         array('name'=>'isrecommend','label'=>'是否推荐',
 		                    '_parser'=>'form_item/collect/radio',
-		                    'data'=>array('1'=>'推荐','2'=>'不推荐')
+		                    'data'=>array('1'=>'推荐','2'=>'不推荐'),'default'=>'2'
 		                ),
 		                array('name'=>'orderby','label'=>'推荐排序','required'=>0,
                             '_parser'=>'form_item/form/input','type'=>'text',
