@@ -21,12 +21,27 @@ class BaseAction extends PublicAction {
 	protected function _initialize() {
 	    parent::_initialize();
 
-		if(SYS_SAFE_MODE && ACTION_NAME!='webview' && ACTION_NAME!='push_add' && ACTION_NAME!='district_list'){
+		if(ACTION_NAME!='webview' && ACTION_NAME!='push_add' && ACTION_NAME!='district_list'){
 			$datetime = _POST('datetime');
 			$sign = _POST('sign');
-			//if(sys_get_timespan($datetime, sys_get_time(), 'i')>'60') sys_out_fail('非法操作',500);
+			if(sys_get_timespan($datetime, sys_get_time(), 'i')>'60') sys_out_fail('非法操作',500);
 			$signValue = md5(DATAKEY.'|'.$datetime.'|'.ACTION_NAME);
 			if($signValue != $sign) sys_out_fail('签名错误',500);
+		}
+		// 修正登录密码
+		if(true && isset($_POST['agent_from']) && $_POST['agent_from'] == 2){//浏览器登录
+			if(isset($_POST['password'])){
+				$_POST['password'] = md5(DATAKEY.md5($_POST['password']));
+			}
+			if(isset($_POST['paypassword'])){
+				$_POST['paypassword'] = md5(DATAKEY.md5($_POST['paypassword']));
+			}
+			if(isset($_POST['old_password'])){
+				$_POST['old_password'] = md5(DATAKEY.md5($_POST['old_password']));
+			}
+			if(isset($_POST['new_password'])){
+				$_POST['new_password'] = md5(DATAKEY.md5($_POST['new_password']));
+			}
 		}
 
 		//定义不需要检查登录令牌的接口数组
@@ -34,7 +49,7 @@ class BaseAction extends PublicAction {
 			'push_add','code_get', 'code_verify','client_add','client_login','client_verify','password_reset','webview','goods_list','one_ad_list',
 			'two_ad_list','bank_list','config_set','one_classify_list','two_classify_list','classify_list','shoporgood_list','shopshow_list','hotgood_list',
 			'comment_list','search_list','one_search_list','hotword_add','hotword_list','good_get','opencity_list','shoppay_get','two_shoporgood_list',
-			'two_shop_list'
+			'two_shop_list','city_list','reportag_list','card_list','card_get','lnglat_change'
 		);
 		if(!in_array(ACTION_NAME,$not_check_token_list))
 			sys_check_token();//非指定方法名，统一进行登录令牌有效性检查
@@ -132,6 +147,9 @@ class BaseAction extends PublicAction {
             )),
             
 			'my_root'=>array('title'=>'账户相关','child'=>array(
+
+			)),
+			'card_root'=>array('title'=>'优惠券相关','child'=>array(
 
 			)),
 			

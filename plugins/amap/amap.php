@@ -1,4 +1,13 @@
 <?php require_once dirname(dirname(dirname(__FILE__)))."/include/system.core.php";?>
+<?php
+	$lng = $_GET['lng'];
+	$lat = $_GET['lat'];
+	if($lng == undefined || $lat == undefined){
+		$lng = "119.52719";
+		$lat = "35.41646";
+	}
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -26,16 +35,29 @@
             background-color:#FF6;
         }
     </style>
-    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=68b0f6ae3f9a63b5cd9a593820c56361&plugin=AMap.Geocoder"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=6635e2b9f6ad3fb849fba7c6ce75c794&plugin=AMap.Geocoder"></script>
     <script>
         window.onload = function(){
             //初始化地图
+            var lng = "<?=$lng?>";
+            var lat = "<?=$lat?>";
             map = new AMap.Map("container", {
                 level:10,
                 resizeEnable: true,
-                center:new AMap.LngLat(117.009133, 36.664493),//济南市
+                center:new AMap.LngLat(lng, lat),//济南市
                 cursor:'move'
             });
+            var _icon = new AMap.Icon({
+                image : 'http://webapi.amap.com/theme/v1.3/markers/b/mark_bs.png',
+                imageSize : new AMap.Size(19,39)//设置图标大小
+            });
+            new AMap.Marker({
+	            map: map,
+	            icon: _icon,
+	            position: [lng,lat],
+	            offset: new AMap.Pixel(-12, -36)
+	        });
+
             //绑定单击地图事件
             AMap.event.addListener(map, 'click', function(e){
                 AMap.HeMa.clickListener(e);
@@ -140,9 +162,10 @@
          * @param mark
          */
         AMap.HeMa.clickListener = function(e){
+	        AMap.HeMa.deleteMark();//删除标注
             AMap.HeMa.setDistrictInfor(e);//设置地区信息
             AMap.HeMa.setCenterPosition(e.target,1,{lnglat: e.lnglat});//设置中心点
-            AMap.HeMa.deleteMark();//删除标注
+            
             AMap.HeMa.addMark(e);//添加标注
         }
         /**

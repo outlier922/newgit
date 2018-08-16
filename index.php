@@ -1,4 +1,19 @@
 <?php
+$str = "https://item.taobao.com/item.htm?spm=a230r.1.0.0.5dc1e18anBJvUQ&id=56200324422111&dgdfhfd=23531111111&fdg=13344";
+$num = strrpos($str,"&id=");
+if($num){
+	$strs = substr($str,$num+1);
+	$nums = strpos($strs,"&");
+	if($nums){
+		$str = substr($str,0,$num+$nums+1);
+	}	
+}
+
+	
+
+
+var_dump($num);echo '<br>';
+echo $str;die;
 require_once "include/system.core.php";	//加载公司框架核心函数定义文件
 //定义项目名称和路径
 define('APP_DEBUG',SYS_DEBUG_MODE);// 开启调试模式(必须定义在此处，顺序不可颠倒)

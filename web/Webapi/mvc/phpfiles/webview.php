@@ -34,7 +34,7 @@
       <td>[sys_web_service]+"webview/parm/shop/id/商家id</td>
     </tr>
     <tr>
-      <td>shop</td>
+      <td>good</td>
       <td>商品详情</td>
       <td>[sys_web_service]+"webview/parm/good/id/商品id</td>
     </tr>
@@ -42,6 +42,11 @@
       <td>ad</td>
       <td>广告详情</td>
       <td>[sys_web_service]+"webview/parm/ad/id/广告id</td>
+    </tr>
+    <tr>
+      <td>card</td>
+      <td>优惠券兑换说明</td>
+      <td>[sys_web_service]+"webview/parm/card/id/优惠券id</td>
     </tr>
     <tr>
       <td>&nbsp;</td>

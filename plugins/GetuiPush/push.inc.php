@@ -6,9 +6,9 @@ define('IOS_APPID','8fvsJsc2GP7ibzPcXiCHuA');
 define('IOS_APPKEY','g79HrpT7kc8tSBfYyAfD7A');
 define('IOS_MASTERSECRET','CnhqSLC6dj7qKWZc0ILq71');
 //安卓的
-define('ANDROID_APPID','TobMME8jnL6P3rWsARurT7');
-define('ANDROID_APPKEY','cCJS2P4v6OA1s0kFDUeV1A');
-define('ANDROID_MASTERSECRET','Ek3YBDMrqU5YXENUK03gyA');
+define('ANDROID_APPID','j1Ob2Wcq219G7Te9gRvvJ1');
+define('ANDROID_APPKEY','IIO7ZIVIgK7rvxvnStJh09');
+define('ANDROID_MASTERSECRET','NFMSmuYgOo6N3KZJ3vbBdA');
 //引入个推推送
 require_once(dirname(__FILE__) . '/' . 'IGt.Push.php');
 require_once(dirname(__FILE__) . '/' . 'igetui/IGt.AppMessage.php');

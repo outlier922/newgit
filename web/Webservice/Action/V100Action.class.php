@@ -47,19 +47,21 @@ class V100Action extends BaseAction
 			$referee_id = $this->get_one_bysql($sqlstr);
 			if (empty($referee_id)) sys_out_fail('推荐码不存在', 106);
 		}		
-		$fieldstr = "account='$account',password='$password',paypassword='$password',write_code='$referee_code',regdate='" . sys_get_time() . "'";
+		$fieldstr = "account='$account',password='$password',paypassword='$password',write_code='$referee_code',referee_code='$account',regdate='" . sys_get_time() . "'";
 		$sqlstr = " insert into sys_client set $fieldstr";
 		$this->do_execute($sqlstr);
 		$client_id = $this->get_insert_id();
 		if ($client_id) {		 
 			$sql_array = NULL;
-			$sql_array[] = " update sys_client set referee_code='$account' where id =$client_id ";
 			if($referee_id){
 				$invite_score = $this->get_one_bysql("select invite_score from sys_config where id=1");
 				$sql_array[] = " update sys_client set flag=2,score=score+$invite_score where id = $referee_id ";
-				$phone_list = $this-->get_list_bysql("select * from sys_phone where phone='$account' and client_id=$referee_id");
+				$sql_array[] = "insert into sys_scoredetail set score=$invite_score,scoretype=3,regdate='" . sys_get_time() . "',client_id=$referee_id,isget=1";
+				$phone_list = $this->get_list_bysql("select * from sys_phone where phone='$account' and client_id=$referee_id");
 				if($phone_list){
 					$sql_array[] = " update sys_phone set iszhuce=1 where phone='$account' and client_id=$referee_id ";
+				}else{
+					$sql_array[] = " insert into sys_phone set iszhuce=1,phone='$account',client_id=$referee_id,regdate='" . sys_get_time() . "'";
 				}
 			}
 			
@@ -236,11 +238,19 @@ class V100Action extends BaseAction
 			if($write_code){
 				if ($write_code != $referee_code) sys_out_fail('推荐码已填，不能修改', 106);
 			}else{
-				$sqlstr = "select id from sys_client where referee_code='$referee_code'";
-				$referee_id = $this->get_one_bysql($sqlstr);
+				$sqlstr = "select id,account from sys_client where referee_code='$referee_code'";
+				$referee_list = $this->get_list_bysql($sqlstr);
+				$referee_id = $referee_list[0]['id'];
+				$account = $referee_list[0]['account'];
 				if (empty($referee_id)) sys_out_fail('推荐码不存在', 106);
 				$invite_score = $this->get_one_bysql("select invite_score from sys_config where id=1");
 				$sql_array[] = " update sys_client set flag=2,score=score+$invite_score where id = $referee_id ";
+				$phone_list = $this->get_list_bysql("select * from sys_phone where phone='$account' and client_id=$referee_id");
+				if($phone_list){
+					$sql_array[] = " update sys_phone set iszhuce=1 where phone='$account' and client_id=$referee_id ";
+				}else{
+					$sql_array[] = " insert into sys_phone set iszhuce=1,phone='$account',client_id=$referee_id,regdate='" . sys_get_time() . "'";
+				}
 			}				
 		}
 		$sql_array[] = " update sys_client set nickname='$nickname',phone='$phone',write_code='$referee_code' where id = $client_id ";
@@ -275,11 +285,23 @@ class V100Action extends BaseAction
 			sys_out_success();
 		}else{
 			$sql_array[] = " update sys_client set write_code='$referee_code' where id = $client_id ";
-			$sqlstr = "select id from sys_client where referee_code='$referee_code'";
-			$referee_id = $this->get_one_bysql($sqlstr);
+			$sqlstr = "select id,account from sys_client where referee_code='$referee_code'";
+			$referee_list = $this->get_list_bysql($sqlstr);
+			$referee_id = $referee_list[0]['id'];
+			$account = $referee_list[0]['account'];
 			if (empty($referee_id)) sys_out_fail('推荐码不存在', 106);
 			$invite_score = $this->get_one_bysql("select invite_score from sys_config where id=1");
 			$sql_array[] = " update sys_client set flag=2,score=score+$invite_score where id = $referee_id ";
+			$sql_array[] = "insert into sys_scoredetail set score=$invite_score,scoretype=3,regdate='" . sys_get_time() . "',client_id=$referee_id,isget=1";
+			$phone_list = $this->get_list_bysql("select * from sys_phone where phone='$account' and client_id=$referee_id");
+			if($phone_list){
+				$list = $this->get_list_bysql("select * from sys_phone where phone='$account' and client_id=$referee_id and iszhuce=1");
+				if(!$list){
+					$sql_array[] = " update sys_phone set iszhuce=1 where phone='$account' and client_id=$referee_id ";
+				}
+			}else{
+				$sql_array[] = " insert into sys_phone set iszhuce=1,phone='$account',client_id=$referee_id,regdate='" . sys_get_time() . "'";
+			}
 			$result = $this->do_transaction($sql_array);
 			sys_out_result($result);
 		}		
@@ -317,6 +339,8 @@ class V100Action extends BaseAction
      * @ret_infor bankcard_name 户主姓名
      * @ret_infor bankcard 银行卡号
      * @ret_infor wealth 财气值
+     * @ret_infor score_rate 积分兑换比例
+     * @ret_infor max_cost 最多可兑换余额
 	 * @special 特殊说明一 此接口，会随开发，增加部分字段
 	 */
 	public function client_get()
@@ -325,6 +349,14 @@ class V100Action extends BaseAction
 		$id=_POST('id');
 		$sqlstr = "select * from sys_client where id='$id'";
 		$member_list = $this->get_list_bysql($sqlstr);
+		$config_list = $this->get_list_bysql("select score_rate,max_cost from sys_config where id=1");
+		$member_list[0]['score_rate'] = 1/$config_list[0]['score_rate'];
+		$fee = $member_list[0]['score']*$config_list[0]['score_rate'];
+		if($fee <= $config_list[0]['max_cost']){
+			$member_list[0]['max_cost'] = $fee;
+		}else{
+			$member_list[0]['max_cost'] = $config_list[0]['max_cost'];
+		}
 		sys_out_success(0, $member_list);
 	}
 
@@ -493,6 +525,7 @@ class V100Action extends BaseAction
 	 * 抽奖
 	 * @parent prize_root 
 	 * @req_params token 登录令牌
+	 * @req_params city 定位城市
 	 * @req_desc
 	 * @ret 2
 	 * @ret_level 1
@@ -508,6 +541,28 @@ class V100Action extends BaseAction
 	 */
 	public function prize_get()
 	{
+		sys_check_post_single('city');//检查post必选参数完整性
+		$citys=_POST('city');
+		$city_list = $this->get_list_bysql("select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where o.province like '%$citys%' or o.city like '%$citys%'");
+		if($city_list){
+			$province = $city_list[0]['province'];
+			$city = $city_list[0]['city'];
+			if(strpos($province, '市') !== false){
+				$district_1_id = $city_list[0]['district_1_id'];
+				$sql_where = " and district_1_id=$district_1_id";
+				$sql_wheres = " and s.district_1_id=$district_1_id";
+			}else{
+				$district_2_id = $city_list[0]['district_2_id'];
+				$sql_where = " and district_2_id=$district_2_id";
+				$sql_wheres = " and s.district_2_id=$district_2_id";
+			}
+			$shop_count = $this->get_one_bysql("select count(*) from sys_shop where validflag =1 $sql_where");
+			if($shop_count == 0){
+				sys_out_fail('该城市商家暂时未开通抽奖');
+			}
+		}else{
+			sys_out_fail('该城市暂时未开通');
+		}
 		$client_id = sys_get_cid();		
 		$randnum = rand(1,100);
 		$luckdraw_rate = $this->get_one_bysql("select luckdraw_rate from sys_set where id=1");
@@ -520,14 +575,17 @@ class V100Action extends BaseAction
 		$scoredetail_id = '';
 		$cash_id = '';
 		$score = '';
+		$islive = $this->get_one_bysql("select islive from sys_client where id=$client_id");
+		$wealth = $this->get_one_bysql("select wealth from sys_client where id=$client_id");
 		$image_text_list = array();
 		switch ($keytype){
 			case "1"://抽奖
-				$shop_list = $this->get_list_bysql("select * from sys_shop where validflag =1 order by rand() limit 1");
+				$shop_list = $this->get_list_bysql("select * from sys_shop where validflag =1 $sql_where order by rand() limit 1");
 				$shop_id = $shop_list[0]['id'];
 				$shopname = $shop_list[0]['name'];
 				$redbag_rate = $shop_list[0]['redbag_rate'];
 				$score_rate = $shop_list[0]['score_rate'];
+				$redbag = $shop_list[0]['redbag'];
 				$redbag_num = $redbag_rate*100;
 				$score_num = $score_rate*100;
 				$score_start = $redbag_num + 1;
@@ -535,47 +593,50 @@ class V100Action extends BaseAction
 				$rand_num = rand(1,100);
 				if($rand_num <= $redbag_num){
 					$flag = 1;
-					$islive = $this->get_one_bysql("select islive from sys_client where id=$client_id");
-					if($islive == 1){
-						$wealth = $this->get_one_bysql("select wealth from sys_client where id=$client_id");
+					if($islive == 1){						
 						if($wealth == 100){
 							$flag = 3;
 						}else if($wealth > 100){
 							$zhuce_num = $this->get_one_bysql("select count(*) from sys_phone where client_id=$client_id and iszhuce=1");
-							if($zhuce_num < 10){
+							if($zhuce_num < 3){
 								$score = 0.01;
 								$sqlstr = " insert into sys_cash set client_id=$client_id,regdate='" . sys_get_time() . "',score='$score',cashflag=3,isget=2,shop_id=$shop_id";
 								$this->do_execute($sqlstr);
 								$cash_id = $this->get_insert_id();
 							}else{
-								$redbag = $shop_list[0]['redbag'];
 								$redbag_type = $shop_list[0]['redbag_type'];
 								if($redbag_type == 1){
 									$gu_num = $shop_list[0]['gu_redbagchance'] * 100;
 									$rand = rand(1,100);
 									if($rand <= $gu_num){
 										$score = $shop_list[0]['gu_redbag'];
-										if($redbag < $shop_list[0]['gu_redbag']){
+										if($redbag < $score){
 											$score = $redbag;
 										}								
 										$sqlstr = " insert into sys_cash set client_id=$client_id,regdate='" . sys_get_time() . "',score='$score',cashflag=3,isget=2,shop_id=$shop_id";
 										$this->do_execute($sqlstr);
 										$cash_id = $this->get_insert_id();
+									}else{
+										$flag = 3;
 									}
-								}else{
+								}else if($redbag_type == 2){
 									$qu_num = $shop_list[0]['qu_redbagchance'] * 100;
 									$rand = rand(1,100);
 									if($rand <= $qu_num){
 										$qu_minscore = $shop_list[0]['qu_minredbag'];
 										$qu_maxscore = $shop_list[0]['qu_maxredbag'];
 										$score = rand($qu_minscore*100,$qu_maxscore*100)/100;
-										if($redbag < $shop_list[0]['gu_redbag']){
+										if($redbag < $score){
 											$score = $redbag;
 										}
 										$sqlstr = " insert into sys_cash set client_id=$client_id,regdate='" . sys_get_time() . "',score='$score',cashflag=3,isget=2,shop_id=$shop_id";
 										$this->do_execute($sqlstr);
 										$cash_id = $this->get_insert_id();
+									}else{
+										$flag = 3;
 									}
+								}else{								
+									sys_out_fail('该商家未设置红包规则，请重新抽取');			
 								}
 							}
 						}
@@ -589,37 +650,54 @@ class V100Action extends BaseAction
 					
 				}else if($score_start <= $rand_num && $score_end >= $rand_num){
 					$flag = 2;
+					if($islive == 1 && $wealth == 100){
+						$flag = 3;
+					}
 					$score_type = $shop_list[0]['score_type'];
 					if($score_type == 1){
 						$gu_num = $shop_list[0]['gu_scorechance'] * 100;
 						$rand = rand(1,100);
 						if($rand <= $gu_num){
 							$score = $shop_list[0]['gu_score'];
+							if($islive == 1 && $wealth > 100 && $redbag < $score){
+								$score = $redbag;
+							}
 							$sqlstr = " insert into sys_scoredetail set client_id=$client_id,regdate='" . sys_get_time() . "',score='$score',scoretype=2,isget=2,shop_id=$shop_id";
 							$this->do_execute($sqlstr);
 							$scoredetail_id = $this->get_insert_id();
+						}else{
+							$flag = 3;
 						}
-					}else{
+					}else if($score_type == 2){
 						$qu_num = $shop_list[0]['qu_scorechance'] * 100;
 						$rand = rand(1,100);
 						if($rand <= $qu_num){
 							$qu_minscore = $shop_list[0]['qu_minscore'];
 							$qu_maxscore = $shop_list[0]['qu_maxscore'];
 							$score = rand($qu_minscore,$qu_maxscore);
+							if($islive == 1 && $wealth > 100 && $redbag < $score){
+								$score = $redbag;
+							}
 							$sqlstr = " insert into sys_scoredetail set client_id=$client_id,regdate='" . sys_get_time() . "',score='$score',scoretype=2,isget=2,shop_id=$shop_id";
 							$this->do_execute($sqlstr);
 							$scoredetail_id = $this->get_insert_id();
+						}else{
+							$flag = 3;
 						}
-					}
-					
+					}else{
+						sys_out_fail('该商家未设置积分规则，请重新抽取');
+					}	
 				}else{
 					$flag = 3;
 				}				
 			 	break;
 			 	
 			case "2"://猜一猜
-				$image_text_list = $this->get_list_bysql("select im.* from sys_image_text as im left join sys_shop s on im.shop_id=s.id where s.validflag =1 order by rand() limit 1");
+				$image_text_list = $this->get_list_bysql("select im.* from sys_image_text as im left join sys_shop s on im.shop_id=s.id where s.validflag =1 $sql_wheres order by rand() limit 1");
 				$flag = 4;
+				if($islive == 1 && $wealth == 100){
+					$flag = 3;
+				}
 			 	break;	
 			 		
 			default:
@@ -671,13 +749,25 @@ class V100Action extends BaseAction
 		if($answer == $true_answer){
 			$type = $image_text_list[0]['type'];
 			$shop_id = $image_text_list[0]['shop_id'];
-			$shopname = $this->get_one_bysql("select name from sys_shop where validflag = 1 where id = $shop_id");
+			$shop_list = $this->get_list_bysql("select name,redbag from sys_shop where validflag = 1 and id = $shop_id");
+			$shopname = $shop_list[0]['name'];
+			$redbag = $shop_list[0]['redbag'];
 			$score_set = $this->get_list_bysql("select * from sys_set_image_text where id = 1");
+			$list = $this->get_list_bysql("select wealth,islive from sys_client where id=$client_id");
+			$islive = $list[0]['islive'];
+			$wealth = $list[0]['wealth'];
+			if($islive == 1 && $wealth == 100){
+				$flag = 1;
+			}	
+			
 			if($type == 1){
 				$gu_num = $score_set[0]['gu_chance'] * 100;
 				$rand = rand(1,100);
 				if($rand <= $gu_num){					
 					$score = $score_set[0]['gu_score'];
+					if($islive == 1 && $wealth > 100 && $redbag < $score){
+						$score = $redbag;
+					}
 					$sqlstr = " insert into sys_scoredetail set client_id=$client_id,regdate='" . sys_get_time() . "',score='$score',scoretype=1,isget=2,shop_id=$shop_id";
 					$this->do_execute($sqlstr);
 					$scoredetail_id = $this->get_insert_id();
@@ -685,13 +775,16 @@ class V100Action extends BaseAction
 				}else{
 					$flag = 1;
 				}
-			}else{
+			}else if($type == 2){
 				$qu_num = $score_set[0]['qu_chance'] * 100;
 				$rand = rand(1,100);
 				if($rand <= $qu_num){
 					$qu_minscore = $score_set[0]['qu_minscore'];
 					$qu_maxscore = $score_set[0]['qu_maxscore'];
 					$score = rand($qu_minscore,$qu_maxscore);
+					if($islive == 1 && $wealth > 100 && $redbag < $score){
+						$score = $redbag;
+					}
 					$sqlstr = " insert into sys_scoredetail set client_id=$client_id,regdate='" . sys_get_time() . "',score='$score',scoretype=1,isget=2,shop_id=$shop_id";
 					$this->do_execute($sqlstr);
 					$scoredetail_id = $this->get_insert_id();	
@@ -699,6 +792,8 @@ class V100Action extends BaseAction
 				}else{
 					$flag = 1;	
 				}
+			}else{
+				sys_out_fail('该题目未设置积分规则，请重新抽取');
 			}
 		}		
 		$temp_array[0]['true_answer'] = $true_answer;
@@ -732,6 +827,8 @@ class V100Action extends BaseAction
 	 * @ret_infor address 商家地址
 	 * @ret_infor lng 经度
 	 * @ret_infor lat 纬度
+	 * @ret_infor baidu_lng 百度经度
+	 * @ret_infor baidu_lat 百度纬度
 	 * @ret_infor remarks 备注
 	 * @ret_infor validflag 商家状态 1:正常;2:冻结
 	 * @ret_infor regdate 添加时间
@@ -793,6 +890,7 @@ class V100Action extends BaseAction
 		}
 		$tip = 0;
 		$regdate = sys_get_time();
+		$islive = $this->get_one_bysql("select islive from sys_client where id=$client_id");
 		$sqlstr_array=NULL;
 		if($type == 2){
 			$shop_list = $this->get_list_bysql("select * from sys_cash where id = $about_id and cashflag = 3 and isget = 2");
@@ -800,40 +898,58 @@ class V100Action extends BaseAction
 				sys_out_fail('参数传递错误', 101);
 			}
 			$score = $shop_list[0]['score'];
-			$islive = $this->get_one_bysql("select islive from sys_client where id=$client_id");
 			if($islive == 1){
 				$wealth = $this->get_one_bysql("select wealth from sys_client where id=$client_id");
 				$wealth_use = $wealth - 100;
-				if($wealth_use < $score){
-					$score = $wealth_use;
-					$tip = 1;
-				}
+				if($wealth_use > 0){
+					if($wealth_use < $score){
+						$score = $wealth_use;
+						$sqlstr_array[] = " update sys_cash set score='$score' where id = $about_id and cashflag = 3 and isget = 2";
+						$tip = 1;
+					}
+				}else{
+					sys_out_fail('很遗憾，您的财气值已不足');
+				}				
 				$shop_id = $shop_list[0]['shop_id'];			
 				$redbaglist = $this->get_list_bysql("select redbag,wealth_redbag,recharge_redbag from sys_shop where id=$shop_id");
 				$redbag = $redbaglist[0]['redbag'];
+				$wealth_redbag = $redbaglist[0]['wealth_redbag'];
 				if($redbag >= $score){
 					$recharge_redbag = $redbaglist[0]['recharge_redbag'];
 					if($recharge_redbag >= $score){
 						$sqlstr_array[] = " update sys_shop set recharge_redbag=recharge_redbag-$score,redbag=redbag-$score where id = $shop_id ";	
-						$sqlstr_array[] = " insert into sys_recharge_redbag set type=2,fee='$score',shop_id=$shop_id,regdate='$regdate'";						
+						$sqlstr_array[] = " insert into sys_recharge_redbag set type=2,fee='$score',shop_id=$shop_id,regdate='$regdate'";	
+						$sqlstr_array[] = " update sys_client set wealth=wealth-$score where id = $client_id ";				
+						$sqlstr_array[] = " update sys_client set feeaccount=feeaccount+$score where id = $client_id ";
+						$sqlstr_array[] = " update sys_cash set isget=1 where id = $about_id and cashflag = 3 and isget = 2";	
 					}else if($recharge_redbag > 0 && $recharge_redbag < $score){
-						$last_score = $score-$recharge_redbag;
-						$wealth_redbag = $redbaglist[0]['wealth_redbag'];
+						$last_score = $score-$recharge_redbag;						
 						if($wealth_redbag >= $last_score){
 							$sqlstr_array[] = " update sys_shop set recharge_redbag=0,wealth_redbag=wealth_redbag-$last_score,redbag=redbag-$score where id = $shop_id ";
-							$sqlstr_array[] = " insert into sys_recharge_redbag set type=2,fee='$recharge_redbag',shop_id=$shop_id,regdate='$regdate'";
+							//$sqlstr_array[] = " insert into sys_recharge_redbag set type=2,fee='$recharge_redbag',shop_id=$shop_id,regdate='$regdate'";
+							$sqlstr_array[] = " insert into sys_recharge_redbag set type=2,fee='$score',shop_id=$shop_id,regdate='$regdate'";
+							$sqlstr_array[] = " update sys_client set wealth=wealth-$score where id = $client_id ";
+							$sqlstr_array[] = " update sys_client set feeaccount=feeaccount+$score where id = $client_id ";
+							$sqlstr_array[] = " update sys_cash set isget=1 where id = $about_id and cashflag = 3 and isget = 2";
 						}else{
-							sys_out_fail('红包不能领取');
+							sys_out_fail('商家红包池余额不足');
 						}						
-					}
-					$sqlstr_array[] = " update sys_client set wealth=wealth-$score where id = $client_id ";
+					}else if($recharge_redbag == 0 && $wealth_redbag >= $score){
+						$sqlstr_array[] = " update sys_shop set recharge_redbag=0,wealth_redbag=wealth_redbag-$score,redbag=redbag-$score where id = $shop_id ";
+						$sqlstr_array[] = " insert into sys_recharge_redbag set type=2,fee='$score',shop_id=$shop_id,regdate='$regdate'";
+						$sqlstr_array[] = " update sys_client set wealth=wealth-$score where id = $client_id ";
+						$sqlstr_array[] = " update sys_client set feeaccount=feeaccount+$score where id = $client_id ";
+						$sqlstr_array[] = " update sys_cash set isget=1 where id = $about_id and cashflag = 3 and isget = 2";
+					}else{
+						sys_out_fail('商家红包池余额不足');
+					}					
 				}else{
-					sys_out_fail('红包不能领取');
+					sys_out_fail('商家红包池余额不足');
 				}
-			}else{				
+			}else{
 				$sqlstr_array[] = " update sys_client set feeaccount=feeaccount+$score where id = $client_id ";
+				$sqlstr_array[] = " update sys_cash set isget=1 where id = $about_id and cashflag = 3 and isget = 2";
 			}			
-			
 		}else{
 			if($type == 1){
 				$scoretype = 2;
@@ -845,11 +961,58 @@ class V100Action extends BaseAction
 				sys_out_fail('参数传递错误', 101);
 			}
 			$score = $shop_list[0]['score'];
-			$sqlstr_array[] = " update sys_scoredetail set isget=1 where id = $about_id and isget=2";	
-			$sqlstr_array[] = " update sys_client set score=score+$score where id = $client_id ";
+			if($islive == 1){
+				$wealth = $this->get_one_bysql("select wealth from sys_client where id=$client_id");
+				$wealth_use = $wealth - 100;
+				if($wealth_use > 0){
+					if($wealth_use < $score){
+						$score = $wealth_use;
+						$tip = 1;
+						$sqlstr_array[] = " update sys_scoredetail set score='$score' where id = $about_id and isget=2";
+					}
+				}else{
+					sys_out_fail('很遗憾，您的财气值已不足');
+				}					
+				$shop_id = $shop_list[0]['shop_id'];			
+				$redbaglist = $this->get_list_bysql("select redbag,wealth_redbag,recharge_redbag from sys_shop where id=$shop_id");
+				$redbag = $redbaglist[0]['redbag'];
+				$wealth_redbag = $redbaglist[0]['wealth_redbag'];
+				if($redbag >= $score){
+					$recharge_redbag = $redbaglist[0]['recharge_redbag'];
+					if($recharge_redbag >= $score){
+						$sqlstr_array[] = " update sys_shop set recharge_redbag=recharge_redbag-$score,redbag=redbag-$score where id = $shop_id ";	
+						$sqlstr_array[] = " insert into sys_recharge_redbag set type=2,fee='$score',shop_id=$shop_id,regdate='$regdate'";	
+						$sqlstr_array[] = " update sys_client set wealth=wealth-$score,score=score+$score where id = $client_id ";
+						$sqlstr_array[] = " update sys_scoredetail set isget=1 where id = $about_id and isget=2";					
+					}else if($recharge_redbag > 0 && $recharge_redbag < $score){
+						$last_score = $score-$recharge_redbag;						
+						if($wealth_redbag >= $last_score){
+							$sqlstr_array[] = " update sys_shop set recharge_redbag=0,wealth_redbag=wealth_redbag-$last_score,redbag=redbag-$score where id = $shop_id ";
+							//$sqlstr_array[] = " insert into sys_recharge_redbag set type=2,fee='$recharge_redbag',shop_id=$shop_id,regdate='$regdate'";
+							$sqlstr_array[] = " insert into sys_recharge_redbag set type=2,fee='$score',shop_id=$shop_id,regdate='$regdate'";
+							$sqlstr_array[] = " update sys_client set wealth=wealth-$score,score=score+$score where id = $client_id ";
+							$sqlstr_array[] = " update sys_scoredetail set isget=1 where id = $about_id and isget=2";
+						}else{
+							sys_out_fail('商家红包池余额不足');
+						}						
+					}else if($recharge_redbag == 0 && $wealth_redbag >= $score){
+						$sqlstr_array[] = " update sys_shop set recharge_redbag=0,wealth_redbag=wealth_redbag-$score,redbag=redbag-$score where id = $shop_id ";
+						$sqlstr_array[] = " insert into sys_recharge_redbag set type=2,fee='$score',shop_id=$shop_id,regdate='$regdate'";
+						$sqlstr_array[] = " update sys_client set wealth=wealth-$score,score=score+$score where id = $client_id ";
+						$sqlstr_array[] = " update sys_scoredetail set isget=1 where id = $about_id and isget=2";
+					}else{
+						sys_out_fail('商家红包池余额不足');
+					}
+				}else{
+					sys_out_fail('商家红包池余额不足');					
+				}
+			}else{				
+				$sqlstr_array[] = " update sys_client set score=score+$score where id = $client_id ";
+				$sqlstr_array[] = " update sys_scoredetail set isget=1 where id = $about_id and isget=2";
+			}
 		}
 		$result = $this->do_transaction($sqlstr_array);
-		if($result !== false && $type == 2){
+		if($result !== false){
 			$redbaglist = $this->get_list_bysql("select redbag,wealth_redbag from sys_shop where id=$shop_id");
 			$redbag = $redbaglist[0]['redbag'];
 			$wealth_redbag = $redbaglist[0]['wealth_redbag'];
@@ -859,7 +1022,7 @@ class V100Action extends BaseAction
 			}
 			if($tip == 1){
 				$temp_array[0]['tip'] = 1;
-				sys_out_success('领取成功，部分红包金额无法领取',$temp_array);
+				sys_out_success('领取成功，部分红包金额或积分无法领取',$temp_array);
 			}else{			
 				$temp_array[0]['tip'] = 0;
 				sys_out_success('领取成功:',$temp_array);
@@ -892,7 +1055,7 @@ class V100Action extends BaseAction
 	 */
 	public function one_ad_list()
 	{
-		$order_lists = $this->get_list_bysql("select mt.* from sys_ad mt where mt.isshow=1 and mt.adlevel=1 order by mt.orderby,mt.id desc");
+		$order_lists = $this->get_list_bysql("select mt.* from sys_ad mt where mt.isshow=1 and mt.adlevel=1 order by mt.orderby,mt.id desc limit 0,6");
 		sys_out_success(0, $order_lists);
 	}
 
@@ -965,7 +1128,7 @@ class V100Action extends BaseAction
 	{
 		sys_check_post_single('id');//检查post必选参数完整性
 		$id=_POST('id');
-		$two_classify_list = $this->get_list_bysql("select mt.* from sys_classify mt where mt.parentid=$id and mt.flag=1 limit 0,8");
+		$two_classify_list = $this->get_list_bysql("select mt.* from sys_classify mt where mt.parentid=$id and mt.flag=1");
 		sys_out_success(0, $two_classify_list);
 	}
 
@@ -988,7 +1151,7 @@ class V100Action extends BaseAction
 		$i = 0 ;
 		foreach ($result_1 as $result_1_i)
 		{
-			$temp_array[0]['children'][$i] = array(
+			$temp_array[$i] = array(
 				'id'=>$result_1_i['id'],
 				'parentid'=>$result_1_i['parentid'],
 				'name'=>$result_1_i['name'],
@@ -1003,7 +1166,7 @@ class V100Action extends BaseAction
 			$j = 0 ;
 			foreach ($result_2 as $result_2_i)
 			{
-				$temp_array[0]['children'][$i]['children'][$j] = array(
+				$temp_array[$i]['children'][$j] = array(
 					'id'=>$result_2_i['id'],
 					'parentid'=>$result_2_i['parentid'],
 					'name'=>$result_2_i['name'],
@@ -1057,7 +1220,6 @@ class V100Action extends BaseAction
 		}else{
 			sys_out_fail('该城市暂时未开通');
 		}
-		$temp_array[0] = array();
 		//先拿一级
 		$client_id = sys_get_cid();
 		$lng=_POST('lng');
@@ -1070,6 +1232,11 @@ class V100Action extends BaseAction
         }
 		
 		$i = 0 ;
+		if($result_1){
+			$temp_array[0] = array();
+		}else{
+			$temp_array = array();
+		}
 		foreach ($result_1 as $result_1_i)
 		{
 			$temp_array[$i] = array(
@@ -1109,9 +1276,14 @@ class V100Action extends BaseAction
 	/**
 	 * 二级分类推荐列表
 	 * @parent shop_root
+	 * @req_params city 定位城市
 	 * @req_params lng 经度
 	 * @req_params lat 纬度
 	 * @req_params one_classify_id 一级分类ID
+	 * @req_params two_classify_id 二级分类ID
+	 * @req_params type 选择条件 1：地区;2：其他 
+	 * @req_params district_id 地区ID
+	 * @req_params other_type 其他包含类型 1：距离优先;2：好评优先;3：人均最低;4：人均最高;5：销量（从高到低）
 	 * @req_desc
 	 * @ret 2
 	 * @ret_level 1
@@ -1129,16 +1301,82 @@ class V100Action extends BaseAction
 		$post_array = array('lng','lat','one_classify_id');
 		sys_check_post($post_array);//检查post必选参数完整性
 		unset($post_array);
-		$temp_array[0] = array();
-		//先拿一级
+
+		$citys=_POST('city');
+		$where = '';
+		$city_list = $this->get_list_bysql("select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%$citys%' or city like '%$citys%'");
+		if($city_list){
+			$province = $city_list[0]['province'];
+			$city = $city_list[0]['city'];
+			if(strpos($province, '市') !== false){
+				$city_id = $city_list[0]['district_1_id'];
+				$where .= " and district_1_id=$city_id";
+			}else{
+				$city_id = $city_list[0]['district_2_id'];
+				$where .= " and district_2_id=$city_id";
+			}
+		}else{
+			sys_out_fail('该城市暂时未开通');
+		}
 		$client_id = sys_get_cid();
 		$lng=_POST('lng');
 		$lat=_POST('lat');
 		$one_classify_id=_POST('one_classify_id');
-        $distance_str=" round(12756274*asin(Sqrt(pow(sin(($lat-lat)*0.008726646),2)+Cos($lat*0.0174533)*Cos(lat*0.0174533)*pow(sin(($lng-lng)*0.008726646),2)))/1000,2) ";
-        $result_1 = $this -> get_list_bysql("select id,name,img,star,averfee,$distance_str as distance from sys_shop where validflag!=2 and one_classify_id=$one_classify_id and isrecommend=1 order by orderby asc");
 		
+		$orderby = '';
+		$two_classify_id=_POST('two_classify_id');
+		if($two_classify_id){
+			$where .= " and two_classify_id=$two_classify_id";
+		}
+		$type=_POST('type');	
+		if($type){
+			if($type == 1){
+				$district_id=_POST('district_id');
+				if($district_id){
+					$namepath = $this->get_one_bysql("select namepath from sys_cascade_district where id=$district_id");
+					$num = count(explode(',',$namepath));
+					if($num == 2){
+						$where .= " and district_2_id=$district_id";
+					}else if($num == 3){
+						$where .= " and district_3_id=$district_id";
+					}
+				}else{
+					sys_out_fail('请选择地区');
+				}
+			}else if($type == 2){
+				$other_type=_POST('other_type');
+				if($other_type){
+					if($other_type == 1){
+						$orderby .= "distance asc,";
+					}else if($other_type == 2){
+						$orderby .= "star desc,";
+					}else if($other_type == 3){
+						$orderby .= "averfee asc,";
+					}else if($other_type == 4){
+						$orderby .= "averfee desc,";
+					}else if($other_type == 5){
+						$orderby .= "salenum desc,";
+					}else{
+						sys_out_fail('参数传递错误', 101);
+					}					
+				}else{
+					sys_out_fail('请选择排序规则');
+				}
+			}else{
+				sys_out_fail('参数传递错误', 101);
+			}
+		}else{
+			$orderby .= "distance asc,";
+		}
+        $distance_str=" round(12756274*asin(Sqrt(pow(sin(($lat-lat)*0.008726646),2)+Cos($lat*0.0174533)*Cos(lat*0.0174533)*pow(sin(($lng-lng)*0.008726646),2)))/1000,2) ";
+        $result_1 = $this -> get_list_bysql("select id,name,img,star,averfee,$distance_str as distance from sys_shop where validflag!=2 and one_classify_id=$one_classify_id and isrecommend=1 $where order by $orderby id desc");
+ 
 		$i = 0 ;
+		if($result_1){
+			$temp_array[0] = array();
+		}else{
+			$temp_array = array();
+		}
 		foreach ($result_1 as $result_1_i)
 		{
 			$temp_array[$i] = array(
@@ -1184,13 +1422,18 @@ class V100Action extends BaseAction
 	 * @req_desc
 	 * @ret 2
 	 * @ret_level 1
-	 * @ret_level id 主键id
-	 * @ret_level name 名称
-	 * @ret_level star 评分
-	 * @ret_level averfee 人均价
-	 * @ret_level distance 距离（km）
-	 * @ret_level address 地址
-	 * @ret_level telphone 联系电话
+	 * @ret_infor id 主键id
+	 * @ret_infor name 名称
+	 * @ret_infor star 评分
+	 * @ret_infor averfee 人均价
+	 * @ret_infor distance 距离（km）
+	 * @ret_infor address 地址
+	 * @ret_infor telphone 联系电话
+	 * @ret_infor lng 经度
+	 * @ret_infor lat 纬度
+	 * @ret_infor baidu_lng 百度经度
+	 * @ret_infor baidu_lat 百度纬度
+	 * @ret_infor love_flag 收藏标志 0：未收藏；1：已收藏
 	 * @ret_infor imgItems 商家图片集 id:图片id$imgurl:缩略图$imgurlbig:大图
 	 * @special 特殊说明一 此接口，会随开发，增加部分字段
 	 */
@@ -1199,13 +1442,21 @@ class V100Action extends BaseAction
 		$post_array = array('lng','lat','shop_id');
 		sys_check_post($post_array);//检查post必选参数完整性
 		unset($post_array);
-		$temp_array[0] = array();
 		$lng=_POST('lng');
 		$lat=_POST('lat');
 		$shop_id=_POST('shop_id');
         $distance_str=" round(12756274*asin(Sqrt(pow(sin(($lat-lat)*0.008726646),2)+Cos($lat*0.0174533)*Cos(lat*0.0174533)*pow(sin(($lng-lng)*0.008726646),2)))/1000,2) ";
-        $result_1 = $this -> get_list_bysql("select id,name,star,averfee,address,telphone,$distance_str as distance from sys_shop where id=$shop_id and validflag!=2");
+        $result_1 = $this -> get_list_bysql("select id,name,star,averfee,address,telphone,lng,lat,baidu_lng,baidu_lat,$distance_str as distance from sys_shop where id=$shop_id and validflag!=2");
         $result_1[0]['imgItems'] = $this -> get_list_bysql("select * from sys_img where keytype=2 and keyid=$shop_id");
+        $client_id = sys_get_cid();	//用户id
+        $result_1[0]['love_flag'] = 0;
+        if($client_id){
+	        $love_count = $this->get_one_bysql("select count(*) from sys_love where client_id=$client_id and about_id=$shop_id and type=1");
+			if($love_count > 0){
+				$result_1[0]['love_flag'] = 1;
+			}
+        }
+        
 		sys_out_success(0,$result_1);
 	}
 
@@ -1218,7 +1469,7 @@ class V100Action extends BaseAction
 	 * @req_desc
 	 * @ret 2
 	 * @ret_level 1
-	 * @ret_level id 主键id
+	 * @ret_infor id 商品id
 	 * @ret_infor img 封面图片
 	 * @ret_infor name 名称
 	 * @ret_infor present_price 现价
@@ -1240,11 +1491,12 @@ class V100Action extends BaseAction
 	 * 商家评价列表
 	 * @parent shop_root
 	 * @req_params shop_id 商家ID
+	 * @req_params good_id 商品ID
 	 * @req_params type 条件 0：全部评价;1：有图评价;2：低分评价;3：最新评价 
 	 * @req_desc
 	 * @ret 2
 	 * @ret_level 1
-	 * @ret_level id 主键id
+	 * @ret_infor id 主键id
 	 * @ret_infor star 星评个数
 	 * @ret_infor client_id 用户ID
 	 * @ret_infor account 用户账号
@@ -1258,21 +1510,26 @@ class V100Action extends BaseAction
 	 */
 	public function comment_list()
 	{
-		sys_check_post_single('shop_id');//检查post必选参数完整性
+		//sys_check_post_single('shop_id');//检查post必选参数完整性
 		$shop_id=_POST('shop_id');
-		$type=_POST('type');
-		if($type == 2){
-			$sql_where = " and co.star <3";
+		$good_id=_POST('good_id');
+		if($shop_id){
+			$type=_POST('type');
+			if($type == 1){
+				$result = $this -> get_list_bysql("select co.*,c.account,c.avatar,c.avatarbig from sys_comment co inner join sys_img i on co.o2order_id=i.keyid left join sys_client c on co.client_id = c.id where co.shop_id=$shop_id and i.keytype=3 order by co.id desc");
+			}else if($type == 2){
+				$result = $this -> get_list_bysql("select co.*,c.account,c.avatar,c.avatarbig from sys_comment co left join sys_client c on co.client_id = c.id where co.shop_id=$shop_id and co.star <3 order by co.id desc");
+			}else{
+				$result = $this -> get_list_bysql("select co.*,c.account,c.avatar,c.avatarbig from sys_comment co left join sys_client c on co.client_id = c.id where co.shop_id=$shop_id order by co.id desc");
+			} 
+		}else if($good_id){
+			$result = $this -> get_list_bysql("select co.*,c.account,c.avatar,c.avatarbig from sys_comment co left join sys_client c on co.client_id = c.id where co.good_id=$good_id order by co.id desc"); 
 		}else{
-			$sql_where = "";
+			sys_out_fail('参数传递错误', 101);
 		}
-        $result = $this -> get_list_bysql("select co.*,c.account,c.avatar,c.avatarbig from sys_comment co left join sys_client c on co.client_id = c.id where co.shop_id=$shop_id $sql_where order by co.id desc");
-        foreach($result as $k=>&$v){
+		foreach($result as $k=>&$v){
 	        $o2order_id = $v['o2order_id'];
 	        $v['imgItems'] = $this -> get_list_bysql("select * from sys_img where keytype=3 and keyid=$o2order_id");
-	        if(!$v['imgItems'] && $type == 1){
-		        unset($result[$k]);
-	        }
         }
         unset($v);
 		sys_out_success(0,$result);
@@ -1283,12 +1540,13 @@ class V100Action extends BaseAction
 	/**
 	 * 二级分类商家列表
 	 * @parent shop_root
+	 * @req_params city 定位城市
 	 * @req_params lng 经度
 	 * @req_params lat 纬度
 	 * @req_params two_classify_id 二级分类ID
 	 * @req_params type 选择条件 1：地区;2：其他 
 	 * @req_params district_id 地区ID
-	 * @req_params other_type 其他包含类型 1：距离优先;2：好评优先;3：人均最低;4：人均最高
+	 * @req_params other_type 其他包含类型 1：距离优先;2：好评优先;3：人均最低;4：人均最高;5：销量（从高到低）
 	 * @req_desc
 	 * @ret 2
 	 * @ret_level 1
@@ -1306,13 +1564,29 @@ class V100Action extends BaseAction
 		$post_array = array('lng','lat','two_classify_id');
 		sys_check_post($post_array);//检查post必选参数完整性
 		unset($post_array);
-		$temp_array[0] = array();
 		//先拿一级
+		$citys=_POST('city');
+		$where = '';
+		$city_list = $this->get_list_bysql("select o.*,c.name as province,ca.name as city from sys_opencity o left join sys_cascade_district c on o.district_1_id = c.id left join sys_cascade_district ca on o.district_2_id = ca.id where province like '%$citys%' or city like '%$citys%'");
+		if($city_list){
+			$province = $city_list[0]['province'];
+			$city = $city_list[0]['city'];
+			if(strpos($province, '市') !== false){
+				$city_id = $city_list[0]['district_1_id'];
+				$where .= " and s.district_1_id=$city_id";
+			}else{
+				$city_id = $city_list[0]['district_2_id'];
+				$where .= " and s.district_2_id=$city_id";
+			}
+		}else{
+			sys_out_fail('该城市暂时未开通');
+		}
+		
 		$lng=_POST('lng');
 		$lat=_POST('lat');
 		$type=_POST('type');
 		$two_classify_id=_POST('two_classify_id');
-		$where = '';
+
 		$orderby = '';
 		if($type){
 			if($type == 1){
@@ -1339,6 +1613,8 @@ class V100Action extends BaseAction
 						$orderby .= "s.averfee asc,";
 					}else if($other_type == 4){
 						$orderby .= "s.averfee desc,";
+					}else if($other_type == 5){
+						$orderby .= "s.salenum desc,";
 					}else{
 						sys_out_fail('参数传递错误', 101);
 					}					
@@ -1352,8 +1628,14 @@ class V100Action extends BaseAction
 			$orderby .= "distance asc,";
 		}
         $distance_str=" round(12756274*asin(Sqrt(pow(sin(($lat-lat)*0.008726646),2)+Cos($lat*0.0174533)*Cos(lat*0.0174533)*pow(sin(($lng-lng)*0.008726646),2)))/1000,2) ";
-        $result_1 = $this -> get_list_bysql("select s.id,s.name,s.img,s.star,s.averfee,$distance_str as distance from sys_shop s where s.validflag!=2 and s.two_classify_id=$two_classify_id $where order by $orderby s.id desc");
+		$result_1 = $this -> get_list_bysql("select s.id,s.name,s.img,s.star,s.averfee,$distance_str as distance from sys_shop s where s.validflag!=2 and s.two_classify_id=$two_classify_id $where order by $orderby s.id desc");
+        
 		$i = 0 ;
+		if($result_1){
+			$temp_array[0] = array();
+		}else{
+			$temp_array = array();
+		}
 		foreach ($result_1 as $result_1_i)
 		{
 			$temp_array[$i] = array(
@@ -1398,11 +1680,10 @@ class V100Action extends BaseAction
 	 * @req_params lng 经度
 	 * @req_params lat 纬度
 	 * @req_params keyword 关键字
-	 * @req_params type 1：分类;2：地区;3：其他
 	 * @req_params one_classify_id 一级分类ID
 	 * @req_params two_classify_id 二级分类ID
 	 * @req_params district_id 地区ID
-	 * @req_params other_type 1：距离优先;2：好评优先;3：人均最低;4：人均最高
+	 * @req_params other_type 1：距离优先;2：好评优先;3：人均最低;4：人均最高;5：销量（从高到低）
 	 * @req_desc
 	 * @ret 2
 	 * @ret_level 1
@@ -1435,7 +1716,6 @@ class V100Action extends BaseAction
 		}else{
 			sys_out_fail('该城市暂时未开通');
 		}
-		$temp_array[0] = array();
 		//先拿一级
 		$lng=_POST('lng');
 		$lat=_POST('lat');
@@ -1443,92 +1723,117 @@ class V100Action extends BaseAction
 		$type=_POST('type');
 		$where = '';
 		$orderby = '';
-		if($type){
-			if($type == 1){
-				$one_classify_id=_POST('one_classify_id');
-				$two_classify_id=_POST('two_classify_id');
-				if($one_classify_id && $two_classify_id){
-					$where .= " and s.one_classify_id=$one_classify_id and s.two_classify_id=$two_classify_id";
-				}else{
-					sys_out_fail('请精确选择商品类别');
-				}
-			}else if($type == 2){
-				$district_id=_POST('district_id');
-				if($district_id){
-					$namepath = $this->get_one_bysql("select namepath from sys_cascade_district where id=$district_id");
-					$num = count(explode(',',$namepath));
-					if($num == 2){
-						$where .= " and s.district_2_id=$district_id";
-					}else if($num == 3){
-						$where .= " and s.district_3_id=$district_id";
-					}
-				}else{
-					sys_out_fail('请选择地区');
-				}
-			}else if($type == 3){
-				$other_type=_POST('other_type');
-				if($other_type){
-					if($other_type == 1){
-						$orderby .= "distance asc,";
-					}else if($other_type == 2){
-						$orderby .= "s.star desc,";
-					}else if($other_type == 3){
-						$orderby .= "s.averfee asc,";
-					}else if($other_type == 4){
-						$orderby .= "s.averfee desc,";
-					}else{
-						sys_out_fail('参数传递错误', 101);
-					}					
-				}else{
-					sys_out_fail('请选择排序规则');
-				}
+		$one_classify_id=_POST('one_classify_id');
+		if($one_classify_id){
+			$where .= " and s.one_classify_id=$one_classify_id";
+		}
+		$two_classify_id=_POST('two_classify_id');
+		if($two_classify_id){
+			$where .= " and s.two_classify_id=$two_classify_id";
+		}
+		$district_id=_POST('district_id');
+		if($district_id){
+			$namepath = $this->get_one_bysql("select namepath from sys_cascade_district where id=$district_id");
+			$num = count(explode(',',$namepath));
+			if($num == 2){
+				$where .= " and s.district_2_id=$district_id";
+			}else if($num == 3){
+				$where .= " and s.district_3_id=$district_id";
+			}
+		}
+		$other_type=_POST('other_type');
+		if($other_type){
+			if($other_type == 1){
+				$orderby .= "distance asc,";
+			}else if($other_type == 2){
+				$orderby .= "s.star desc,";
+			}else if($other_type == 3){
+				$orderby .= "s.averfee asc,";
+			}else if($other_type == 4){
+				$orderby .= "s.averfee desc,";
+			}else if($other_type == 5){
+				$orderby .= "s.salenum desc,";
 			}else{
 				sys_out_fail('参数传递错误', 101);
-			}
-		}else{
+			}					
+		}
+		if(!$orderby){
 			$orderby .= "distance asc,";
 		}
         $distance_str=" round(12756274*asin(Sqrt(pow(sin(($lat-lat)*0.008726646),2)+Cos($lat*0.0174533)*Cos(lat*0.0174533)*pow(sin(($lng-lng)*0.008726646),2)))/1000,2) ";
         if($city_type == 1){
-	        $result_1 = $this -> get_list_bysql("select s.id,s.name,s.img,s.star,s.averfee,$distance_str as distance from sys_shop s left join sys_good g on s.id=g.shop_id where s.validflag!=2 and s.district_1_id=$city_id and g.flag=1 and g.doflag=2 and (s.name like '%$keyword%' or g.name like '%$keyword%') $where order by $orderby s.id desc");
+	        $result_1 = $this -> get_list_bysql("select s.id,s.name,g.name as goodname,s.img,s.star,s.averfee,$distance_str as distance from sys_shop s left join sys_good g on s.id=g.shop_id where s.validflag!=2 and s.district_1_id=$city_id and g.flag=1 and g.doflag=2 $where group by s.id order by $orderby s.id desc");
         }else{
-	        $result_1 = $this -> get_list_bysql("select s.id,s.name,s.img,s.star,s.averfee,$distance_str as distance from sys_shop s left join sys_good g on s.id=g.shop_id where s.validflag!=2 and s.district_2_id=$city_id and g.flag=1 and g.doflag=2 and (s.name like '%$keyword%' or g.name like '%$keyword%') $where order by $orderby s.id desc");
+	        $result_1 = $this -> get_list_bysql("select s.id,s.name,g.name as goodname,s.img,s.star,s.averfee,$distance_str as distance from sys_shop s left join sys_good g on s.id=g.shop_id where s.validflag!=2 and s.district_2_id=$city_id and g.flag=1 and g.doflag=2 $where group by s.id order by $orderby s.id desc");
         }
 		$i = 0 ;
+		$len = mb_strlen($keyword, 'UTF-8');
+		$keyword_arr = preg_split('/(?<!^)(?!$)/u', $keyword );
+		$temp_array[0] = array();
 		foreach ($result_1 as $result_1_i)
 		{
-			$temp_array[$i] = array(
-				'id'=>$result_1_i['id'],
-				'name'=>$result_1_i['name'],
-				'img'=>$result_1_i['img'],
-				'star'=>$result_1_i['star'],
-				'averfee'=>$result_1_i['averfee'],
-				'distance'=>$result_1_i['distance'],
-				'children'=>array()
-			);
-
-			//再拿二级
-			$parentid_1 = $result_1_i['id'];
-			$result_2 = $this -> get_list_bysql("select id,name,img,present_price,original_price,salenum from sys_good where shop_id=$parentid_1 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2");
-
-			$j = 0 ;
-			foreach ($result_2 as $result_2_i)
-			{
-				$temp_array[$i]['children'][$j] = array(
-					'id'=>$result_2_i['id'],
-					'name'=>$result_2_i['name'],
-					'img'=>$result_2_i['img'],
-					'present_price'=>$result_2_i['present_price'],
-					'original_price'=>$result_2_i['original_price'],
-					'salenum'=>$result_2_i['salenum'],
+			$name_arr = preg_split('/(?<!^)(?!$)/u', $result_1_i['name'] );
+			$intersection = array_intersect($keyword_arr, $name_arr);
+			$goodname_arr = preg_split('/(?<!^)(?!$)/u', $result_1_i['goodname'] );
+			$intersections = array_intersect($keyword_arr, $goodname_arr);
+			
+			if($intersection || $intersections){
+				$temp_array[$i] = array(
+					'id'=>$result_1_i['id'],
+					'name'=>$result_1_i['name'],
+					'img'=>$result_1_i['img'],
+					'star'=>$result_1_i['star'],
+					'averfee'=>$result_1_i['averfee'],
+					'distance'=>$result_1_i['distance'],
+					'children'=>array()
 				);
-				$j ++ ;
-			}
+				//再拿二级
+				$parentid_1 = $result_1_i['id'];
+				$result_2 = $this -> get_list_bysql("select id,name,img,present_price,original_price,salenum from sys_good where shop_id=$parentid_1 and flag=1 and doflag=2 and isrecommend=1 order by orderby asc limit 0,2");
 
-			$i++;
+				$j = 0 ;
+				foreach ($result_2 as $result_2_i)
+				{
+					$temp_array[$i]['children'][$j] = array(
+						'id'=>$result_2_i['id'],
+						'name'=>$result_2_i['name'],
+						'img'=>$result_2_i['img'],
+						'present_price'=>$result_2_i['present_price'],
+						'original_price'=>$result_2_i['original_price'],
+						'salenum'=>$result_2_i['salenum'],
+					);
+					$j ++ ;
+				}
+				$i++;
+			}
+		}
+		if(!$temp_array[0]){
+			$temp_array = array();
 		}
 		sys_out_success(0,$temp_array);
 	}
+
+
+	/**
+	 * 地区列表
+	 * @parent shop_root
+	 * @req_params city 城市
+	 * @req_desc
+	 * @ret 2
+	 * @ret_level 1
+	 * @ret_infor id 主键id
+	 * @ret_infor name 名称
+	 * @special 特殊说明一 此接口，会随开发，增加部分字段
+	 */
+	public function city_list()
+	{
+		sys_check_post_single('city');//检查post必选参数完整性
+		$city=_POST('city');
+		$city_id = $this->get_one_bysql("select id from sys_cascade_district where name='$city'");
+        $result = $this -> get_list_bysql("select id,name from sys_cascade_district where parentid=$city_id");
+		sys_out_success(0,$result);
+	}
+
 
 	
 	/**
@@ -1541,7 +1846,7 @@ class V100Action extends BaseAction
 	 * @req_params type 1：地区;3：其他
 	 * @req_params two_classify_id 二级分类ID
 	 * @req_params district_id 地区ID
-	 * @req_params other_type 1：距离优先;2：好评优先;3：人均最低;4：人均最高
+	 * @req_params other_type 1：距离优先;2：好评优先;3：人均最低;4：人均最高;5：销量（从高到低）
 	 * @req_desc
 	 * @ret 2
 	 * @ret_level 1
@@ -1556,10 +1861,9 @@ class V100Action extends BaseAction
 	 */
 	public function one_search_list()
 	{
-		$post_array = array('city','lng','lat','one_classify_id','keyword');
+		$post_array = array('lng','lat','one_classify_id','keyword');
 		sys_check_post($post_array);//检查post必选参数完整性
 		unset($post_array);
-		$temp_array[0] = array();
 		//先拿一级
 		$lng=_POST('lng');
 		$lat=_POST('lat');
@@ -1587,7 +1891,7 @@ class V100Action extends BaseAction
 						$where .= " and s.district_3_id=$district_id";
 					}
 				}else{
-					sys_out_fail('请选择地区');
+					sys_out_fail('请选择地区'); 
 				}
 			}else if($type == 3){
 				$other_type=_POST('other_type');
@@ -1600,6 +1904,8 @@ class V100Action extends BaseAction
 						$orderby .= "s.averfee asc,";
 					}else if($other_type == 4){
 						$orderby .= "s.averfee desc,";
+					}else if($other_type == 5){
+						$orderby .= "s.salenum desc,";
 					}else{
 						sys_out_fail('参数传递错误', 101);
 					}					
@@ -1613,8 +1919,13 @@ class V100Action extends BaseAction
 			$orderby .= "distance asc,";
 		}
         $distance_str=" round(12756274*asin(Sqrt(pow(sin(($lat-lat)*0.008726646),2)+Cos($lat*0.0174533)*Cos(lat*0.0174533)*pow(sin(($lng-lng)*0.008726646),2)))/1000,2) ";
-        $result_1 = $this -> get_list_bysql("select s.id,s.name,s.img,s.star,s.averfee,$distance_str as distance from sys_shop s left join sys_good g on s.id=g.shop_id where s.validflag!=2 and s.district_1_id=$city_id and s.one_classify_id=$one_classify_id and g.flag=1 and g.doflag=2 and (s.name like '%$keyword%' or g.name like '%$keyword%') $where order by $orderby s.id desc");
+        $result_1 = $this -> get_list_bysql("select s.id,s.name,s.img,s.star,s.averfee,$distance_str as distance from sys_shop s left join sys_good g on s.id=g.shop_id where s.validflag!=2 and s.one_classify_id=$one_classify_id and g.flag=1 and g.doflag=2 and (s.name like '%$keyword%' or g.name like '%$keyword%') $where group by s.id order by $orderby s.id desc");
 		$i = 0 ;
+		if($result_1){
+			$temp_array[0] = array();
+		}else{
+			$temp_array = array();
+		}
 		foreach ($result_1 as $result_1_i)
 		{
 			$temp_array[$i] = array(
@@ -1671,6 +1982,24 @@ class V100Action extends BaseAction
 	}
 
 
+	/**
+	 * 举报标签列表
+	 * @parent shop_root
+	 * @req_params
+	 * @req_desc
+	 * @ret 2
+	 * @ret_level 1
+	 * @ret_infor id 主键id
+	 * @ret_infor name 名称
+	 * @special 特殊说明一 此接口，会随开发，增加部分字段
+	 */
+	public function reportag_list()
+	{
+        $result = $this -> get_list_bysql("select * from sys_label");
+		sys_out_success(0,$result);
+	}
+
+
 
 	/**
 	 * 举报商家
@@ -1707,11 +2036,12 @@ class V100Action extends BaseAction
 
 	
 	/**
-	 * 收藏商家及商品
+	 * 收藏及取消收藏商家及商品
 	 * @parent shop_root
 	 * @req_params token 登录令牌
 	 * @req_params type 类型 1：商家;2：商品
-	 * @req_params about_id 相关ID
+	 * @req_params opratetype 操作类型 1：添加收藏;2：取消收藏;3：清空
+	 * @req_params about_id 相关ID(opratetype=3时，传0)
 	 * @req_desc
 	 * @ret 1
 	 * @ret_level 1
@@ -1720,28 +2050,41 @@ class V100Action extends BaseAction
 	 */
 	public function love_add()
 	{
-		$post_array = array('type','about_id');
+		$post_array = array('type','about_id','opratetype');
 		sys_check_post($post_array);//检查post必选参数完整性
 		unset($post_array);
 		$client_id = sys_get_cid();	//用户id
 		$type=_POST('type');
 		$about_id=_POST('about_id');
-		if($type == 1){
-			$list = $this->get_list_bysql("select * from sys_shop where id=$about_id");
-			if(!$list){
-				sys_out_fail('该商家不存在！');
+		$opratetype=_POST('opratetype');
+	
+		if($opratetype == 1){
+			if($type == 1){
+				$list = $this->get_list_bysql("select * from sys_shop where id=$about_id");
+				if(!$list){
+					sys_out_fail('该商家不存在！');
+				}
+			}else if($type == 2){
+				$list = $this->get_list_bysql("select * from sys_good where id=$about_id");
+				if(!$list){
+					sys_out_fail('该商品不存在！');
+				}
+			}else{
+				sys_out_fail('参数传递错误！');
 			}
-		}else if($type == 2){
-			$list = $this->get_list_bysql("select * from sys_good where id=$about_id");
-			if(!$list){
-				sys_out_fail('该商品不存在！');
+			$regdate = sys_get_time();
+			$love_count = $this->get_one_bysql("select count(*) from sys_love where client_id=$client_id and about_id=$about_id and type=$type");
+			if($love_count > 0){
+				sys_out_fail('已收藏！');
 			}
+			$sqlstr = "insert into sys_love set client_id=$client_id,about_id=$about_id,type=$type,regdate='$regdate'";
+		}else if($opratetype == 2){
+			$sqlstr = "delete from sys_love where client_id=$client_id and about_id=$about_id and type=$type";
+		}else if($opratetype == 3){
+			$sqlstr = "delete from sys_love where client_id=$client_id and type=$type";
 		}else{
-			sys_out_fail('参数传递错误！');
-		}
-		
-		$regdate = sys_get_time();
-		$sqlstr = "insert into sys_love set client_id=$client_id,about_id=$about_id,type=$type,regdate='$regdate'";
+			sys_out_fail('opratetype参数传递错误！');
+		}	
 		$result = $this->do_execute($sqlstr);
 		sys_out_result($result);
 	}
@@ -1761,7 +2104,6 @@ class V100Action extends BaseAction
 	 * @ret_infor name 商品名称
 	 * @ret_infor img 商品封面
 	 * @ret_infor shop_id 商家ID
-	 * @ret_infor content 商品描述
 	 * @ret_infor present_price 现价
 	 * @ret_infor original_price 原价
 	 * @ret_infor salenum 销量
@@ -1769,8 +2111,12 @@ class V100Action extends BaseAction
 	 * @ret_infor commentstar 评价等级
 	 * @ret_infor shopname 商家名称
 	 * @ret_infor address 商家地址
+	 * @ret_infor lng 经度
+	 * @ret_infor lat 纬度
 	 * @ret_infor telphone 商家联系电话
 	 * @ret_infor distance 距离
+	 * @ret_infor remarks 商品信息
+	 * @ret_infor love_flag 收藏标志 0：未收藏；1：已收藏
 	 * @ret_infor imgItems 商品图片集 id:图片id$imgurl:缩略图$imgurlbig:大图
 	 * @special 特殊说明一 此接口，会随开发，增加部分字段
 	 */
@@ -1783,8 +2129,26 @@ class V100Action extends BaseAction
 		$lng=_POST('lng');
 		$lat=_POST('lat');
         $distance_str=" round(12756274*asin(Sqrt(pow(sin(($lat-lat)*0.008726646),2)+Cos($lat*0.0174533)*Cos(lat*0.0174533)*pow(sin(($lng-lng)*0.008726646),2)))/1000,2) ";
-        $result_1 = $this -> get_list_bysql("select g.*,s.name as shopname,s.address,s.telphone,$distance_str as distance from sys_good g left join sys_shop s on g.shop_id = s.id where g.id=$id and g.flag=1 and g.doflag=2 and s.validflag!=2");
+        $result_1 = $this -> get_list_bysql("select g.id,g.name,g.img,g.shop_id,g.present_price,g.remarks,g.original_price,g.salenum,g.commentnum,g.commentstar,s.name as shopname,s.address,s.lng,s.lat,s.telphone,$distance_str as distance from sys_good g left join sys_shop s on g.shop_id = s.id where g.id=$id and g.flag=1 and g.doflag=2 and s.validflag!=2");
+        $good_id = $result_1[0]['id'];
+		$comment_list = $this->get_list_bysql("select star from sys_comment where good_id=$good_id");
+		$allcount = 0;
+		$allstar = 0;
+		foreach($comment_list as $v){
+			$allcount += 1;
+			$allstar += $v['star'];
+		}
+		$result_1[0]['commentnum'] = $allcount;
+		$result_1[0]['commentstar'] = round($allstar/$allcount);
         $result_1[0]['imgItems'] = $this -> get_list_bysql("select * from sys_img where keytype=1 and keyid=$id");
+        $client_id = sys_get_cid();	//用户id
+        $result_1[0]['love_flag'] = 0;
+        if($client_id){
+	        $love_count = $this->get_one_bysql("select count(*) from sys_love where client_id=$client_id and about_id=$good_id and type=2");
+			if($love_count > 0){
+				$result_1[0]['love_flag'] = 1;
+			}
+        }
 		sys_out_success(0,$result_1);
 	}
 
@@ -1823,12 +2187,13 @@ class V100Action extends BaseAction
 	 * @req_desc
 	 * @ret 2
 	 * @ret_level 1
+	 * @ret_infor city_id 城市id
 	 * @ret_infor city 城市名称
 	 * @special 特殊说明一 此接口，会随开发，增加部分字段
 	 */
 	public function opencity_list()
 	{
-        $result = $this -> get_list_bysql("select city from sys_opencity");
+        $result = $this -> get_list_bysql("select district_2_id as city_id,city from sys_opencity");
 		sys_out_success(0,$result);
 	}
 
@@ -1884,6 +2249,7 @@ class V100Action extends BaseAction
 			sys_out_fail('参数传递错误！');
 		}
 		$good_name = $good_list[0]['name'];
+		$remarks = $good_list[0]['remarks'];
 		$good_img = $good_list[0]['img'];
 		$good_content = $good_list[0]['content'];
 		$num=_POST('num');
@@ -1896,7 +2262,7 @@ class V100Action extends BaseAction
 		$out_trade_no=sys_get_payno();
 		$regdate = sys_get_time();
 		$endtime = date("Y-m-d",time()+30*24*3600);
-		$sqlstr = "insert into sys_o2order set client_id=$client_id,out_trade_no='$out_trade_no',good_id=$good_id,num='$num',good_name='$good_name',good_content='$good_content',good_img='$good_img',orderflag=2,totalfee='$totalfee',is_verification=2,regdate='$regdate',payflag=1,endtime='$endtime'";
+		$sqlstr = "insert into sys_o2order set client_id=$client_id,out_trade_no='$out_trade_no',good_id=$good_id,num='$num',good_name='$good_name',good_content='$good_content',good_img='$good_img',orderflag=2,totalfee='$totalfee',is_verification=2,regdate='$regdate',payflag=1,endtime='$endtime',remark='$remarks'";
 		$this->do_execute($sqlstr);
 		$order_id = $this->get_insert_id();
 		if($order_id){
@@ -2038,8 +2404,9 @@ class V100Action extends BaseAction
 	 * 余额支付
 	 * @parent shop_root
 	 * @req_params token 登录令牌
-	 * @req_params ordertype 订单类型 1：商城订单；2：扫码订单
+	 * @req_params ordertype 订单类型 1：商城订单；2：扫码订单；3：优惠券订单
 	 * @req_params orderid 订单ID
+	 * @req_params paypassword 支付密码
 	 * @req_desc
 	 * @ret 1
 	 * @ret_level 1
@@ -2048,12 +2415,15 @@ class V100Action extends BaseAction
 	 */
 	public function feeaccount_pay()
 	{
-		$post_array = array('ordertype','orderid');
+		$post_array = array('ordertype','orderid','paypassword');
 		sys_check_post($post_array);//检查post必选参数完整性
 		unset($post_array);
 		$client_id = sys_get_cid();
 		$orderid =_POST('orderid');
 		$ordertype =_POST('ordertype');
+		$paypassword =_POST('paypassword');
+		$true_paypassword = $this->get_one_bysql("select paypassword from sys_client where id=$client_id");
+		if (md5($paypassword) != $true_paypassword) sys_out_fail('支付密码错误');
 		$sqlstr_con_array=NULL;
 		$paytime = sys_get_time();
 		if($ordertype == 1){
@@ -2066,6 +2436,7 @@ class V100Action extends BaseAction
 			$totalfee = $temp_array[0]['totalfee'];
 			$good_id = $temp_array[0]['good_id'];
 			$good_list = $this->get_list_bysql("select * from sys_good where id=$good_id");
+			$shop_id = $this->get_one_bysql("select shop_id from sys_good where id=$good_id");
 			if(!$good_list || $good_list[0]['flag'] == 2){
 				sys_out_fail('该商品已删除或已下架');
 			}
@@ -2079,22 +2450,26 @@ class V100Action extends BaseAction
 			$sqlstr_con_array[] = "update sys_client set feeaccount=feeaccount-$totalfee where id=$client_id";
 			$sqlstr_con_array[] = "insert into sys_cash set client_id=$client_id,regdate='$paytime',score=$totalfee,cashflag=5,isget=1";
 			$sqlstr_con_array[] = "update sys_o2order set paytime='$paytime',paytype=4,payflag=2 where id=$orderid";
-			//发送支付成功通知
-			$content = '订单'.$out_trade_no.'已支付成功！请及时到店消费';
-			send_mess(2,$content,$client_id);
+			
 			//写入通知列表
-			$sqlstr_con_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='$paytime',looktype=0,keytype=2";
+			$sqlstr_con_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='$paytime',looktype=0,keytype=2,type=1,keyid=$orderid";
 			//更新商品表数据信息	
 			$num = $temp_array[0]['num'];
 			$good_id = $temp_array[0]['good_id'];
 			$sqlstr_con_array[] = "update sys_good set salenum=salenum+$num where id='$good_id'";
+			$sqlstr_con_array[] = "update sys_shop set salenum=salenum+$num where id='$shop_id'";
 			//生成核销码，并记录表中
 			for ($x=0; $x<$num; $x++) {
 			  	$out_no = date("YmdHis").rand(1,9999);
 			  	$sqlstr_con_array[] = "insert into sys_out_no set o2order_id=$orderid,out_no='$out_no'";
 			}
-			$shop_id = $this->get_one_bysql("select shop_id from sys_good where id=$good_id");
 			$sqlstr_con_array[] = "insert into sys_o2order_record set order_id=$orderid,shop_id=$shop_id,num=$num,is_verification=2,is_return=2,regdate='$paytime'";
+			$result = $this->do_transaction($sqlstr_con_array);
+			if($result){
+				//发送支付成功通知
+				$content = '订单'.$out_trade_no.'已支付成功！请及时到店消费';
+				send_mess(2,$content,$client_id,1);
+			}
 		}else if($ordertype == 2){			
 			$sqlstr = " select s.arrival_rate,s.wealth_rate,s.service_type,s.service_rate,s.service_fee,sy.totalfee,sy.shop_id,sy.payflag,sy.out_trade_no,s.name as shop_name,s.address from sys_sysorder sy left join sys_shop s on sy.shop_id = s.id where sy.id = $orderid and sy.client_id=$client_id";
 			$temp_array = $this->get_list_bysql($sqlstr);
@@ -2111,13 +2486,11 @@ class V100Action extends BaseAction
 			if($totalfee > $feeaccount){
 				sys_out_fail('余额不足，请使用其他支付方式');
 			}
-			$sqlstr_con_array[] = "update sys_sysorder set paytime='$paytime',paytype=4,payflag=1 where id=$orderid";
+			
 			$sqlstr_con_array[] = "insert into sys_cash set client_id=$client_id,regdate='$paytime',score=$totalfee,cashflag=5,isget=1";
-			//发送支付成功通知
-			$content = '扫码支付订单'.$out_trade_no.'已支付成功！';
-			send_mess(2,$content,$client_id);
+			
 			//写入通知列表
-			$sqlstr_con_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='$paytime',looktype=0,keytype=2";
+			$sqlstr_con_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='$paytime',looktype=0,keytype=2,type=2";
 			$arrival_rate = $temp_array[0]['arrival_rate'];
 			$wealth_rate = $temp_array[0]['wealth_rate'];
 			$service_type = $temp_array[0]['service_type'];
@@ -2127,11 +2500,10 @@ class V100Action extends BaseAction
 			if($service_type == 1){
 				$arrival_fee = 	round($totalfee*$arrival_rate,2);				
 				$wealth_fee = 	round($totalfee*$wealth_rate,2);
-				$service_fee = 	$totalfee - $arrival_fee - $wealth_fee;										
+				$service_fee = 	$totalfee - $arrival_fee;									
 			}else{
 				$service_fee = $shop_list[0]['service_fee'];
-				$totalfee = $totalfee - $service_fee;
-				$arrival_fee = 	round($totalfee*$arrival_rate,2);				
+				$arrival_fee = $totalfee - $service_fee;				
 				$wealth_fee = 	round($totalfee*$wealth_rate,2);					
 			}
 			$islive = $this->get_one_bysql("select islive from sys_client where id=$client_id");
@@ -2139,19 +2511,75 @@ class V100Action extends BaseAction
 				$sqlstr_con_array[] = "update sys_shop set feeaccount=feeaccount+$arrival_fee,wealth_redbag=wealth_redbag+$wealth_fee,redbag=redbag+$wealth_fee where id=$shop_id";				
 				$sqlstr_con_array[] = "update sys_client set wealth=wealth+$wealth_fee,feeaccount=feeaccount-$totalfee where id=$client_id";
 				$sqlstr_con_array[] = "insert into sys_wealth_redbag set type=1,fee=$wealth_fee,regdate='$paytime',client_id=$client_id,shop_id=$shop_id";
-				$sqlstr_con_array[] = "insert into sys_income set totalfee=$totalfee,type=1,client_id=$client_id,shop_id=$shop_id,shop_name='$shop_name',arrival_fee=$arrival_fee,wealth_fee=$wealth_fee,service_fee=$service_fee,address='$address',regdate='$paytime'";
+				$sqlstr_con_array[] = "insert into sys_income set totalfee=$totalfee,type=4,client_id=$client_id,shop_id=$shop_id,shop_name='$shop_name',arrival_fee=$arrival_fee,wealth_fee=$wealth_fee,service_fee=$service_fee,address='$address',regdate='$paytime'";
 			}else{
 				$wealth_fee = 0;
-				$service_fee = $totalfee - $arrival_fee;
 				$sqlstr_con_array[] = "update sys_client set feeaccount=feeaccount-$totalfee where id=$client_id";
 				$sqlstr_con_array[] = "update sys_shop set feeaccount=feeaccount+$arrival_fee where id=$shop_id";
-				$sqlstr_con_array[] = "insert into sys_income set totalfee=$totalfee,type=1,client_id=$client_id,shop_id=$shop_id,shop_name='$shop_name',arrival_fee=$arrival_fee,wealth_fee=$wealth_fee,service_fee=$service_fee,address='$address',regdate='$paytime'";
+				$sqlstr_con_array[] = "insert into sys_income set totalfee=$totalfee,type=4,client_id=$client_id,shop_id=$shop_id,shop_name='$shop_name',arrival_fee=$arrival_fee,wealth_fee=$wealth_fee,service_fee=$service_fee,address='$address',regdate='$paytime'";
+			}
+			$sqlstr_con_array[] = "update sys_sysorder set paytime='$paytime',paytype=4,payflag=1,wealth='$wealth_fee' where id=$orderid";
+			$result = $this->do_transaction($sqlstr_con_array);
+			if($result){
+				//发送支付成功通知
+				$content = '扫码支付订单'.$out_trade_no.'已支付成功！';
+				send_mess(2,$content,$client_id,2);
+			}
+		}else if($ordertype == 3){
+			$sqlstr_con_array[] = "update sys_cardorder set paytime='$paytime',paytype=4,payflag=1 where id='$orderid'";
+			//发送支付成功通知
+			$out_trade_no = $this->get_one_bysql("select out_trade_no from sys_cardorder where id='$orderid'");
+			//写入通知列表
+			$sqlstr_con_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='$paytime',looktype=0,keytype=2,type=3,keyid=$orderid";	
+			$order_list = $this->get_list_bysql("select num,total_score,total_price,card_id,shop_id from sys_cardorder where id='$orderid'");
+			$num = $order_list[0]['num'];
+			$total_score = $order_list[0]['total_score'];
+			$card_id = $order_list[0]['card_id'];
+			$total_price = $order_list[0]['total_price'];
+			$shop_id = $order_list[0]['shop_id'];
+			$client_list = $this->get_list_bysql("select feeaccount,score from sys_client where id=$client_id");
+			if($client_list[0]['score'] < $total_score){
+				sys_out_fail("积分不足");
+			}
+			if($client_list[0]['feeaccount'] < $total_price){
+				sys_out_fail("余额不足");
+			}
+			$sqlstr_con_array[] = "update sys_client set feeaccount=feeaccount-$total_price,score=score-$total_score where id=$client_id";
+			$sqlstr_con_array[] = "insert into sys_cash set client_id=$client_id,regdate='$paytime',score=$total_price,cashflag=5,isget=1";
+			$sqlstr_con_array[] = "update sys_card set stock=stock-$num,convertnum=convertnum+$num where id=$card_id";				
+			$sqlstr_con_array[] = "insert into sys_scoredetail set score=$total_score,scoretype=5,regdate='$paytime',client_id=$client_id,isget=1";
+			$sqlstr_con_array[] = "update sys_shop set feeaccount=feeaccount+$total_price,cardfee=cardfee+$total_price where id=$shop_id";
+			$result = $this->do_transaction($sqlstr_con_array);
+			if($result){
+				//发送支付成功通知
+				$content = '优惠券支付订单'.$out_trade_no.'已支付成功！';
+				send_mess(2,$content,$client_id,3);
 			}
 		}else{
 			sys_out_fail('参数传递错误');
 		}
-		$result = $this->do_transaction($sqlstr_con_array);
 		sys_out_result($result);			
+	}
+
+
+	/**
+	 * 扫码支付成长值获取
+	 * @parent shop_root
+	 * @req_params token 登录令牌
+	 * @req_params keyid 扫码订单ID
+	 * @req_desc
+	 * @ret 2
+	 * @ret_level 1
+	 * @ret_infor wealth 成长值
+	 * @special 
+	 */
+	public function wealth_get()
+	{
+		sys_check_post_single('keyid');//检查post必选参数完整性
+		$keyid=_POST('keyid');
+		$client_id = sys_get_cid();	
+		$order_lists[0]['wealth'] = $this->get_one_bysql("select wealth from sys_sysorder where client_id='$client_id' and id=$keyid");
+		sys_out_success(0, $order_lists);
 	}
 
 		
@@ -2173,6 +2601,7 @@ class V100Action extends BaseAction
 	 * @ret_infor totalfee 商品价格
 	 * @ret_infor client_id 用户ID
 	 * @ret_infor is_verification 是否核销 1：是；2：否
+	 * @ret_infor is_overdue 是否过期 1：是；2：否
 	 * @ret_infor num 购买商品数量
 	 * @ret_infor paytype 支付方式 1：支付宝；2：银联；3：微信；4：余额支付
 	 * @ret_infor regdate 下单时间
@@ -2195,7 +2624,7 @@ class V100Action extends BaseAction
 		}else{
 			$sql_where = '';
 		}
-		$order_sql = "select * from sys_o2order where client_id=$client_id $sql_where order by id desc";
+		$order_sql = "select * from sys_o2order where client_id=$client_id $sql_where order by paytime desc";
 		$o2order_list = $this -> get_list_bysql($order_sql);
 		sys_out_success(0, $o2order_list);
 	}
@@ -2222,6 +2651,7 @@ class V100Action extends BaseAction
 	 * @ret_infor totalfee 商品价格
 	 * @ret_infor client_id 用户ID
 	 * @ret_infor is_verification 是否核销 1：是；2：否
+	 * @ret_infor is_overdue 是否过期 1：是；2：否
 	 * @ret_infor num 购买商品数量
 	 * @ret_infor paytype 支付方式 1：支付宝；2：银联；3：微信；4：余额支付
 	 * @ret_infor regdate 下单时间
@@ -2232,7 +2662,9 @@ class V100Action extends BaseAction
 	 * @ret_infor address 商家地址
 	 * @ret_infor telphone 商家联系电话
 	 * @ret_infor distance 距离
-	 * @ret_infor codeItems 消费码列表 id:主键id$out_no:消费码$is_do:是否使用1：是；2：否；3：已退款
+	 * @ret_infor remark 商品信息
+	 * @ret_infor commentstar 商品星级
+	 * @ret_infor codeItems 消费码列表 id:主键id$out_no:消费码$is_do:是否使用1：是；2：否；3：已退款；4：已过期
 	 * @special 特殊说明一 此接口，会随开发，增加部分字段
 	 */
 	public function o2order_get()
@@ -2247,6 +2679,15 @@ class V100Action extends BaseAction
         $distance_str=" round(12756274*asin(Sqrt(pow(sin(($lat-s.lat)*0.008726646),2)+Cos($lat*0.0174533)*Cos(s.lat*0.0174533)*pow(sin(($lng-s.lng)*0.008726646),2)))/1000,2) ";
 		$order_sql = "select o.*,s.name as shop_name,s.telphone,s.address,$distance_str as distance from sys_o2order o left join sys_good g on o.good_id=g.id left join sys_shop s on g.shop_id=s.id where o.client_id=$client_id and o.id=$orderid";
 		$o2order_list = $this -> get_list_bysql($order_sql);
+		$good_id = $o2order_list[0]['good_id'];
+		$comment_list = $this->get_list_bysql("select star from sys_comment where good_id=$good_id");
+		$allcount = 0;
+		$allstar = 0;
+		foreach($comment_list as $v){
+			$allcount += 1;
+			$allstar += $v['star'];
+		}
+		$o2order_list[0]['commentstar'] = round($allstar/$allcount);
 		$o2order_list[0]['codeItems'] = $this -> get_list_bysql("select * from sys_out_no where o2order_id=$orderid");
 		sys_out_success(0, $o2order_list);
 	}
@@ -2287,13 +2728,14 @@ class V100Action extends BaseAction
 			$sqlstr_array[] = "update sys_o2order set payflag=5 where id=$orderid and payflag=2 and client_id=$client_id";
 			$sqlstr_array[] = "update sys_out_no set is_do=3 where o2order_id=$orderid and is_do=2";
 			$sqlstr_array[] = "update sys_good set salenum=salenum-$num where id=$good_id";
+			$sqlstr_array[] = "update sys_shop set salenum=salenum-$num where id=$shop_id";
 			$sqlstr_array[] = "update sys_client set feeaccount=feeaccount+$totalfee,returnfee=returnfee+$totalfee where id=$client_id";
 			$sqlstr_array[] = "insert into sys_cash set client_id=$client_id,regdate='" . sys_get_time() . "',score=$totalfee,cashflag=4,isget=1";
 			//发送退款成功通知
 			$content = '订单'.$out_trade_no.'已退款成功！';
-			send_mess(2,$content,$client_id);
+			send_mess(2,$content,$client_id,1);
 			//写入通知列表
-			$sqlstr_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='" . sys_get_time() . "',looktype=0,keytype=2";
+			$sqlstr_array[] = "insert into sys_mess set client_id='$client_id',content='$content',from_id=1,regdate='" . sys_get_time() . "',looktype=0,keytype=2,type=1,keyid=$orderid";
 			$sqlstr_array[] = "update sys_o2order_record set is_return=1,regdate='" . sys_get_time() . "' where order_id=$orderid";
 			$result = $this->do_transaction($sqlstr_array);
 		}else{
@@ -2350,6 +2792,13 @@ class V100Action extends BaseAction
 		$all_star = $all_star+$star;
 		$star_aver = round($all_star/$all_orders);
 		$sqlstr_array[] = "update sys_shop set all_orders=$all_orders,all_star=$all_star,star=$star_aver where id=$shop_id";
+		$good_list = $this->get_list_bysql("select allcommentstar,commentnum from sys_good where id=$good_id");
+		$commentnum = $good_list[0]['commentnum'];
+		$allcommentstar = $good_list[0]['allcommentstar'];
+		$commentnum = $commentnum+1;
+		$allcommentstar = $allcommentstar+$star;
+		$commentstar = round($allcommentstar/$commentnum);
+		$sqlstr_array[] = "update sys_good set commentnum=$commentnum,allcommentstar=$allcommentstar,commentstar=$commentstar where id=$good_id";
 		$result = $this->do_transaction($sqlstr_array);
 		sys_out_result($result);
 	}
@@ -2378,6 +2827,11 @@ class V100Action extends BaseAction
 		$client_list = $this->get_list_bysql("select * from sys_client where id='$id'");
 		$total_score = $client_list[0]['score'];
 		$feeaccount = $client_list[0]['feeaccount'];
+		$islive = $client_list[0]['islive'];
+		$wealth = $client_list[0]['wealth'];
+		if($islive == 2 || $wealth < 100){
+			sys_out_fail("未激活不能兑换余额！");
+		}
 		if($score > $total_score){
 			sys_out_fail('积分余额不足！', 101);
 		}
@@ -2385,6 +2839,9 @@ class V100Action extends BaseAction
 		$score_rate = $config_list[0]['score_rate'];
 		$max_cost = $config_list[0]['max_cost'];
 		$cost = $score * $score_rate;
+		if($cost < 0.01){
+			sys_out_fail('兑换额度过少！');
+		}
 		if($cost > $max_cost){
 			sys_out_fail('超过最大兑换额度！', 101);
 		}
@@ -2476,7 +2933,7 @@ class V100Action extends BaseAction
 		$list = $this->get_list_bysql("select islive,wealth from sys_client where id=$client_id");
 		$islive = $list[0]['islive'];
 		$wealth = $list[0]['wealth'];
-		if($islive == 2 || $wealth <= 100){
+		if($islive == 2 || $wealth < 100){
 			sys_out_fail("该用户不能提现");
 		}
 		$type = _POST('type');
@@ -2529,7 +2986,7 @@ class V100Action extends BaseAction
 	 * @ret_level 1
 	 * @ret_infor id 主键id
 	 * @ret_infor score 金额
-	 * @ret_infor cashflag 变动类型 1：余额提现;2：积分转化;3：现金红包;4：退款入账;5：余额入账
+	 * @ret_infor cashflag 变动类型 1：余额提现;2：积分转化;3：现金红包;4：退款入账;5：账户支出
 	 * @ret_infor regdate 変动时间
 	 * @special 特殊说明一 此接口，会随开发，增加部分字段
 	 */
@@ -2567,7 +3024,12 @@ class V100Action extends BaseAction
 		if(!$goods_list){
 			sys_out_fail("传参出错！", 101);
 		}
-		$client_score = $this->get_one_bysql("select score from sys_client where id=$client_id");
+		$client_list = $this->get_list_bysql("select score,islive from sys_client where id=$client_id");
+		$islive = $client_list[0]['islive'];
+		if($islive != 1){
+			sys_out_fail("还未激活，不能兑换商品！");
+		}
+		$client_score = $client_list[0]['score'];
 		$goods_score = $goods_list[0]['score'];
 		if($goods_score > $client_score){
 			sys_out_fail("积分不足！", 107);
@@ -2620,6 +3082,7 @@ class V100Action extends BaseAction
 	 * 清除商品兑换记录
 	 * @parent my_root
 	 * @req_params token 登录令牌
+	 * @req_params type 兑换类型 1：优惠券;2：积分
 	 * @req_desc
 	 * @ret 1
 	 * @ret_level 1
@@ -2628,8 +3091,16 @@ class V100Action extends BaseAction
 	 */
 	public function orderlist_remove()
 	{
+		sys_check_post_single('type');
 		$client_id = sys_get_cid();
-		$sqlstr = "delete from sys_order where client_id='$client_id'";
+		$type = _POST('type');
+		if($type == 1){
+			$sqlstr = "delete from sys_cardorder where client_id='$client_id'";
+		}else if($type == 2){
+			$sqlstr = "delete from sys_order where client_id='$client_id'";
+		}else{
+			sys_out_fail("type参数传递错误");
+		}		
 		$result = $this->do_execute($sqlstr);
 		sys_out_result($result);
 	}
@@ -2741,6 +3212,193 @@ class V100Action extends BaseAction
 
 
 	/**
+	 * 优惠券列表
+	 * @parent card_root
+	 * @req_desc
+	 * @ret 2
+	 * @ret_level 1
+	 * @ret_infor id 优惠券主键id
+	 * @ret_infor imgurl 优惠券图片
+	 * @ret_infor imgurlbig 优惠券大图
+	 * @ret_infor name 优惠券名称
+	 * @ret_infor score 所需积分
+	 * @ret_infor price 所需金额
+	 * @ret_infor convertnum 已售数量
+	 * @ret_infor stock 库存
+	 * @ret_infor validflag 可用状态 0不可用;1可用;2已过期
+	 * @ret_infor end_regdate 有效期至
+	 * @special 
+	 */
+	public function card_list()
+	{
+		$order_lists = $this->get_list_bysql("select mt.* from sys_card mt where mt.auditflag=1 and mt.validflag=1 order by mt.id desc");
+		sys_out_success(0, $order_lists);
+	}
+
+
+	
+	/**
+	 * 优惠券详情
+	 * @parent card_root
+	 * @req_params keyid 优惠券主键id
+	 * @req_desc
+	 * @ret 2
+	 * @ret_level 1
+	 * @ret_infor id 优惠券主键id
+	 * @ret_infor imgurl 优惠券图片
+	 * @ret_infor imgurlbig 优惠券大图
+	 * @ret_infor name 优惠券名称
+	 * @ret_infor score 所需积分
+	 * @ret_infor price 所需金额
+	 * @ret_infor convertnum 已售数量
+	 * @ret_infor stock 库存
+	 * @ret_infor validflag 可用状态 0不可用;1可用;2已过期
+	 * @ret_infor end_regdate 有效期至
+	 * @special 
+	 */
+	public function card_get()
+	{
+		sys_check_post_single('keyid');//检查post必选参数完整性
+		$keyid = _POST('keyid');
+		$order_lists = $this->get_list_bysql("select mt.* from sys_card mt where mt.auditflag=1 and mt.validflag=1 and mt.id=$keyid");
+		sys_out_success(0, $order_lists);
+	}
+
+
+	/**
+	 * 优惠券订单添加
+	 * @parent card_root
+	 * @req_params token 登录令牌
+	 * @req_params card_id 优惠券主键ID
+	 * @req_params num 购买数量
+	 * @req_desc
+	 * @ret 2
+	 * @ret_level 1
+	 * @ret_infor order_id 新添加的订单ID
+	 * @special 特殊说明一 此接口，会随开发，增加部分字段
+	 */
+	public function cardorder_add()
+	{
+		$post_array = array('card_id','num');
+		sys_check_post($post_array);//检查post必选参数完整性
+		unset($post_array);
+		$client_id = sys_get_cid();	//用户id
+		$card_id=_POST('card_id');
+		$card_list = $this->get_list_bysql("select * from sys_card where id=$card_id and validflag=1");
+		if(!$card_list){
+			sys_out_fail("该优惠券不存在或已删除");
+		}
+		$regdate = sys_get_time();
+		$out_trade_no='YHQ'.sys_get_payno();
+		$num=_POST('num');
+		$name = $card_list[0]['name'];
+		$imgurl = $card_list[0]['imgurl'];
+		$imgurlbig = $card_list[0]['imgurlbig'];
+		$end_regdate = $card_list[0]['end_regdate'];
+		$score = $card_list[0]['score'];
+		$price = $card_list[0]['price'];
+		$shop_id = $card_list[0]['shop_id'];
+		$stock = $card_list[0]['stock'];
+		$total_score = $score*$num;
+		$total_price = $price*$num;
+		$user_score = $this->get_one_bysql("select score from sys_client where id=$client_id");
+		if($total_score > $user_score){
+			sys_out_fail("积分不足");
+		}
+		if($stock < $num){
+			sys_out_fail("库存不足");
+		}
+		
+		$sqlstr = "insert into sys_cardorder set name='$name',imgurl='$imgurl',imgurlbig='$imgurlbig',end_regdate='$end_regdate',num=$num,score=$score,price='$price',total_score=$total_score,total_price='$total_price',shop_id=$shop_id,card_id='$card_id',regdate='$regdate',out_trade_no='$out_trade_no',client_id=$client_id,payflag=2";
+		$this->do_execute($sqlstr);
+		$order_id = $this->get_insert_id();
+		
+		//生成核销码，并记录表中
+		$sqlstr_array=NULL;
+		for ($x=0; $x<$num; $x++) {
+		  	$out_no = $this->get_code($shop_id);
+		  	$sqlstr_array[] = "insert into sys_card_no set cardorder_id=$order_id,out_no='$out_no',shop_id=$shop_id";
+		}
+		$result = $this->do_transaction($sqlstr_array);
+		
+		if($order_id && $result){
+			$temp_array[0]['order_id'] = $order_id;
+			sys_out_success('添加成功', $temp_array);
+		}else{
+			sys_out_fail();
+		}
+	}
+
+
+	
+	/**
+	 * 我的优惠券列表
+	 * @parent card_root
+	 * @req_params token 登录令牌
+	 * @req_desc
+	 * @ret 2
+	 * @ret_level 1
+	 * @ret_infor id 优惠券记录id
+	 * @ret_infor imgurl 优惠券图片
+	 * @ret_infor imgurlbig 优惠券大图
+	 * @ret_infor name 优惠券名称
+	 * @ret_infor total_score 所需积分
+	 * @ret_infor total_price 所需金额
+	 * @ret_infor convertnum 已售数量
+	 * @ret_infor num 本次购买数量
+	 * @ret_infor end_regdate 有效期至
+	 * @ret_infor stock 库存
+	 * @ret_infor validflag 可用状态 0不可用;1可用;2已过期
+	 * @special 
+	 */
+	public function my_card_list()
+	{
+		$client_id = sys_get_cid();
+		$order_lists = $this->get_list_bysql("select mt.*,c.convertnum,c.validflag,c.end_regdate from sys_cardorder mt left join sys_card c on mt.card_id=c.id where mt.payflag=1 and mt.client_id=$client_id order by mt.id desc");
+		sys_out_success(0, $order_lists);
+	}
+
+
+	
+	/**
+	 * 我的优惠券详情
+	 * @parent card_root
+	 * @req_params token 登录令牌
+	 * @req_params keyid 优惠券记录ID
+	 * @req_desc
+	 * @ret 2
+	 * @ret_level 1
+	 * @ret_infor id 优惠券记录id
+	 * @ret_infor imgurl 优惠券图片
+	 * @ret_infor imgurlbig 优惠券大图
+	 * @ret_infor name 优惠券名称
+	 * @ret_infor score 单个所需积分
+	 * @ret_infor price 单个所需金额
+	 * @ret_infor total_score 所需积分
+	 * @ret_infor total_price 所需金额
+	 * @ret_infor num 本次购买数量
+	 * @ret_infor out_trade_no 订单编号
+	 * @ret_infor regdate 下单时间
+	 * @ret_infor end_regdate 有效期至
+	 * @ret_infor stock 库存
+	 * @ret_infor validflag 可用状态 0不可用;1可用;2已过期
+	 * @ret_infor cardnoItems 消费码列表 id:主键id$out_no:券码$is_do:是否使用1：是；2：否；3：已过期
+	 * @special 
+	 */
+	public function my_card_get()
+	{
+		sys_check_post_single('keyid');//检查post必选参数完整性
+		$keyid = _POST('keyid');
+		$client_id = sys_get_cid();
+		$order_list = $this->get_list_bysql("select mt.*,c.validflag,c.end_regdate from sys_cardorder mt left join sys_card c on mt.card_id=c.id where mt.payflag=1 and mt.client_id=$client_id and mt.id=$keyid");
+		$cardorder_id = $order_list[0]['id'];
+		$order_list[0]['cardnoItems'] = $this->get_list_bysql("select * from sys_card_no where cardorder_id=$cardorder_id");
+		sys_out_success(0, $order_list);
+	}
+
+
+	
+	/**
 	 * 商品列表
 	 * @parent common_root
 	 * @req_desc
@@ -2760,6 +3418,29 @@ class V100Action extends BaseAction
 	{
 		$order_lists = $this->get_list_bysql("select mt.* from sys_goods mt where mt.saleflag=1 order by mt.id desc");
 		sys_out_success(0, $order_lists);
+	}
+
+	
+	/**
+	 * 转换经纬度（转换成百度地图经纬度）
+	 * @parent common_root
+	 * @req_params keyword 具体地址
+	 * @req_desc
+	 * @ret 2
+	 * @ret_level 1
+	 * @ret_infor lng 经度
+	 * @ret_infor lat 纬度
+	 * @special 
+	 */
+	public function lnglat_change()
+	{
+		sys_check_post_single('keyword');//检查post必选参数完整性
+		$keyword = _POST('keyword');
+		$geocode=file_get_contents('http://api.map.baidu.com/geocoder/v2/?output=json&ak=gATczNzpQ9BfrGbms5F8iTyAHWyDHKOd&address='.$keyword); 
+		$output= json_decode($geocode); 
+		$baidu['lng'] = $output->result->location->lng;
+		$baidu['lat'] = $output->result->location->lat;
+		sys_out_success(0, $baidu);
 	}
 
 
@@ -2824,6 +3505,11 @@ class V100Action extends BaseAction
             case "ad":
                 $id = I('id');
                 $sqlstr="select content from sys_ad where id=$id";
+                $content=$this->get_one_bysql($sqlstr);
+                break;
+            case "card":
+                $id = I('id');
+                $sqlstr="select content from sys_card where id=$id";
                 $content=$this->get_one_bysql($sqlstr);
                 break;
 			default://默认走旧有图片模式
@@ -2909,7 +3595,7 @@ class V100Action extends BaseAction
 	 * @parent menu_sys_plugins
 	 * @req_params token 登录令牌
 	 * @req_params paytype 支付类型 固定传1 1
-	 * @req_params ordertype 订单类型 1：商城订单；2：扫码订单
+	 * @req_params ordertype 订单类型 1：商城订单；2：扫码订单；3：兑换优惠券
 	 * @req_params orderid 订单ID
 	 * @req_desc
 	 * @ret 0
@@ -2928,7 +3614,7 @@ class V100Action extends BaseAction
 	 * @parent menu_sys_plugins
 	 * @req_params token 登录令牌
 	 * @req_params paytype 支付类型 固定传2 2
-	 * @req_params ordertype 订单类型 1：商城订单；2：扫码订单
+	 * @req_params ordertype 订单类型 1：商城订单；2：扫码订单；3：兑换优惠券
 	 * @req_params orderid 订单ID
 	 * @req_desc
 	 * @ret 0
@@ -2950,7 +3636,7 @@ class V100Action extends BaseAction
 	 * @parent menu_sys_plugins
 	 * @req_params token 登录令牌
 	 * @req_params paytype 支付类型 固定传3 3
-	 * @req_params ordertype 订单类型 1：商城订单；2：扫码订单
+	 * @req_params ordertype 订单类型 1：商城订单；2：扫码订单；3：兑换优惠券
 	 * @req_params orderid 订单ID
 	 * @req_desc
 	 * @ret 0

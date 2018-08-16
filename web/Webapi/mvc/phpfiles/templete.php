@@ -115,6 +115,17 @@
 						<?php
 						foreach($apidoc["req_params"] as $req_key =>$req_param){?><!-- foreach开始 -->
 						<?php if(count($req_param) == 1){continue; }?>
+						<li style="display: none;">
+						 <div style="width:100px;float:left;">
+			                               加密参数
+			             </div>
+			              <div style="width:200px;float:left;">
+			              	<input   name="agent_from" type = "text" value="2"/>
+			             
+			                    <input   name="sign" type = "text" value="<?php echo md5(DATAKEY."|".sys_get_time()."|".$method)?>"/>
+			     		 </div>
+			     		<div style="clear: both;" ></div>
+						</li>
 						<li>
 							<div style="width:100px;float:left;">
 								<?php echo $req_param['title']?>：
