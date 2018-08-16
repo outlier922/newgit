@@ -5,7 +5,19 @@ $menu_list = $component['menu_list'];
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
         <div class="container-fluid cl">
+	        <?php
+	        	$str = $_SERVER["QUERY_STRING"];
+				$act = substr($str , 5 , 5);
+				if($act == 'admin'){
+	        ?>	        
             <a class="logo navbar-logo f-l mr-10 hidden-xs" href=""><?=SYS_ZH_NAME;?>_平台管理系统</a>
+            <?php
+            	}else{
+	        ?>
+			<a class="logo navbar-logo f-l mr-10 hidden-xs" href=""><?=SYS_ZH_NAME;?>_商家管理系统</a>
+            <?php
+            	}
+	        ?>
             <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                 <ul class="cl">
 <!--                    <li>-->

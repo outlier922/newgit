@@ -93,6 +93,8 @@
     //双击选择地图
     $(function(){
         $('.dptk-amap-item').dblclick(function(){
+	        var lat = $(this).attr("data-lat");
+	    	var lng = $(this).attr("data-lng");
             var index = layer.open({
                 type: 2,
                 area: ['300px', '300px'],
@@ -100,7 +102,7 @@
                 maxmin: true,
                 shade:0.4,
                 title: false,
-                content: "plugins/amap/amap.php"
+                content: "plugins/amap/amap.php?lat="+lat+"&lng="+lng
             });
             layer.full(index);
         });
@@ -280,7 +282,11 @@
                             layer.close(wait_index);
                             rec = $.parseJSON(rec);
                             if(rec.success){
-                                layer.msg("操作成功",{icon:6});
+	                            if(rec.msg){
+		                            layer.msg(rec.msg,{icon:6});
+	                            }else{
+		                            layer.msg("操作成功",{icon:6});
+	                            }
                                 //刷新上一页
                                 setTimeout("parent.location.reload()",1000);
                             }

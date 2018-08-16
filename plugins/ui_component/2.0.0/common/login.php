@@ -24,10 +24,25 @@
     <script type="text/javascript" src="<?php echo SYS_UI_PLUGINS?>DD_belatedPNG_0.0.8a-min.js" ></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
+    <?php
+    	$str = $_SERVER["QUERY_STRING"];
+		$act = substr($str , 5 , 5);
+		if($act == 'admin'){
+    ?>	
     <title><?=SYS_ZH_NAME?>_平台管理系统</title>
 </head>
 <body>
     <div class="header"><?=SYS_ZH_NAME?>_平台管理系统</div>
+    <?php
+    	}else{
+    ?>
+     <title><?=SYS_ZH_NAME?>_商家管理系统</title>
+</head>
+<body>
+    <div class="header"><?=SYS_ZH_NAME?>_商家管理系统</div>
+    <?php
+    	}
+    ?>
     <div class="loginWraper">
     <div id="loginform" class="loginBox">
         <form class="form form-horizontal" action="<?=U('Login/index')?>" method="post" id="form-layer">

@@ -1,4 +1,9 @@
-<?php include __DIR__.'/base.php';?>
+<?php
+include __DIR__.'/base.php';
+$related = $component['related'];
+$_GET['opentime_start'] = $related[0]['value'];
+$_GET['opentime_end'] = $related[1]['value'];
+?>
 <div class="row cl" style="<?=$display?>">
     <label class="form-label col-xs-4 col-sm-2">
         <?=$red_star?>
